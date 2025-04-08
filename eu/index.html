@@ -66,8 +66,8 @@
       padding: 30px;
     }
 
-    .info-panel {
-      flex: 1 1 500px;
+    .info-panel, .proxy-panel {
+      flex: 1 1 100%;
       max-width: 900px;
       background-color: #222;
       border-radius: 12px;
@@ -77,7 +77,7 @@
       line-height: 1.8;
     }
 
-    .info-panel h2 {
+    .info-panel h2, .proxy-panel h2, .connect-panel-wrapper h2 {
       font-size: 1.5rem;
       color: #4fc3f7;
       border-bottom: 2px solid #4fc3f7;
@@ -86,7 +86,7 @@
       margin-top: 0;
     }
 
-    .info-panel ul {
+    .info-panel ul, .proxy-panel ul {
       text-align: left;
       max-width: 700px;
       margin: 0 auto;
@@ -95,17 +95,13 @@
     }
 
     .connect-panel-wrapper {
-      flex: 1 1 300px;
+      flex: 1 1 100%;
+      max-width: 900px;
       text-align: center;
-    }
-
-    .connect-panel-wrapper h2 {
-      font-size: 1.4rem;
-      margin-bottom: 15px;
-      color: #4fc3f7;
-      border-bottom: 2px solid #4fc3f7;
-      display: inline-block;
-      padding-bottom: 5px;
+      background-color: #222;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
     }
 
     .connect-panel {
@@ -165,8 +161,6 @@
 </head>
 
 <body>
-
-  <!-- Header -->
   <header>
     <a href="https://m45sci.xyz/">
       <img src="https://m45sci.xyz/m45-2024b-128.png" alt="M45-Science Logo">
@@ -175,10 +169,7 @@
     </a>
   </header>
 
-  <!-- Main Layout -->
   <div class="layout">
-
-    <!-- Info Panel -->
     <div class="info-panel">
       <h2>Improve Your Connection from Europe</h2>
       <p>
@@ -197,33 +188,8 @@
         <li>Transatlantic latency spikes</li>
         <li>Disconnections caused by bad ISP routing</li>
       </ul>
-      <p>
-        Each lettered proxy (A–R) connects to a different live map. View the list of maps here:<br>
-        <a href="https://factorio.go-game.net/?tag=m45" target="_blank">factorio.go-game.net/?tag=m45</a>
-      </p>
-      <hr style="border: none; border-top: 1px solid #444; margin: 30px 0;">
-      <h2>Optional Proxy Software</h2>
-      <p>
-        You can also run our optional <strong>proxy software</strong> on your computer. Unlike the EU relay servers on this page,
-        it creates a direct compressed tunnel from your PC to the M45-Science servers in Michigan.
-      </p>
-      <p>
-        This can help stabilize your connection if you're dealing with:
-      </p>
-      <ul>
-        <li>WiFi instability</li>
-        <li>CGNAT or router issues</li>
-        <li>Weird ISP routing</li>
-      </ul>
-      <p style="margin-top: 20px;">
-        🔧 <a href="https://github.com/M45-Science/factProxy/raw/refs/heads/main/factProxy/winProxy.zip">
-          Download Windows Proxy (Alpha)
-        </a><br>
-        <span style="font-size: 1rem; color: #bbb;">This tool is in early development (alpha). It's an alternative to the EU relay links — not used together.</span>
-      </p>
     </div>
 
-    <!-- Connect Panel -->
     <div class="connect-panel-wrapper">
       <h2>Click a Proxy to Join a Map</h2>
       <div class="connect-panel">
@@ -284,6 +250,27 @@
       </div>
     </div>
 
+    <div class="proxy-panel">
+      <h2>Optional Proxy Software</h2>
+      <p>
+        You can also run our optional <strong>proxy software</strong> on your computer. Unlike the EU relay servers on this page,
+        it creates a direct encrypted tunnel from your PC to the M45-Science servers in Michigan.
+      </p>
+      <p>
+        This can help stabilize your connection if you're dealing with:
+      </p>
+      <ul>
+        <li>WiFi instability</li>
+        <li>CGNAT or router issues</li>
+        <li>Weird ISP routing</li>
+      </ul>
+      <p style="margin-top: 20px;">
+        🔧 <a href="https://github.com/M45-Science/factProxy/raw/refs/heads/main/factProxy/winProxy.zip">
+          Download Windows Proxy (Alpha)
+        </a><br>
+        <span style="font-size: 1rem; color: #bbb;">This tool is in early development (alpha). It's an alternative to the EU relay links — not used together.</span>
+      </p>
+    </div>
   </div>
 </body>
 
