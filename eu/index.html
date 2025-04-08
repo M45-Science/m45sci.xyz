@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="icon.png" rel="shortcut icon" type="image/x-icon">
   <style>
-    html,
-    body {
+    html, body {
       background-color: #111;
       color: #eee;
       margin: 0;
@@ -26,26 +25,37 @@
       text-decoration: underline;
     }
 
-    h2 {
+    header {
+      background-color: #1b1b1b;
+      text-align: center;
+      padding: 20px 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    header a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header img {
+      width: 120px;
+      height: auto;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin: 10px 0 5px;
       color: #fff;
-      font-size: 1.8rem;
-      margin-top: 0;
+      background: linear-gradient(to right, #4fc3f7, #2196f3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #222;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #555;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #777;
+    header h2 {
+      color: #bbb;
+      font-weight: normal;
+      font-style: italic;
+      margin: 0;
     }
 
     .layout {
@@ -67,6 +77,15 @@
       line-height: 1.8;
     }
 
+    .info-panel h2 {
+      font-size: 1.5rem;
+      color: #4fc3f7;
+      border-bottom: 2px solid #4fc3f7;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-top: 0;
+    }
+
     .info-panel ul {
       text-align: left;
       max-width: 700px;
@@ -83,6 +102,10 @@
     .connect-panel-wrapper h2 {
       font-size: 1.4rem;
       margin-bottom: 15px;
+      color: #4fc3f7;
+      border-bottom: 2px solid #4fc3f7;
+      display: inline-block;
+      padding-bottom: 5px;
     }
 
     .connect-panel {
@@ -90,6 +113,11 @@
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+    }
+
+    .server-link {
+      text-decoration: none;
+      color: inherit;
     }
 
     .server {
@@ -100,15 +128,15 @@
       text-align: center;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
       font-size: 0.95rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
     }
 
     .server:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 6px 14px rgba(79, 195, 247, 0.4);
       background-color: #333;
     }
-
 
     .server h3 {
       margin: 0 0 6px;
@@ -116,7 +144,7 @@
       color: #ccc;
     }
 
-    .server a {
+    .connect-label {
       display: inline-block;
       background-color: #444;
       padding: 5px 10px;
@@ -124,130 +152,135 @@
       color: #ccc;
       font-weight: bold;
       font-size: 0.9rem;
-      text-decoration: none;
+      margin-top: 5px;
+      transition: all 0.2s ease;
     }
 
-    .server a:hover {
+    .server:hover .connect-label {
       background-color: #4fc3f7;
       color: #000;
+      box-shadow: 0 0 6px #4fc3f7;
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Header -->
+  <header>
+    <a href="https://m45sci.xyz/">
+      <img src="https://m45sci.xyz/m45-2024b-128.png" alt="M45-Science Logo">
+      <h1>M45-Science</h1>
+      <h2>EU Proxy Portal</h2>
+    </a>
+  </header>
+
+  <!-- Main Layout -->
   <div class="layout">
 
     <!-- Info Panel -->
     <div class="info-panel">
-      <h2>What is the EU Proxy?</h2>
+      <h2>Improve Your Connection from Europe</h2>
       <p>
-        If you're in Europe and experience lag, stuttering, or disconnections while playing on M45-Science servers,
-        the EU Proxy can improve your connection by routing traffic through a stable tunnel to the US.
+        If you're connecting from Europe and notice lag, stuttering, or disconnections while playing on M45-Science servers,
+        you can use the EU Proxy system to improve your connection.
       </p>
       <p>
-        Our <strong>Factorio servers</strong> are hosted in <strong>Michigan, USA</strong> — near Chicago and the Great
-        Lakes —
-        by <strong>incx</strong>. The <strong>EU proxy servers</strong> are located in <strong>Nuremberg,
-          Germany</strong> and hosted by <strong>Hetzner</strong>.
+        Our <strong>Factorio servers</strong> are hosted in <strong>Michigan, USA</strong> (near Chicago and the Great Lakes) by <strong>incx</strong>.
+        The <strong>EU proxy servers</strong> are located in <strong>Nuremberg, Germany</strong>, hosted by <strong>Hetzner</strong>.
       </p>
       <p>
-        The proxy reduces transatlantic issues like:
+        The proxy routes your traffic through a stable TCP tunnel from Europe to the US, reducing:
       </p>
       <ul>
-        <li>Packet loss between Europe and the US</li>
-        <li>Latency spikes and inconsistent routing</li>
-        <li>Disconnections caused by unstable international links</li>
+        <li>Packet loss</li>
+        <li>Transatlantic latency spikes</li>
+        <li>Disconnections caused by bad ISP routing</li>
       </ul>
       <p>
-        Each lettered proxy (A–R) connects you to a different live Factorio map. You can view the full list of current
-        servers at:<br>
-        <a href="https://factorio.go-game.net/?tag=m45" target="_blank">
-          factorio.go-game.net/?tag=m45
-        </a>
+        Each lettered proxy (A–R) connects to a different live map. View the full server list at:<br>
+        <a href="https://factorio.go-game.net/?tag=m45" target="_blank">factorio.go-game.net/?tag=m45</a>
       </p>
       <hr style="border: none; border-top: 1px solid #444; margin: 30px 0;">
+      <h2>Optional Proxy Software</h2>
       <p>
-        <strong>Prefer a more advanced option?</strong><br>
-        You can also run our optional <strong>proxy software</strong> on your own computer. Unlike the EU relay servers
-        listed on this page, the proxy software creates a direct encrypted tunnel from your device to the M45-Science
-        Factorio servers in Michigan.
+        You can also run our optional <strong>proxy software</strong> on your computer. Unlike the EU relay servers on this page,
+        it creates a direct encrypted tunnel from your PC to the M45-Science servers in Michigan.
       </p>
       <p>
         This can help stabilize your connection if you're dealing with:
       </p>
       <ul>
-        <li>Flaky WiFi or router behavior</li>
-        <li>CGNAT or strict firewalls</li>
-        <li>Inconsistent routing from your ISP</li>
+        <li>WiFi instability</li>
+        <li>CGNAT or router issues</li>
+        <li>Weird ISP routing</li>
       </ul>
       <p style="margin-top: 20px;">
         🔧 <a href="https://github.com/M45-Science/factProxy/raw/refs/heads/main/factProxy/winProxy.zip">
           Download Windows Proxy (Alpha)
         </a><br>
-        <span style="font-size: 1rem; color: #bbb;">Note: This software is in early development (alpha). Use at your own
-          risk. It is an alternative to the EU relay servers — not used together. Questions? Ask in our Discord.</span>
+        <span style="font-size: 1rem; color: #bbb;">This tool is in early development (alpha). It's an alternative to the EU relay links — not used together.</span>
       </p>
     </div>
 
     <!-- Connect Panel -->
     <div class="connect-panel-wrapper">
-      <h2>Proxy Server Connect Links</h2>
+      <h2>Click a Proxy to Join a Map</h2>
       <div class="connect-panel">
-        <!-- Compact Server Boxes A–R -->
-        <div class="server">
-          <h3>Server A</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20000">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server B</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20001">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server C</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20002">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server D</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20003">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server E</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20004">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server F</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20005">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server G</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20006">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server H</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20007">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server I</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20008">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server J</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20009">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server K</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20010">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server L</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20011">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server M</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20012">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server N</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20013">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server O</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20014">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server P</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20015">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server Q</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20016">Connect</a>
-        </div>
-        <div class="server">
-          <h3>Server R</h3><a href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20017">Connect</a>
-        </div>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20000">
+          <div class="server"><h3>Server A</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20001">
+          <div class="server"><h3>Server B</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20002">
+          <div class="server"><h3>Server C</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20003">
+          <div class="server"><h3>Server D</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20004">
+          <div class="server"><h3>Server E</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20005">
+          <div class="server"><h3>Server F</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20006">
+          <div class="server"><h3>Server G</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20007">
+          <div class="server"><h3>Server H</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20008">
+          <div class="server"><h3>Server I</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20009">
+          <div class="server"><h3>Server J</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20010">
+          <div class="server"><h3>Server K</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20011">
+          <div class="server"><h3>Server L</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20012">
+          <div class="server"><h3>Server M</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20013">
+          <div class="server"><h3>Server N</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20014">
+          <div class="server"><h3>Server O</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20015">
+          <div class="server"><h3>Server P</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20016">
+          <div class="server"><h3>Server Q</h3><div class="connect-label">Connect</div></div>
+        </a>
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20017">
+          <div class="server"><h3>Server R</h3><div class="connect-label">Connect</div></div>
+        </a>
       </div>
     </div>
 
