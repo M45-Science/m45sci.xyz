@@ -1,92 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>EU Relay Servers – M45-Science</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="icon.png" rel="shortcut icon" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="icon.png" rel="shortcut icon" type="image/x-icon" />
+
   <style>
-    html, body {
-      background-color: #111;
-      color: #eee;
+    /* -----------------------------------
+       CSS Variables (customize as needed)
+    ----------------------------------- */
+    :root {
+      --bg-gradient-start: #111111;
+      --bg-gradient-end: #2a2a2a;
+      --header-bg: #1b1b1b;
+      --text-color: #eeeeee;
+      --secondary-text-color: #bbbbbb;
+      --accent-color-1: #4fc3f7; /* First accent color */
+      --accent-color-2: #2196f3; /* Second accent color for gradient */
+      --panel-bg: #222222;
+      --panel-hover-bg: #333333;
+      --server-bg: #2a2a2a;
+      --server-hover-shadow: rgba(79, 195, 247, 0.4);
+      --box-shadow-base: 0 2px 6px rgba(0, 0, 0, 0.4);
+      --box-shadow-hover: 0 6px 14px var(--server-hover-shadow);
+    }
+
+    /* ------------------
+       Global Base Styles
+    ------------------ */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+    html, body {
       font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: var(--text-color);
     }
-
     a {
-      color: #4fc3f7;
+      color: var(--accent-color-1);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
-
     a:hover {
       color: #fff;
       text-decoration: underline;
     }
 
+    /* -----------
+       Header Area
+    ------------ */
     header {
-      background-color: #1b1b1b;
+      background-color: var(--header-bg);
       text-align: center;
       padding: 20px 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
     }
-
     header a {
       color: inherit;
       text-decoration: none;
     }
-
     header img {
       width: 120px;
       height: auto;
     }
-
     header h1 {
       font-size: 2.2rem;
       margin: 10px 0 5px;
-      color: #fff;
-      background: linear-gradient(to right, #4fc3f7, #2196f3);
+      /* Gradient text effect */
+      background: linear-gradient(to right, var(--accent-color-1), var(--accent-color-2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     header h2 {
-      color: #bbb;
+      color: var(--secondary-text-color);
       font-weight: normal;
       font-style: italic;
       margin: 0;
     }
 
+    /* ---------------
+       Main Layout
+    ---------------- */
     .layout {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
       padding: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-
-    .info-panel, .Relay-panel {
+    .info-panel,
+    .Relay-panel {
       flex: 1 1 100%;
       max-width: 900px;
-      background-color: #222;
+      background-color: var(--panel-bg);
       border-radius: 12px;
       padding: 30px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
       font-size: 1.2rem;
       line-height: 1.8;
     }
-
-    .info-panel h2, .Relay-panel h2, .connect-panel-wrapper h2 {
+    .info-panel h2,
+    .Relay-panel h2,
+    .connect-panel-wrapper h2 {
       font-size: 1.5rem;
-      color: #4fc3f7;
-      border-bottom: 2px solid #4fc3f7;
+      color: var(--accent-color-1);
+      border-bottom: 2px solid var(--accent-color-1);
       display: inline-block;
       padding-bottom: 5px;
       margin-top: 0;
     }
-
-    .info-panel ul, .Relay-panel ul {
+    .info-panel ul,
+    .Relay-panel ul {
       text-align: left;
       max-width: 700px;
       margin: 0 auto;
@@ -94,52 +123,57 @@
       padding-left: 20px;
     }
 
+    /* ----------------------
+       Connect Panel & Tiles
+    ----------------------- */
     .connect-panel-wrapper {
       flex: 1 1 100%;
       max-width: 900px;
-      text-align: center;
-      background-color: #222;
+      background-color: var(--panel-bg);
       border-radius: 12px;
       padding: 30px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+      text-align: center;
     }
-
     .connect-panel {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+      margin-top: 1rem;
     }
 
     .server-link {
       text-decoration: none;
       color: inherit;
     }
-
     .server {
-      background-color: #2a2a2a;
+      background-color: var(--server-bg);
       padding: 10px;
-      width: 120px;
+      min-width: 150px; /* Increased to avoid overflow */
       border-radius: 8px;
       text-align: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      box-shadow: var(--box-shadow-base);
       font-size: 0.95rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
       cursor: pointer;
     }
-
     .server:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 14px rgba(79, 195, 247, 0.4);
-      background-color: #333;
+      box-shadow: var(--box-shadow-hover);
+      background-color: var(--panel-hover-bg);
     }
-
     .server h3 {
       margin: 0 0 6px;
       font-size: 1rem;
-      color: #ccc;
+      color: var(--secondary-text-color);
     }
-
+    .server-address {
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-bottom: 6px;
+      word-wrap: break-word; /* Ensures line-wrap if needed */
+    }
     .connect-label {
       display: inline-block;
       background-color: #444;
@@ -151,34 +185,44 @@
       margin-top: 5px;
       transition: all 0.2s ease;
     }
-
     .server:hover .connect-label {
-      background-color: #4fc3f7;
+      background-color: var(--accent-color-1);
       color: #000;
-      box-shadow: 0 0 6px #4fc3f7;
+      box-shadow: 0 0 6px var(--accent-color-1);
+    }
+
+    /* Minor Note about Non-Steam */
+    .minor-note {
+      font-size: 0.9rem;
+      color: var(--secondary-text-color);
+      margin-top: 1.5rem;
     }
   </style>
 </head>
-
 <body>
+  <!-- Header -->
   <header>
     <a href="https://m45sci.xyz/">
-      <img src="https://m45sci.xyz/m45-2024b-128.png" alt="M45-Science Logo">
+      <img src="https://m45sci.xyz/m45-2024b-128.png" alt="M45-Science Logo" />
       <h1>M45-Science</h1>
       <h2>EU Relay Portal</h2>
     </a>
   </header>
 
+  <!-- Content Layout -->
   <div class="layout">
+    <!-- Intro / Info Panel -->
     <div class="info-panel">
       <h2>Improve Your Connection from Europe</h2>
       <p>
-        If you're connecting from Europe and notice lag, stuttering, or disconnections while playing on M45-Science servers,
-        you can use the EU Relay system to improve your connection.
+        If you're playing Factorio from Europe and experiencing lag, stuttering, or disconnects on M45-Science servers, 
+        our EU Relay system can help smooth out your connection. 
       </p>
       <p>
-        Our <strong>Factorio servers</strong> are hosted in <strong>Michigan, USA</strong> (near Chicago and the Great Lakes) by <strong>incx</strong>.
-        The <strong>EU Relay servers</strong> are located in <strong>Nuremberg, Germany</strong>, hosted by <strong>Hetzner</strong>.
+        Our main <strong>Factorio servers</strong> are hosted in <strong>Michigan, USA</strong> 
+        (near Chicago and the Great Lakes) by <strong>incx</strong>. 
+        The <strong>EU Relay servers</strong> are located in <strong>Nuremberg, Germany</strong>, 
+        hosted by <strong>Hetzner</strong>.
       </p>
       <p>
         The relay routes your traffic through a stable TCP tunnel from Europe to the US, reducing:
@@ -186,93 +230,198 @@
       <ul>
         <li>Packet loss</li>
         <li>Transatlantic latency spikes</li>
-        <li>Disconnections caused by bad ISP routing</li>
+        <li>Disconnections caused by poor ISP routing</li>
       </ul>
     </div>
 
+    <!-- Connect Panel -->
     <div class="connect-panel-wrapper">
-      <h2>Click a Relay to Join a Map</h2>
+      <h2>Click a Relay to Join</h2>
+      <p>
+        Select one of the servers below to launch Factorio and connect via an EU relay.
+      </p>
       <div class="connect-panel">
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20000">
-          <div class="server"><h3>Server A</h3><div class="connect-label">Connect</div></div>
+        <!-- Server A -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10000">
+          <div class="server">
+            <h3>Server A</h3>
+            <div class="server-address">188.245.70.49:10000</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20001">
-          <div class="server"><h3>Server B</h3><div class="connect-label">Connect</div></div>
+        <!-- Server B -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10001">
+          <div class="server">
+            <h3>Server B</h3>
+            <div class="server-address">188.245.70.49:10001</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20002">
-          <div class="server"><h3>Server C</h3><div class="connect-label">Connect</div></div>
+        <!-- Server C -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10002">
+          <div class="server">
+            <h3>Server C</h3>
+            <div class="server-address">188.245.70.49:10002</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20003">
-          <div class="server"><h3>Server D</h3><div class="connect-label">Connect</div></div>
+        <!-- Server D -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10003">
+          <div class="server">
+            <h3>Server D</h3>
+            <div class="server-address">188.245.70.49:10003</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20004">
-          <div class="server"><h3>Server E</h3><div class="connect-label">Connect</div></div>
+        <!-- Server E -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10004">
+          <div class="server">
+            <h3>Server E</h3>
+            <div class="server-address">188.245.70.49:10004</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20005">
-          <div class="server"><h3>Server F</h3><div class="connect-label">Connect</div></div>
+        <!-- Server F -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10005">
+          <div class="server">
+            <h3>Server F</h3>
+            <div class="server-address">188.245.70.49:10005</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20006">
-          <div class="server"><h3>Server G</h3><div class="connect-label">Connect</div></div>
+        <!-- Server G -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10006">
+          <div class="server">
+            <h3>Server G</h3>
+            <div class="server-address">188.245.70.49:10006</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20007">
-          <div class="server"><h3>Server H</h3><div class="connect-label">Connect</div></div>
+        <!-- Server H -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10007">
+          <div class="server">
+            <h3>Server H</h3>
+            <div class="server-address">188.245.70.49:10007</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20008">
-          <div class="server"><h3>Server I</h3><div class="connect-label">Connect</div></div>
+        <!-- Server I -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10008">
+          <div class="server">
+            <h3>Server I</h3>
+            <div class="server-address">188.245.70.49:10008</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20009">
-          <div class="server"><h3>Server J</h3><div class="connect-label">Connect</div></div>
+        <!-- Server J -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10009">
+          <div class="server">
+            <h3>Server J</h3>
+            <div class="server-address">188.245.70.49:10009</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20010">
-          <div class="server"><h3>Server K</h3><div class="connect-label">Connect</div></div>
+        <!-- Server K -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10010">
+          <div class="server">
+            <h3>Server K</h3>
+            <div class="server-address">188.245.70.49:10010</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20011">
-          <div class="server"><h3>Server L</h3><div class="connect-label">Connect</div></div>
+        <!-- Server L -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10011">
+          <div class="server">
+            <h3>Server L</h3>
+            <div class="server-address">188.245.70.49:10011</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20012">
-          <div class="server"><h3>Server M</h3><div class="connect-label">Connect</div></div>
+        <!-- Server M -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10012">
+          <div class="server">
+            <h3>Server M</h3>
+            <div class="server-address">188.245.70.49:10012</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20013">
-          <div class="server"><h3>Server N</h3><div class="connect-label">Connect</div></div>
+        <!-- Server N -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10013">
+          <div class="server">
+            <h3>Server N</h3>
+            <div class="server-address">188.245.70.49:10013</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20014">
-          <div class="server"><h3>Server O</h3><div class="connect-label">Connect</div></div>
+        <!-- Server O -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10014">
+          <div class="server">
+            <h3>Server O</h3>
+            <div class="server-address">188.245.70.49:10014</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20015">
-          <div class="server"><h3>Server P</h3><div class="connect-label">Connect</div></div>
+        <!-- Server P -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10015">
+          <div class="server">
+            <h3>Server P</h3>
+            <div class="server-address">188.245.70.49:10015</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20016">
-          <div class="server"><h3>Server Q</h3><div class="connect-label">Connect</div></div>
+        <!-- Server Q -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10016">
+          <div class="server">
+            <h3>Server Q</h3>
+            <div class="server-address">188.245.70.49:10016</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
-        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:20017">
-          <div class="server"><h3>Server R</h3><div class="connect-label">Connect</div></div>
+        <!-- Server R -->
+        <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10017">
+          <div class="server">
+            <h3>Server R</h3>
+            <div class="server-address">188.245.70.49:10017</div>
+            <div class="connect-label">Connect</div>
+          </div>
         </a>
+      </div>
+
+      <!-- Minor Note about Non-Steam -->
+      <div class="minor-note">
+        <p>
+          <strong>Note:</strong> If you prefer to connect without Steam, copy the address 
+          (e.g. <code>188.245.70.49:10000</code>) and use <em>Multiplayer → Connect to address</em> in Factorio.
+        </p>
       </div>
     </div>
 
+    <!-- Relay Software Panel -->
     <div class="Relay-panel">
       <h2>Optional Relay Software</h2>
       <p>
-        You can also run our optional <strong>Relay software</strong> on your computer. Unlike the EU relay servers on this page,
-        it creates a direct encrypted tunnel from your PC to the M45-Science servers in Michigan.
+        You can also run our optional <strong>Relay software</strong> on your computer. 
+        Unlike the EU relay links listed above, it sets up a direct tunnel from your PC 
+        to the M45-Science servers in Michigan.
       </p>
       <p>
-        This can help stabilize your connection if you're dealing with:
+        This can help if you encounter:
       </p>
       <ul>
         <li>WiFi instability</li>
-        <li>CGNAT or router issues</li>
-        <li>Weird ISP routing</li>
+        <li>CGNAT or router challenges</li>
+        <li>Unusual ISP routing</li>
       </ul>
       <p style="margin-top: 20px;">
-        🔧 <a href="about:blank">
-          Download Windows Relay (Alpha)
-        </a> -- 
-        <span style="font-size: 1rem; color: #bbb;">(<a href="https://github.com/M45-Science/factRelay">GitHub Repository</a>)</span><br>      
-        <span style="font-size: 1rem; color: #bbb;">This tool is in early development (alpha). It's an alternative to the EU relay links — not used together.</span><br>
+        🔧 <a href="about:blank">Download Windows Relay (Alpha)</a> —
+        <span style="font-size: 1rem; color: #bbb;">
+          (<a href="https://github.com/M45-Science/factRelay">GitHub Repository</a>)
+        </span><br>
+        <span style="font-size: 1rem; color: #bbb;">
+          This tool is still in alpha. It’s an alternative solution, not meant to be used together with the EU relay links.
+        </span>
       </p>
     </div>
   </div>
 </body>
-
 </html>
