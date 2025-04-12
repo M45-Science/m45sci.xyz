@@ -150,7 +150,7 @@
     .server {
       background-color: var(--server-bg);
       padding: 10px;
-      min-width: 150px; /* Increased to avoid overflow */
+      min-width: 150px;
       border-radius: 8px;
       text-align: center;
       box-shadow: var(--box-shadow-base);
@@ -172,7 +172,7 @@
       font-size: 0.85rem;
       color: #aaa;
       margin-bottom: 6px;
-      word-wrap: break-word; /* Ensures line-wrap if needed */
+      word-wrap: break-word;
     }
     .connect-label {
       display: inline-block;
@@ -215,17 +215,17 @@
     <div class="info-panel">
       <h2>Improve Your Connection from Europe</h2>
       <p>
-        If you're playing Factorio from Europe and experiencing lag, stuttering, or disconnects on M45-Science servers, 
-        our EU Relay system can help smooth out your connection. 
+        If you're playing Factorio from Europe and experiencing lag, stuttering, or disconnects 
+        on M45-Science servers, our EU Relay system can help smooth out your connection.
       </p>
       <p>
-        Our main <strong>Factorio servers</strong> are hosted in <strong>Michigan, USA</strong> 
-        (near Chicago and the Great Lakes) by <strong>incx</strong>. 
-        The <strong>EU Relay servers</strong> are located in <strong>Nuremberg, Germany</strong>, 
+        Our main <strong>Factorio servers</strong> are hosted in <strong>Michigan, USA</strong>
+        (near Chicago and the Great Lakes) by <strong>incx</strong>.
+        The <strong>EU Relay servers</strong> are located in <strong>Nuremberg, Germany</strong>,
         hosted by <strong>Hetzner</strong>.
       </p>
       <p>
-        The relay routes your traffic through a stable TCP tunnel from Europe to the US, reducing:
+        This relay routes your traffic through a stable TCP tunnel from Europe to the US, reducing:
       </p>
       <ul>
         <li>Packet loss</li>
@@ -237,9 +237,7 @@
     <!-- Connect Panel -->
     <div class="connect-panel-wrapper">
       <h2>Click a Relay to Join</h2>
-      <p>
-        Select one of the servers below to launch Factorio and connect via an EU relay.
-      </p>
+      <p>Select one of the servers below to launch Factorio via an EU relay.</p>
       <div class="connect-panel">
         <!-- Server A -->
         <a class="server-link" href="https://go-game.net/gosteam/427520.--mp-connect%20188.245.70.49:10000">
@@ -401,25 +399,26 @@
       <h2>Optional Relay Software</h2>
       <p>
         You can also run our optional <strong>Relay software</strong> on your computer. 
-        Unlike the EU relay links listed above, it sets up a direct tunnel from your PC 
+        Unlike the EU relay links above, it creates a direct tunnel from your PC 
         to the M45-Science servers in Michigan.
       </p>
-      <p>
-        This can help if you encounter:
-      </p>
+      <p>This can help if you encounter:</p>
       <ul>
         <li>WiFi instability</li>
         <li>CGNAT or router challenges</li>
         <li>Unusual ISP routing</li>
       </ul>
-      <p style="margin-top: 20px;">
-        🔧 <a href="about:blank">Download Windows Relay (Alpha)</a> —
-        <span style="font-size: 1rem; color: #bbb;">
-          (<a href="https://github.com/M45-Science/factRelay">GitHub Repository</a>)
-        </span><br>
-        <span style="font-size: 1rem; color: #bbb;">
-          This tool is still in alpha. It’s an alternative solution, not meant to be used together with the EU relay links.
-        </span>
+
+      <h3 style="margin-top: 1.5rem;">Downloads</h3>
+      <ul style="list-style: none; padding: 0; margin: 1rem 0;">
+        <li>• <a href="M45-Relay-Client-Windows.zip">M45-Relay-Client-Windows.zip</a></li>
+        <li>• <a href="M45-Relay-Client-Linux.zip">M45-Relay-Client-Linux.zip</a></li>
+        <li>• <a href="M45-Relay-Client-Mac.zip">M45-Relay-Client-Mac.zip</a></li>
+      </ul>
+
+      <p style="font-size: 1rem; color: #bbb;">
+        View the <a href="https://github.com/M45-Science/factRelay">GitHub Repository</a> for more details.<br>
+        This tool is in alpha. It’s an alternative solution, not meant for simultaneous use with EU relays.
       </p>
     </div>
   </div>
