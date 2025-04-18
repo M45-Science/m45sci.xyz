@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M45 Science Help & Info</title>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* Shared theme from index.html */
+    :root {
+      --background: #121212;
+      --surface: #1e1e1e;
+      --surface-gradient: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      --text: #e0e0e0;
+      --accent: #ffa500;
+      --accent-hover: #ffb733;
+      --discord: #7289DA;
+      --discord-hover: #5b6eae;
+      --card-radius: 8px;
+      --card-shadow: rgba(0, 0, 0, 0.5);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--background); color: var(--text); font-family: "Segoe UI", Roboto, sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+    .material-icons { vertical-align: middle; margin-right: 0.5rem; color: var(--accent); }
+
+    header {
+      background: var(--surface-gradient);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; border-bottom: 3px solid var(--accent);
+    }
+    header img { height: 50px; margin-right: 1rem; }
+    header h1 { font-size: 1.75rem; }
+    nav { margin-left: auto; }
+    nav a {
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: var(--card-radius);
+      transition: background 0.2s;
+      color: var(--discord);
+    }
+    nav a:hover { background: rgba(114,137,218,0.1); }
+
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; display: grid; gap: 2rem; }
+    section {
+      background: linear-gradient(135deg, #1e1e1e, #232323);
+      padding: 1.5rem;
+      border-radius: var(--card-radius);
+      box-shadow: 0 4px 8px var(--card-shadow);
+    }
+    section h2 {
+      display: flex; align-items: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+    }
+    ul { list-style: none; }
+    ul li { margin-bottom: 0.75rem; display: flex; align-items: flex-start; }
+    ul li .material-icons, .emoji-icon { font-size: 1.25rem; margin-right: 0.5rem; }
+    code { background: rgba(255,255,255,0.1); padding: 0 4px; border-radius: 4px; }
+
+    footer { text-align: center; margin: 2rem 0; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://m45sci.xyz/m45-2024b-128.png" alt="M45 Science Logo">
+    <h1>Help & Info</h1>
+    <nav>
+      <a href="/"><span class="material-icons">home</span>Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Discord Commands -->
+    <section id="commands">
+      <h2><span class="material-icons">chat</span>Discord Commands</h2>
+      <p>Commands work only in the map-specific Discord channel.</p>
+      <ul>
+        <li><span class="material-icons">warning</span><strong>/register</strong> — Run this first and follow instructions.</li>
+        <li><span class="material-icons">how_to_vote</span><strong>/vote-map</strong> — Rewind, reset, or skip scheduled map reset.</li>
+        <li><span class="material-icons">info</span><strong>/info [verbose]</strong> — Show server details (add <em>verbose</em> for extra stats).</li>
+        <li><span class="material-icons">download</span><strong>/modpack</strong> — Get a link to download installed mods.</li>
+        <li><span class="material-icons">group</span><strong>/players</strong> — List current players online.</li>
+        <li><span class="material-icons">pause_circle</span><strong>/pause-game</strong> — Pause the map (2 min timeout) while you connect.</li>
+        <li><span class="material-icons">search</span><strong>/whois search:&lt;player&gt;</strong> — Lookup player info.</li>
+        <li><span class="material-icons">scoreboard</span><strong>/scoreboard</strong> — Show top 40 players.</li>
+        <li><span class="material-icons">extension</span><strong>/list-mods</strong> — Show mods on current map.</li>
+        <li><span class="material-icons">label</span><strong>/get-roles</strong> — Opt in/out Notification Roles.</li>
+      </ul>
+      <p>See the <a href="https://support-apps.discord.com/hc/en-us/articles/26593412574359-How-to-Use-Apps" target="_blank">Official Discord guide</a> for app usage.</p>
+    </section>
+
+    <!-- Membership & Roles -->
+    <section id="membership">
+      <h2><span class="material-icons">badge</span>Membership & Roles</h2>
+      <ul>
+        <li><strong>Auto‑Register:</strong> Roles assigned by in-game score (non-idle); no manual signup.</li>
+        <li><strong>Member (@Member):</strong> Earn by playing public maps; needed for private-server access.</li>
+        <li><strong>Regular (@Regular):</strong> Access private servers & channels; extra vote power.</li>
+        <li><strong>Veteran (@Veteran):</strong> Double votes; solo reset/rewind; can banish Regulars.</li>
+      </ul>
+      <p>In-game help: click the top-left icon and run <code>:m45:help-info</code>.</p>
+    </section>
+
+    <!-- Notification Roles -->
+    <section id="notifications">
+      <h2><span class="material-icons">notifications</span>Notification Roles</h2>
+      <ul>
+        <li>No <code>@everyone</code> pings—opt into specific notif roles instead.</li>
+        <li>Use <strong>/get-roles</strong> anytime to manage subscriptions.</li>
+        <li>Roles include Emergency Alert, Help‑Vote, Factory‑Help, Announcements.</li>
+        <li>These roles can be pinged without disturbing everyone.</li>
+      </ul>
+    </section>
+
+    <!-- Server Hardware -->
+    <section id="hardware">
+      <h2><span class="material-icons">memory</span>Server Hardware & Uptime</h2>
+      <ul>
+        <li><span class="material-icons">cloud</span><strong>Host:</strong> Dedicated datacenter server</li>
+        <li><span class="material-icons">network_check</span><strong>Connection:</strong> Gigabit</li>
+        <li><span class="material-icons">dns</span><strong>Machine:</strong> Dell M630</li>
+        <li><span class="material-icons">developer_board</span><strong>CPU:</strong> Dual Intel Xeon E5-2680 v4 (28C/56T)</li>
+        <li><span class="material-icons">storage</span><strong>Storage:</strong> 1 TB SSD</li>
+        <li><span class="material-icons">memory</span><strong>Memory:</strong> 64 GB DDR4 (8×8 GB)</li>
+        <li><span class="material-icons">place</span><strong>Location:</strong> Southfield, Michigan, USA</li>
+        <li><span class="material-icons">schedule</span><strong>System Time (UTC):</strong> <span id="sys-time"></span></li>
+      </ul>
+    </section>
+
+    <!-- Inactive Accounts -->
+    <section id="inactive">
+      <h2><span class="material-icons">restore</span>Inactive Accounts</h2>
+      <ul>
+        <li>Haven’t played recently? Join any public server to “thaw” your account.</li>
+        <li>After a few minutes, members-only servers update your status.</li>
+        <li>Whitelist limited to the 1,500 most recently active members/regulars (of 5,000+).</li>
+        <li>Veterans & Moderators always remain whitelisted.</li>
+      </ul>
+    </section>
+
+    <!-- Map Channel Status -->
+    <section id="map-channels">
+      <h2><span class="material-icons">chat_bubble</span>Map Channel Status</h2>
+      <p>Channels like <code>⚫a-planetoid-monthly</code> bridge Discord↔Factorio. Status icons:</p>
+      <ul>
+        <li><span class="emoji-icon">⚪</span><strong>Public map</strong> — anyone can join</li>
+        <li><span class="emoji-icon">🟢</span><strong>Members-only</strong> — @Member required</li>
+        <li><span class="emoji-icon">🟠</span><strong>Regulars-only</strong> — @Regular required</li>
+        <li><span class="emoji-icon">🔴</span><strong>Veterans/invite-only</strong> — @Veteran+ required</li>
+        <li><span class="emoji-icon">⚫</span><strong>No players online</strong></li>
+      </ul>
+      <p>If prefixed by a number, that indicates current player count. All Discord commands listed above work here.</p>
+    </section>
+
+    <!-- Logs & Activity -->
+    <section id="logs">
+      <h2><span class="material-icons">receipt_long</span>Logs & Activity Viewer</h2>
+      <ul>
+        <li><span class="emoji-icon">💾</span><strong>Autosaves:</strong> Filename where the game saved; use these to rewind to specific points.</li>
+        <li>Messages start with <code>FactorioTime</code> (days:hours:minutes:seconds) and local real-world time.</li>
+        <li>To load an old save (>25 autosaves back), ask in the <code>❓moderation-help</code> channel.</li>
+        <li>Correlate Factorio time with production graphs to rewind before damage. Note: game pauses when empty.</li>
+        <li>Browse all logs: <a href="https://m45sci.xyz/u/fact2/new-logs/" target="_blank">Activity Logs</a>. Sort by “Last modified” for date order.</li>
+        <li>Factorio log files named <code>game-YYYY-MM-DD.log</code>. Live viewer: <a href="https://m45sci.xyz/u/fact2/new-logs/livelog.html" target="_blank">Live Log Viewer</a>.</li>
+        <li>Logs include UTC timestamps. Convert to your zone: <a href="https://savvytime.com/converter/utc" target="_blank">Timezone Converter</a>.</li>
+        <li>Sample entry: <code>18:21:33: [JOIN] NewPlayer joined the game</code>.</li>
+        <li>GPS tags like <code>[gps=-858.5,-911.5]</code> can be pasted in-game to pinpoint locations.</li>
+      </ul>
+      <p>This data is invaluable for identifying griefers with no speculation.</p>
+    </section>
+
+  </main>
+
+  <script>
+    // Display system UTC time
+    document.getElementById('sys-time').textContent = new Date().toUTCString();
+  </script>
+</body>
+</html>

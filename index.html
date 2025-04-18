@@ -7,123 +7,59 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-    /* Base colors */
     :root {
       --background: #121212;
-      --surface: #1e1e1e;
       --surface-gradient: linear-gradient(135deg, #1e1e1e, #2a2a2a);
       --text: #e0e0e0;
       --accent: #ffa500;
-      --accent-hover: #ffb733;
+      --highlight-accent: #ffd966;
       --discord: #7289DA;
-      --discord-hover: #5b6eae;
       --card-radius: 8px;
       --card-shadow: rgba(0, 0, 0, 0.5);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--background);
-      color: var(--text);
-      font-family: "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+    body { background: var(--background); color: var(--text); font-family: "Segoe UI", Roboto, sans-serif; min-height: 100vh; }
     a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent-hover); }
-
-    .material-icons {
-      vertical-align: middle;
-      margin-right: 0.5rem;
-      transition: color 0.2s;
-    }
-    /* Header */
     header {
       background: var(--surface-gradient);
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
       border-bottom: 3px solid var(--accent);
     }
-    header img.logo {
-      height: 60px;
-      margin-right: 1rem;
-    }
-    header h1 {
-      font-size: 2rem;
-      flex: 1 1 auto;
-      letter-spacing: 1px;
-    }
-    /* Nav links */
-    nav {
-      display: flex;
-      flex: 1 1 100%;
-      margin-top: 1rem;
-    }
-    nav a {
-      font-weight: bold;
+    .logo { height: 60px; margin-right: 1rem; }
+    h1 { font-size: 2rem; flex: 1; letter-spacing: 1px; }
+    nav { display: flex; gap: 1rem; }
+    .nav-link {
       display: flex;
       align-items: center;
-      padding: 0.5rem 0.75rem;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
       border-radius: var(--card-radius);
-      transition: background 0.3s, transform 0.2s;
+      transition: transform 0.2s;
+    }
+    .nav-link:hover { transform: translateY(-2px); }
+    .help-link {
+      background: var(--highlight-accent);
+      color: #000;
+      font-size: 1.1rem;
+      box-shadow: 0 0 10px var(--highlight-accent);
+      animation: pulseHelp 2s infinite;
+    }
+    .help-link .material-icons { margin-right: 0.5rem; }
+    @keyframes pulseHelp {
+      0%,100% { box-shadow: 0 0 5px var(--highlight-accent); }
+      50% { box-shadow: 0 0 20px var(--highlight-accent); }
     }
     .discord-link {
       background: var(--discord);
-      color: white;
-      margin-left: auto;
-    }
-    .discord-link .material-icons { color: white; font-size: 1.5rem; }
-    .discord-link:hover {
-      background: var(--discord-hover);
-      transform: translateY(-2px);
-    }
-    /* Highlight effect */
-    .highlight {
-      animation: highlightSection 1s ease-in-out;
-    }
-    @keyframes highlightSection {
-      0% { box-shadow: 0 0 0px var(--accent); }
-      50% { box-shadow: 0 0 20px var(--accent); }
-      100% { box-shadow: 0 0 0px var(--accent); }
-    }
-    /* Card sections */
-    section {
-      background: linear-gradient(135deg, #1e1e1e, #232323);
-      padding: 1.5rem;
+      color: #fff;
+      padding: 0.5rem 1rem;
       border-radius: var(--card-radius);
-      box-shadow: 0 4px 8px var(--card-shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px var(--card-shadow);
-    }
-    section h2 {
-      font-size: 1.75rem;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      letter-spacing: 0.5px;
-    }
-    section h2 .material-icons {
-      font-size: 2rem;
-      color: var(--accent-hover);
-    }
-    ul { list-style: none; }
-    ul li {
-      margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
     }
-    ul li .material-icons {
-      font-size: 1.25rem;
-      color: var(--accent);
-      margin-right: 0.5rem;
-    }
-    /* Main container */
+    .discord-link .material-icons { margin-right: 0.5rem; color: #fff; }
     main {
       max-width: 1200px;
       margin: 2rem auto;
@@ -132,100 +68,77 @@
       grid-template-columns: 1fr;
       gap: 2rem;
     }
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1rem;
+    section {
       background: var(--surface-gradient);
-      border-top: 3px solid var(--accent);
-      font-size: 0.875rem;
-      margin-top: 2rem;
+      padding: 1.5rem;
+      border-radius: var(--card-radius);
+      box-shadow: 0 4px 8px var(--card-shadow);
     }
-    /* Responsive adjustments */
-    @media (min-width: 768px) {
-      main { grid-template-columns: repeat(2, 1fr); }
-      header { flex-wrap: nowrap; }
-      nav { margin-top: 0; }
+    h2 {
+      display: flex;
+      align-items: center;
+      font-size: 1.75rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
-    @media (min-width: 1200px) {
-      main { grid-template-columns: repeat(3, 1fr); }
-    }
+    .material-icons { margin-right: 0.5rem; color: var(--accent); }
+    ul { list-style: none; }
+    ul li { margin-bottom: 0.75rem; display: flex; align-items: center; }
+    @media(min-width:768px) { main { grid-template-columns: repeat(2,1fr); } }
+    @media(min-width:1200px){ main{ grid-template-columns: repeat(3,1fr); } }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://m45sci.xyz/m45-2024b-128.png" alt="M45 Science Logo" class="logo">
+    <img src="https://m45sci.xyz/m45-2024b-128.png" alt="Logo" class="logo">
     <h1>M45 Science Factorio Community</h1>
     <nav>
-      <a href="https://discord.com/invite/SFpqbaE3Bp" target="_blank" class="discord-link"><span class="material-icons">chat</span>Join us on Discord</a>
+      <a href="help-info.html" class="nav-link help-link"><span class="material-icons">help</span>Help & Info</a>
+      <a href="https://discord.com/invite/SFpqbaE3Bp" target="_blank" class="nav-link discord-link"><span class="material-icons">chat</span>Join Discord</a>
     </nav>
   </header>
-
   <main>
     <section id="servers">
       <h2><span class="material-icons">dns</span>Our Servers</h2>
-      <p>Join one of our Factorio servers:</p>
       <ul>
         <li><span class="material-icons">cloud_queue</span><a href="https://factorio.go-game.net/?tag=m45" target="_blank">Main Game Servers</a></li>
         <li><span class="material-icons">location_on</span><a href="http://eu.m45sci.xyz/" target="_blank">Europe Relay Server</a></li>
       </ul>
-      <p>Over 5000 members strong, since 2017.</p>
     </section>
-
     <section id="maps">
-      <h2><span class="material-icons">map</span>Maps & Autosaves & Archive</h2>
+      <h2><span class="material-icons">map</span>Maps & Autosaves</h2>
       <ul>
         <li><span class="material-icons">save_alt</span><a href="https://m45sci.xyz/u/fact2/autosaves/" target="_blank">Current Maps & Autosaves</a></li>
-        <li><span class="material-icons">history</span><a href="https://m45sci.xyz/u/fact2/archive/" target="_blank">Past Game Maps (Archive)</a></li>
+        <li><span class="material-icons">history</span><a href="https://m45sci.xyz/u/fact2/archive/" target="_blank">Past Game Maps</a></li>
       </ul>
     </section>
-
-    <section id="logs">
+    <section id="activity">
       <h2><span class="material-icons">receipt_long</span>Activity Logs</h2>
       <ul>
         <li><span class="material-icons">description</span><a href="https://m45sci.xyz/u/fact2/new-logs/" target="_blank">Map Activity Logs</a></li>
         <li><span class="material-icons">visibility</span><a href="https://m45sci.xyz/u/fact2/new-logs/livelog.html" target="_blank">Live Log Viewer</a></li>
       </ul>
     </section>
-
     <section id="bans">
       <h2><span class="material-icons">block</span>Ban List</h2>
       <ul>
         <li><span class="material-icons">gavel</span><a href="https://m45sci.xyz:8443/" target="_blank">Public Ban List</a></li>
-        <li><span class="material-icons">share</span><a href="https://github.com/M45-Science/Factorio-Community-List" target="_blank">Ban Info Sharing (GitHub)</a></li>
+        <li><span class="material-icons">share</span><a href="https://github.com/M45-Science/Factorio-Community-List" target="_blank">Ban Info Sharing</a></li>
       </ul>
     </section>
-
     <section id="community">
-      <h2><span class="material-icons">people</span>Community & Development</h2>
+      <h2><span class="material-icons">people</span>Community & Dev</h2>
       <ul>
-        <li><span class="material-icons">code</span><a href="https://github.com/orgs/M45-Science/repositories" target="_blank">GitHub Organization</a></li>
+        <li><span class="material-icons">code</span><a href="https://github.com/orgs/M45-Science/repositories" target="_blank">GitHub Org</a></li>
       </ul>
     </section>
-
     <section id="support">
       <h2><span class="material-icons">favorite</span>Support Us</h2>
-      <p>If you enjoy what we do, consider supporting us via Patreon:</p>
       <ul>
-        <li><span class="material-icons">loyalty</span><a href="https://www.patreon.com/m45sci" target="_blank">M45 Science on Patreon</a></li>
+        <li><span class="material-icons">loyalty</span><a href="https://www.patreon.com/m45sci" target="_blank">Patreon</a></li>
       </ul>
     </section>
   </main>
-
-  <footer>
-    <p>Released under the <a href="/LICENSE" target="_blank">MIT License</a>.</p>
-  </footer>
-
-  <script>
-    // Highlight corresponding section on nav click
-    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (!target) return;
-      link.addEventListener('click', () => {
-        target.classList.add('highlight');
-        setTimeout(() => target.classList.remove('highlight'), 1000);
-      });
-    });
-  </script>
 </body>
 </html>
