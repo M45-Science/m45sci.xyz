@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,66 +8,183 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-    /* Shared theme from index.html */
     :root {
+      /* — colors & surfaces — */
       --background: #121212;
       --surface: #1e1e1e;
-      --surface-gradient: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      --surface-alt: #232323;
       --text: #e0e0e0;
+      --muted-text: #a0a0a0;
       --accent: #ffa500;
       --accent-hover: #ffb733;
-      --discord: #7289DA;
-      --discord-hover: #5b6eae;
-      --card-radius: 8px;
-      --card-shadow: rgba(0, 0, 0, 0.5);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--background); color: var(--text); font-family: "Segoe UI", Roboto, sans-serif; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent-hover); }
-    .material-icons { vertical-align: middle; margin-right: 0.5rem; color: var(--accent); }
+      --discord: #7289da;
+      --discord-hover-bg: rgba(114, 137, 218, 0.1);
 
-    header {
-      background: var(--surface-gradient);
-      padding: 1rem 2rem;
-      display: flex; align-items: center; border-bottom: 3px solid var(--accent);
+      /* — sizing & spacing — */
+      --radius: 8px;
+      --spacing-xxs: 0.25rem;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 0.75rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+      /* — type — */
+      --font-base: "Segoe UI", Roboto, sans-serif;
+      --line-height: 1.6;
+      --letter-spacing: 0;
+      /* normal */
+      --heading-spacing: 0.5px;
+      /* subtle */
     }
-    header img { height: 50px; margin-right: 1rem; }
-    header h1 { font-size: 1.75rem; }
-    nav { margin-left: auto; }
+
+    /* reset & base */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      font-family: var(--font-base);
+      line-height: var(--line-height);
+      letter-spacing: var(--letter-spacing);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .material-icons {
+      font-size: 1.25rem;
+      vertical-align: middle;
+      margin-right: var(--spacing-xs);
+      color: var(--accent);
+    }
+
+    /* header */
+    header {
+      display: flex;
+      align-items: center;
+      padding: var(--spacing-lg);
+      background: linear-gradient(135deg, var(--surface), var(--surface-alt));
+      border-bottom: 3px solid var(--accent);
+    }
+
+    header img {
+      height: 50px;
+      margin-right: var(--spacing-md);
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: var(--heading-spacing);
+    }
+
+    /* nav */
+    nav {
+      margin-left: auto;
+    }
+
     nav a {
-      font-weight: bold;
       display: inline-flex;
       align-items: center;
-      padding: 0.5rem;
-      border-radius: var(--card-radius);
-      transition: background 0.2s;
+      padding: var(--spacing-sm) var(--spacing-md);
+      margin-left: var(--spacing-sm);
+      border-radius: var(--radius);
       color: var(--discord);
+      font-weight: 600;
+      transition: background 0.2s;
     }
-    nav a:hover { background: rgba(114,137,218,0.1); }
 
-    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; display: grid; gap: 2rem; }
+    nav a:hover {
+      background-color: var(--discord-hover-bg);
+    }
+
+    /* main grid */
+    main {
+      max-width: 900px;
+      margin: var(--spacing-lg) auto;
+      padding: 0 var(--spacing-md);
+      display: grid;
+      gap: var(--spacing-xl);
+    }
+
+    /* cards/sections */
     section {
-      background: linear-gradient(135deg, #1e1e1e, #232323);
-      padding: 1.5rem;
-      border-radius: var(--card-radius);
-      box-shadow: 0 4px 8px var(--card-shadow);
+      background-color: var(--surface);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
     }
-    section h2 {
-      display: flex; align-items: center;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.5rem;
-    }
-    ul { list-style: none; }
-    ul li { margin-bottom: 0.75rem; display: flex; align-items: flex-start; }
-    ul li .material-icons, .emoji-icon { font-size: 1.25rem; margin-right: 0.5rem; }
-    code { background: rgba(255,255,255,0.1); padding: 0 4px; border-radius: 4px; }
 
-    footer { text-align: center; margin: 2rem 0; font-size: 0.875rem; }
+    /* vertical rhythm inside each card */
+    section>*+* {
+      margin-top: var(--spacing-sm);
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: var(--heading-spacing);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: var(--spacing-xs);
+      /* reset, since we’re handling spacing via the sibling rule */
+    }
+
+    p {
+      margin: 0;
+      /* reset default margins */
+    }
+
+    /* lists */
+    ul {
+      list-style: none;
+      padding-left: 0.5rem;
+      margin: 0;
+    }
+
+    ul li {
+      display: flex;
+      align-items: flex-start;
+      margin-top: var(--spacing-xxs);
+      padding-left: var(--spacing-sm);
+    }
+
+    /* inline code */
+    code {
+      font-family: Menlo, Consolas, monospace;
+      font-size: 13px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0 0.25rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    /* footer */
+    footer {
+      text-align: center;
+      margin-top: var(--spacing-xl);
+      font-size: 0.875rem;
+      color: var(--muted-text);
+    }
   </style>
 </head>
+
 <body>
   <header>
     <img src="https://m45sci.xyz/m45-2024b-128.png" alt="M45 Science Logo">
@@ -87,63 +205,26 @@
         <li><strong>Regular (@Regular):</strong> Access private servers & channels; extra vote power.</li>
         <li><strong>Veteran (@Veteran):</strong> Double votes; solo reset/rewind; can banish Regulars.</li>
       </ul>
-      <p>In-game help: click the top-left icon and run <code>:m45:help-info</code>.</p>
+      <p>In-game help: click the top-left icon: <code>help-info</code>.</p>
     </section>
 
     <!-- Discord Commands -->
     <section id="commands">
       <h2><span class="material-icons">chat</span>Discord Commands</h2>
-      <p>Commands work only in the map-specific Discord channel.</p>
+      <p>Commands work only in the map-specific Discord channel. (see below)</p>
       <ul>
         <li><span class="material-icons">warning</span><strong>/register</strong> — Run this first and follow instructions.</li>
         <li><span class="material-icons">how_to_vote</span><strong>/vote-map</strong> — Rewind, reset, or skip scheduled map reset.</li>
         <li><span class="material-icons">info</span><strong>/info [verbose]</strong> — Show server details (add <em>verbose</em> for extra stats).</li>
         <li><span class="material-icons">download</span><strong>/modpack</strong> — Get a link to download installed mods.</li>
         <li><span class="material-icons">group</span><strong>/players</strong> — List current players online.</li>
-        <li><span class="material-icons">pause_circle</span><strong>/pause-game</strong> — Pause the map (2 min timeout) while you connect.</li>
+        <li><span class="material-icons">pause_circle</span><strong>/pause-game</strong> — Pause the map (2 min timeout) while you connect.</li>
         <li><span class="material-icons">search</span><strong>/whois search:&lt;player&gt;</strong> — Lookup player info.</li>
         <li><span class="material-icons">scoreboard</span><strong>/scoreboard</strong> — Show top 40 players.</li>
         <li><span class="material-icons">extension</span><strong>/list-mods</strong> — Show mods on current map.</li>
         <li><span class="material-icons">label</span><strong>/get-roles</strong> — Opt in/out Notification Roles.</li>
       </ul>
       <p>See the <a href="https://support-apps.discord.com/hc/en-us/articles/26593412574359-How-to-Use-Apps" target="_blank">Official Discord guide</a> for app usage.</p>
-    </section>
-
-    <!-- Notification Roles -->
-    <section id="notifications">
-      <h2><span class="material-icons">notifications</span>Notification Roles</h2>
-      <ul>
-        <li>No <code>@everyone</code> pings—opt into specific notif roles instead.</li>
-        <li>Use <strong>/get-roles</strong> anytime to manage subscriptions.</li>
-        <li>Roles include Emergency Alert, Help‑Vote, Factory‑Help, Announcements.</li>
-        <li>These roles can be pinged without disturbing everyone.</li>
-      </ul>
-    </section>
-
-    <!-- Server Hardware -->
-    <section id="hardware">
-      <h2><span class="material-icons">memory</span>Server Hardware</h2>
-      <ul>
-        <li><span class="material-icons">cloud</span><strong>Host:</strong> Dedicated datacenter server</li>
-        <li><span class="material-icons">network_check</span><strong>Connection:</strong> Gigabit</li>
-        <li><span class="material-icons">dns</span><strong>Machine:</strong> Dell M630</li>
-        <li><span class="material-icons">developer_board</span><strong>CPU:</strong> Dual Intel Xeon E5-2680 v4 (28C/56T)</li>
-        <li><span class="material-icons">storage</span><strong>Storage:</strong> 1 TB SSD</li>
-        <li><span class="material-icons">memory</span><strong>Memory:</strong> 64 GB DDR4 (8×8 GB)</li>
-        <li><span class="material-icons">place</span><strong>Location:</strong> Southfield, Michigan, USA</li>
-        <li><span class="material-icons">schedule</span><strong>System Time (UTC):</strong> <span id="sys-time"></span></li>
-      </ul>
-    </section>
-
-    <!-- Inactive Accounts -->
-    <section id="inactive">
-      <h2><span class="material-icons">restore</span>Inactive Accounts</h2>
-      <ul>
-        <li>Haven’t played recently? Join any public server to “thaw” your account.</li>
-        <li>After a few minutes, members-only servers update your status.</li>
-        <li>Whitelist limited to the 1,500 most recently active members/regulars (of 5,000+).</li>
-        <li>Veterans & Moderators always remain whitelisted.</li>
-      </ul>
     </section>
 
     <!-- Map Channel Status -->
@@ -160,6 +241,44 @@
       <p>If prefixed by a number, that indicates current player count. All Discord commands listed above work here.</p>
     </section>
 
+    <!-- Notification Roles -->
+    <section id="notifications">
+      <h2><span class="material-icons">notifications</span>Notification Roles</h2>
+      <ul>
+        <li><code>/get-roles</code></li>
+        <li>No <code>@everyone</code> pings—opt into specific notif roles instead.</li>
+        <li>Use <strong>/get-roles</strong> anytime to manage subscriptions.</li>
+        <li>Roles include Emergency Alert, Help-Vote, Factory-Help, Announcements.</li>
+        <li>These roles can be pinged without disturbing everyone.</li>
+      </ul>
+    </section>
+
+    <!-- Server Hardware -->
+    <section id="hardware">
+      <h2><span class="material-icons">memory</span>Server Hardware</h2>
+      <ul>
+        <li><span class="material-icons">cloud</span><strong>Host:</strong> Dedicated datacenter server</li>
+        <li><span class="material-icons">network_check</span><strong>Connection:</strong> Gigabit</li>
+        <li><span class="material-icons">dns</span><strong>Machine:</strong> Dell M630</li>
+        <li><span class="material-icons">developer_board</span><strong>CPU:</strong> Dual Intel Xeon E5-2680 v4 (28C/56T)</li>
+        <li><span class="material-icons">storage</span><strong>Storage:</strong> 1 TB SSD</li>
+        <li><span class="material-icons">memory</span><strong>Memory:</strong> 64 GB DDR4 (8x8 GB)</li>
+        <li><span class="material-icons">place</span><strong>Location:</strong> Southfield, Michigan, USA</li>
+        <li><span class="material-icons">schedule</span><strong>System Time (UTC)</strong></li>
+      </ul>
+    </section>
+
+    <!-- Inactive Accounts -->
+    <section id="inactive">
+      <h2><span class="material-icons">restore</span>Inactive Accounts</h2>
+      <ul>
+        <li>Haven’t played recently? Join any public server to “thaw” your account.</li>
+        <li>After a few minutes, members-only servers update your status.</li>
+        <li>Whitelist limited to the 1,500 most recently active members/regulars (of 5,000+).</li>
+        <li>Veterans & Moderators always remain whitelisted.</li>
+      </ul>
+    </section>
+
     <!-- Logs & Activity -->
     <section id="logs">
       <h2><span class="material-icons">receipt_long</span>Logs & Activity Viewer</h2>
@@ -168,9 +287,9 @@
         <li>Messages start with <code>FactorioTime</code> (days:hours:minutes:seconds) and local real-world time.</li>
         <li>To load an old save (>25 autosaves back), ask in the <code>❓moderation-help</code> channel.</li>
         <li>Correlate Factorio time with production graphs to rewind before damage. Note: game pauses when empty.</li>
-        <li>Browse all logs: <a href="https://m45sci.xyz/u/fact2/new-logs/" target="_blank">Activity Logs</a>. Sort by “Last modified” for date order.</li>
-        <li>Factorio log files named <code>game-YYYY-MM-DD.log</code>. Live viewer: <a href="https://m45sci.xyz/u/fact2/new-logs/livelog.html" target="_blank">Live Log Viewer</a>.</li>
-        <li>Logs include UTC timestamps. Convert to your zone: <a href="https://savvytime.com/converter/utc" target="_blank">Timezone Converter</a>.</li>
+        <li>Browse all logs:&nbsp;<a href="https://m45sci.xyz/u/fact2/new-logs/" target="_blank">Activity Logs</a>. Sort by “Last modified” for date order.</li>
+        <li>Factorio log files named <code>game-YYYY-MM-DD.log</code>. Live viewer:&nbsp;<a href="https://m45sci.xyz/u/fact2/new-logs/livelog.html" target="_blank">Live Log Viewer</a>.</li>
+        <li>Logs include UTC timestamps. Convert to your zone:&nbsp;<a href="https://savvytime.com/converter/utc" target="_blank">Timezone Converter</a>.</li>
         <li>Sample entry: <code>18:21:33: [JOIN] NewPlayer joined the game</code>.</li>
         <li>GPS tags like <code>[gps=-858.5,-911.5]</code> can be pasted in-game to pinpoint locations.</li>
       </ul>
@@ -178,10 +297,6 @@
     </section>
 
   </main>
-
-  <script>
-    // Display system UTC time
-    document.getElementById('sys-time').textContent = new Date().toUTCString();
-  </script>
 </body>
+
 </html>
