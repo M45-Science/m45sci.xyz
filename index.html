@@ -57,7 +57,6 @@
     /* Nav links */
     nav {
       display: flex;
-      gap: 1rem;
       flex: 1 1 100%;
       margin-top: 1rem;
     }
@@ -69,22 +68,15 @@
       border-radius: var(--card-radius);
       transition: background 0.3s, transform 0.2s;
     }
-    nav a .material-icons {
-      font-size: 1.5rem;
-      color: var(--accent);
-    }
-    nav a:hover {
-      background: rgba(255, 165, 0, 0.1);
-      transform: translateY(-2px);
-    }
-    /* Discord CTA */
     .discord-link {
       background: var(--discord);
       color: white;
+      margin-left: auto;
     }
-    .discord-link .material-icons { color: white; }
+    .discord-link .material-icons { color: white; font-size: 1.5rem; }
     .discord-link:hover {
       background: var(--discord-hover);
+      transform: translateY(-2px);
     }
     /* Highlight effect */
     .highlight {
@@ -153,7 +145,7 @@
     @media (min-width: 768px) {
       main { grid-template-columns: repeat(2, 1fr); }
       header { flex-wrap: nowrap; }
-      nav { flex: none; margin-top: 0; }
+      nav { margin-top: 0; }
     }
     @media (min-width: 1200px) {
       main { grid-template-columns: repeat(3, 1fr); }
@@ -162,16 +154,10 @@
 </head>
 <body>
   <header>
-    <img src="m45-2024b-128.png" alt="M45 Science Logo" class="logo">
+    <img src="https://m45sci.xyz/m45-2024b-128.png" alt="M45 Science Logo" class="logo">
     <h1>M45 Science Factorio Community</h1>
     <nav>
       <a href="https://discord.com/invite/SFpqbaE3Bp" target="_blank" class="discord-link"><span class="material-icons">chat</span>Join us on Discord</a>
-      <a href="#servers"><span class="material-icons">dns</span>Servers</a>
-      <a href="#maps"><span class="material-icons">map</span>Maps</a>
-      <a href="#logs"><span class="material-icons">receipt_long</span>Logs</a>
-      <a href="#bans"><span class="material-icons">block</span>Bans</a>
-      <a href="#community"><span class="material-icons">people</span>Community</a>
-      <a href="#support"><span class="material-icons">favorite</span>Support</a>
     </nav>
   </header>
 
@@ -227,7 +213,7 @@
   </main>
 
   <footer>
-    <p>2017-Present, M45-Science</p>
+    <p>Released under the <a href="/LICENSE" target="_blank">MIT License</a>.</p>
   </footer>
 
   <script>
