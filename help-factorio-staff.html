@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moderator Hub</title>
+  <title>M45 Staff - Factorio Command Help</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
     :root {
@@ -14,9 +14,9 @@
       --accent-hover: #66bb6a;
       --text: #e0e0e0;
       --subtext: #b0b0b0;
-      --radius: 6px;
+      --radius: 1rem;
       --gap: 1rem;
-      --shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      --shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.8);
       --divider: #333;
       --warning-bg: #332a24;
       --warning-border: #ff8a65;
@@ -61,29 +61,6 @@
       font-size: 2.4rem;
     }
 
-    nav {
-      margin-top: 0.5rem;
-      text-align: center;
-    }
-
-    nav a {
-      color: var(--subtext);
-      margin: 0 0.5rem;
-      text-decoration: none;
-      position: relative;
-    }
-
-    nav a:hover::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--accent-hover);
-      border-radius: 1px;
-    }
-
     .cards {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
@@ -116,10 +93,6 @@
       transition: transform 0.2s;
     }
 
-    .card:hover {
-      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.5);
-    }
-
     .card h3 {
       display: flex;
       align-items: center;
@@ -148,7 +121,7 @@
 
     .card ul.group li {
       display: grid;
-      grid-template-columns: 250px auto;
+      grid-template-columns: 15rem auto;
       gap: 0.5rem;
       padding: 0.25rem 0;
       align-items: left;
@@ -197,13 +170,37 @@
       color: var(--subtext);
       background-color: #333;
       font-size: 1.5rem;
+
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    html {
+      font-size: 22px;
+    }
+
+    @media (max-width: 3000px) {
+      html {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 2000px) {
+      html {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      html {
+        font-size: 10px;
+      }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <p>M45 SoftMod Command List</p>
     <em>Also read the <a href="https://wiki.factorio.com/console#Multiplayer_commands">Factorio.com Commands Wiki
         Page</a> and the <a href="help-discord-staff.html">M45-Science Discord Staff Help</a>.</em>
   </header>
