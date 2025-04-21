@@ -203,34 +203,10 @@
 
 <body>
   <div id="page-wrapper">
-    <script>
-      (function () {
-        const wrapper = document.getElementById('page-wrapper');
-        const designWidth = 500; // ← match your main max-width
-
-        function rescale() {
-          // compute clamp(1, vw/designWidth, 2)
-          let scale = window.innerWidth / designWidth;
-          scale = Math.max(scale, 0.7);
-          scale = Math.min(scale, 1.0);
-          // apply both transform (for Firefox) and zoom (for WebKit/Blink)
-          wrapper.style.transformOrigin = 'top center';
-          wrapper.style.transform = 'scale(' + scale + ')';
-          wrapper.style.zoom = scale;
-          // adjust body height so wrapper doesn’t get cut off
-          document.body.style.height = (designWidth * scale) + 'px';
-        }
-
-        window.addEventListener('resize', rescale);
-        window.addEventListener('load', rescale);
-      })();
-    </script>
     <header>
       <p>M45-Science Staff Discord-Help</p>
       <em>Also read the <a href="help-factorio-staff.html">M45 Factorio Command List</a></em>
     </header>
-
-
 
     <div class="cards">
       <!-- Bans -->
