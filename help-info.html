@@ -67,7 +67,7 @@
     }
 
     .material-icons {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       vertical-align: middle;
       margin-right: var(--spacing-xs);
       color: var(--accent);
@@ -82,6 +82,7 @@
       padding: var(--spacing-lg);
       background: linear-gradient(135deg, var(--surface), var(--surface-alt));
       border-bottom: 1px solid var(--accent);
+      z-index: 1000;
     }
 
     header img {
@@ -186,6 +187,30 @@
       <a href="/"><span class="material-icons">home</span>Home</a>
     </nav>
   </header>
+  <div id="page-wrapper">
+    <script>
+      (function() {
+        const wrapper = document.getElementById('page-wrapper');
+        const designWidth = 1000; // ← match your main max-width
+      
+        function rescale() {
+          // compute clamp(1, vw/designWidth, 2)
+          let scale = window.innerWidth / designWidth;
+          scale = Math.max(scale, 0.8);
+          scale = Math.min(scale, 1.25);
+          // apply both transform (for Firefox) and zoom (for WebKit/Blink)
+          wrapper.style.transformOrigin = 'top center';
+          wrapper.style.transform = 'scale(' + scale + ')';
+          wrapper.style.zoom = scale;
+          // adjust body height so wrapper doesn’t get cut off
+          document.body.style.height = (designWidth * scale) + 'px';
+        }
+      
+        window.addEventListener('resize', rescale);
+        window.addEventListener('load',   rescale);
+      })();
+      </script>
+
 
   <main>
 
@@ -309,6 +334,7 @@
       </ul>
     </section>
   </main>
+</div>
 </body>
 
 </html>
