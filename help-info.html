@@ -21,21 +21,21 @@
       --discord-hover-bg: rgba(114, 137, 218, 0.1);
 
       /* — sizing & spacing — */
-      --radius: 8px;
+      --radius: 1rem;
       --spacing-xxs: 0.25rem;
       --spacing-xs: 0.5rem;
       --spacing-sm: 0.5rem;
       --spacing-md: 0.5rem;
       --spacing-lg: 1rem;
       --spacing-xl: 2rem;
-      --shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      --shadow: 0 2rem 4rem rgba(0, 0, 0, 0.5);
 
       /* — type — */
       --font-base: "Segoe UI", Roboto, sans-serif;
       --line-height: 1.75;
-      --letter-spacing: 0.25px;
+      --letter-spacing: 0.05rem;
       /* normal */
-      --heading-spacing: 1px;
+      --heading-spacing: 0.2rem;
       /* subtle */
     }
 
@@ -81,12 +81,12 @@
       align-items: center;
       padding: var(--spacing-lg);
       background: linear-gradient(135deg, var(--surface), var(--surface-alt));
-      border-bottom: 1px solid var(--accent);
+      border-bottom: 0.1rem solid var(--accent);
       z-index: 1000;
     }
 
     header img {
-      height: 48px;
+      height: 3rem;
       margin-right: var(--spacing-md);
     }
 
@@ -118,8 +118,7 @@
 
     /* main grid */
     main {
-      font-size: 10px;
-      max-width: 600px;
+      max-width: 60rem;
       margin: var(--spacing-lg) auto;
       padding: 0 var(--spacing-md);
       display: grid;
@@ -147,7 +146,7 @@
       font-size: 1rem;
       font-weight: 500;
       letter-spacing: var(--heading-spacing);
-      border-bottom: 2px solid var(--accent);
+      border-bottom: 1rem solid var(--accent);
       padding-bottom: var(--spacing-xs);
       /* reset, since we’re handling spacing via the sibling rule */
     }
@@ -172,11 +171,32 @@
     /* inline code */
     code {
       font-family: Menlo, Consolas, monospace;
-      font-size: 11px;
       background-color: rgba(255, 255, 255, 0.1);
       padding: 0 0.25rem;
       margin-left: 0.5rem;
       margin-right: 0.5rem;
+    }
+
+    html {
+      font-size: 24px;
+    }
+
+    @media (max-width: 3000px) {
+      html {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 2000px) {
+      html {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      html {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -190,30 +210,6 @@
     </nav>
   </header>
   <div id="page-wrapper">
-    <script>
-      (function() {
-        const wrapper = document.getElementById('page-wrapper');
-        const designWidth = 900; // ← match your main max-width
-      
-        function rescale() {
-          // compute clamp(1, vw/designWidth, 2)
-          let scale = window.innerWidth / designWidth;
-          scale = Math.max(scale, 1.0);
-          scale = Math.min(scale, 1.33);
-          // apply both transform (for Firefox) and zoom (for WebKit/Blink)
-          wrapper.style.transformOrigin = 'top center';
-          wrapper.style.transform = 'scale(' + scale + ')';
-          wrapper.style.zoom = scale;
-          // adjust body height so wrapper doesn’t get cut off
-          document.body.style.height = (designWidth * scale) + 'px';
-        }
-      
-        window.addEventListener('resize', rescale);
-        window.addEventListener('load',   rescale);
-      })();
-      </script>
-
-
   <main>
 
     <!-- Membership & Roles -->
