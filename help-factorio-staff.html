@@ -53,26 +53,8 @@
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: var(--gap);
-    }
-
-    @media (min-width: 1500px) {
-      .cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 2500px) {
-      .cards {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (min-width: 3500px) {
-      .cards {
-        grid-template-columns: repeat(4, 1fr);
-      }
     }
 
     .card {
@@ -173,18 +155,28 @@
       html {
         font-size: 15px;
       }
+
+        .cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
     }
 
     @media (max-width: 2000px) {
       html {
         font-size: 12px;
       }
+        .cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
     }
 
     @media (max-width: 1000px) {
       html {
         font-size: 10px;
       }
+        .cards {
+          grid-template-columns: repeat(1, 1fr);
+        }
     }
   </style>
 </head>

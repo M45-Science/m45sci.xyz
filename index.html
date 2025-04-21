@@ -15,7 +15,7 @@
       --accent: #ffa500;
       --highlight-accent: #ffd966;
       --discord: #7289DA;
-      --card-radius: 8px;
+      --card-radius: 2rem;
       --card-shadow: rgba(0, 0, 0, 0.5);
     }
 
@@ -44,18 +44,18 @@
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
-      border-bottom: 3px solid var(--accent);
+      border-bottom: 0.1rem solid var(--accent);
     }
 
     .logo {
-      height: 60px;
+      height: 4rem;
       margin-right: 1rem;
     }
 
     h1 {
       font-size: 1.25rem;
       flex: 1;
-      letter-spacing: 1px;
+      letter-spacing: 0.1rem;
     }
 
     nav {
@@ -72,15 +72,11 @@
       transition: transform 0.2s;
     }
 
-    .nav-link:hover {
-      transform: translateY(-2px);
-    }
-
     .help-link {
       background: var(--highlight-accent);
       color: #000;
       font-size: 1.1rem;
-      box-shadow: 0 0 10px var(--highlight-accent);
+      box-shadow: 0 0 0.5rem var(--highlight-accent);
       animation: pulseHelp 2s infinite;
     }
 
@@ -92,11 +88,11 @@
 
       0%,
       100% {
-        box-shadow: 0 0 5px var(--highlight-accent);
+        box-shadow: 0 0 0.3rem var(--highlight-accent);
       }
 
       50% {
-        box-shadow: 0 0 20px var(--highlight-accent);
+        box-shadow: 0 0 1rem var(--highlight-accent);
       }
     }
 
@@ -127,14 +123,14 @@
       background: var(--surface-gradient);
       padding: 1.5rem;
       border-radius: var(--card-radius);
-      box-shadow: 0 4px 8px var(--card-shadow);
+      box-shadow: 0 0.5rem 2rem var(--card-shadow);
     }
 
     h2 {
       display: flex;
       align-items: center;
       font-size: 1.75rem;
-      border-bottom: 2px solid var(--accent);
+      border-bottom: 0.1rem solid var(--accent);
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
     }
@@ -155,22 +151,13 @@
     }
 
     html {
-      font-size: 22px;
+      font-size: 18px;
       grid-template-columns: repeat(4 1fr);
-    }
-
-    @media (max-width: 3000px) {
-      html {
-        font-size: 15px;
-      }
-      main {
-        grid-template-columns: repeat(3, 1fr);
-      }
     }
 
     @media (max-width: 2000px) {
       html {
-        font-size: 12px;
+        font-size: 15px;
       }
       main {
         grid-template-columns: repeat(2, 1fr);
@@ -190,7 +177,7 @@
 
 <body>
   <header>
-    <img src="https://m45sci.xyz/m45-2024b-128.png" alt="Logo" class="logo">
+    <img src="https://m45sci.xyz/m45-2024b-128.png" height="30rem" alt="Logo" class="logo">
     <h1>M45 Science Factorio Community</h1>
     <nav>
       <a href="help-info.html" class="nav-link help-link"><span class="material-icons">help</span>Help & Info</a>
