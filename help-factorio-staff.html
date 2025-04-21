@@ -189,20 +189,24 @@
       line-height: 1.4;
     }
 
-    footer {
+    header {
+      position: sticky;
+      top: 0;
       text-align: center;
       margin-top: var(--gap);
       color: var(--subtext);
+      background-color: #333;
       font-size: 1.5rem;
     }
   </style>
 </head>
 
 <body>
-  <footer>
+  <header>
     <p>M45 SoftMod Command List</p>
-    <em>Also read the <a href="help-discord-staff.html">M45-Science Discord Staff Help</a>.</em>
-  </footer>
+    <em>Also read the <a href="https://wiki.factorio.com/console#Multiplayer_commands">Factorio.com Commands Wiki
+        Page</a> and the <a href="help-discord-staff.html">M45-Science Discord Staff Help</a>.</em>
+  </header>
   <div class="cards">
 
     <!-- Moderation -->
@@ -231,7 +235,8 @@
         <li><span>Go to to a player</span><code>/goto &lt;playerName&gt;</code></li>
         <li><span>Teleport to a location</span><code>/tp &lt;location&gt;</code></li>
         <li><span>Summon a player to you</span><code>/summon &lt;playerName&gt;</code></li>
-        <li><span>Transport a player to a location</span><code>/transport &lt;playerName&gt; &lt;location&gt;</code></li>
+        <li><span>Transport a player to a location</span><code>/transport &lt;playerName&gt; &lt;location&gt;</code>
+        </li>
         <li><span>See a list of surface-names</span><code>/surfaces</code></li>
 
       </ul>
@@ -261,7 +266,7 @@
 
       </ul>
     </div>
-    
+
   </div>
 </body>
 

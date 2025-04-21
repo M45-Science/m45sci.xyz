@@ -75,6 +75,8 @@
 
     /* header */
     header {
+      position: sticky;
+      top: 0;
       display: flex;
       align-items: center;
       padding: var(--spacing-lg);
@@ -172,7 +174,6 @@
       margin-left: 0.5rem;
       margin-right: 0.5rem;
     }
-
   </style>
 </head>
 
@@ -196,7 +197,8 @@
         <li>Member: Earn by playing public maps; needed for private-server access.</li>
         <li>Regular: Access private servers & channels; extra vote power for banish.</li>
         <li>Veteran: Two point votes; solo reset/rewind; can banish Regulars.</li>
-        <li></li><li></li>
+        <li></li>
+        <li></li>
         <p style="line-height:1.5;">
           In-game help: click the top-left icon:
           <img src="img/m45-64.png" alt="help-info" style="display:inline-block; vertical-align:text-top;">
@@ -209,15 +211,21 @@
       <h2><span class="material-icons">chat</span>Discord Commands</h2>
       <p>Commands work only in a map-specific Discord channel. (see Map Channel Status below)</p>
       <ul>
-        <li><span class="material-icons">warning</span><code>/register</code> — Run this first and follow instructions.</li>
-        <li><span class="material-icons">how_to_vote</span>/vote-map</code> — Rewind, reset, or skip scheduled map reset.</li>
-        <li><span class="material-icons">info</span><code>/info [verbose]</code> — Show server details (add <em>verbose</em> for
+        <li><span class="material-icons">warning</span><code>/register</code> — Run this first and follow instructions.
+        </li>
+        <li><span class="material-icons">how_to_vote</span>/vote-map</code> — Rewind, reset, or skip scheduled map
+          reset.</li>
+        <li><span class="material-icons">info</span><code>/info [verbose]</code> — Show server details (add
+          <em>verbose</em> for
           extra stats).</li>
-        <li><span class="material-icons">download</span><code>/modpack</code> — Get a link to download installed mods.</li>
+        <li><span class="material-icons">download</span><code>/modpack</code> — Get a link to download installed mods.
+        </li>
         <li><span class="material-icons">group</span><code>/players</code> — List current players online.</li>
-        <li><span class="material-icons">pause_circle</span><code>/pause-game</code> — Pause the map (2 min timeout) while you
+        <li><span class="material-icons">pause_circle</span><code>/pause-game</code> — Pause the map (2 min timeout)
+          while you
           connect.</li>
-        <li><span class="material-icons">search</span><code>/whois search:&lt;player&gt;</code> — Lookup player info.</li>
+        <li><span class="material-icons">search</span><code>/whois search:&lt;player&gt;</code> — Lookup player info.
+        </li>
         <li><span class="material-icons">scoreboard</span><code>/scoreboard</code> — Show top 40 players.</li>
         <li><span class="material-icons">extension</span><code>/list-mods</code> — Show mods on current map.</li>
         <li><span class="material-icons">label</span><code>/get-roles</code> — Opt in/out Notification Roles.</li>

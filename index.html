@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,19 +18,51 @@
       --card-radius: 8px;
       --card-shadow: rgba(0, 0, 0, 0.5);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--background); color: var(--text); font-family: "Segoe UI", Roboto, sans-serif; min-height: 100vh; }
-    a { color: var(--accent); text-decoration: none; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
     header {
+      position: sticky;
+      top: 0;
       background: var(--surface-gradient);
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
       border-bottom: 3px solid var(--accent);
     }
-    .logo { height: 60px; margin-right: 1rem; }
-    h1 { font-size: 1.25rem; flex: 1; letter-spacing: 1px; }
-    nav { display: flex; gap: 1rem; }
+
+    .logo {
+      height: 60px;
+      margin-right: 1rem;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      flex: 1;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
     .nav-link {
       display: flex;
       align-items: center;
@@ -38,7 +71,11 @@
       border-radius: var(--card-radius);
       transition: transform 0.2s;
     }
-    .nav-link:hover { transform: translateY(-2px); }
+
+    .nav-link:hover {
+      transform: translateY(-2px);
+    }
+
     .help-link {
       background: var(--highlight-accent);
       color: #000;
@@ -46,11 +83,23 @@
       box-shadow: 0 0 10px var(--highlight-accent);
       animation: pulseHelp 2s infinite;
     }
-    .help-link .material-icons { margin-right: 0.5rem; }
-    @keyframes pulseHelp {
-      0%,100% { box-shadow: 0 0 5px var(--highlight-accent); }
-      50% { box-shadow: 0 0 20px var(--highlight-accent); }
+
+    .help-link .material-icons {
+      margin-right: 0.5rem;
     }
+
+    @keyframes pulseHelp {
+
+      0%,
+      100% {
+        box-shadow: 0 0 5px var(--highlight-accent);
+      }
+
+      50% {
+        box-shadow: 0 0 20px var(--highlight-accent);
+      }
+    }
+
     .discord-link {
       background: var(--discord);
       color: #fff;
@@ -59,7 +108,12 @@
       display: flex;
       align-items: center;
     }
-    .discord-link .material-icons { margin-right: 0.5rem; color: #fff; }
+
+    .discord-link .material-icons {
+      margin-right: 0.5rem;
+      color: #fff;
+    }
+
     main {
       max-width: 1200px;
       margin: 2rem auto;
@@ -68,12 +122,14 @@
       grid-template-columns: 1fr;
       gap: 2rem;
     }
+
     section {
       background: var(--surface-gradient);
       padding: 1.5rem;
       border-radius: var(--card-radius);
       box-shadow: 0 4px 8px var(--card-shadow);
     }
+
     h2 {
       display: flex;
       align-items: center;
@@ -82,63 +138,98 @@
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
     }
-    .material-icons { margin-right: 0.5rem; color: var(--accent); }
-    ul { list-style: none; }
-    ul li { margin-bottom: 0.75rem; display: flex; align-items: center; }
-    @media(min-width:768px) { main { grid-template-columns: repeat(2,1fr); } }
-    @media(min-width:1200px){ main{ grid-template-columns: repeat(3,1fr); } }
+
+    .material-icons {
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul li {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+    }
+
+    @media(min-width:768px) {
+      main {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(min-width:1200px) {
+      main {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   </style>
 </head>
+
 <body>
   <header>
     <img src="https://m45sci.xyz/m45-2024b-128.png" alt="Logo" class="logo">
     <h1>M45 Science Factorio Community</h1>
     <nav>
       <a href="help-info.html" class="nav-link help-link"><span class="material-icons">help</span>Help & Info</a>
-      <a href="https://discord.com/invite/SFpqbaE3Bp" target="_blank" class="nav-link discord-link"><span class="material-icons">chat</span>Join Discord</a>
+      <a href="https://discord.com/invite/SFpqbaE3Bp" target="_blank" class="nav-link discord-link"><span
+          class="material-icons">chat</span>Join Discord</a>
     </nav>
   </header>
   <main>
     <section id="servers">
       <h2><span class="material-icons">dns</span>Our Servers</h2>
       <ul>
-        <li><span class="material-icons">cloud_queue</span><a href="https://factorio.go-game.net/?tag=m45" target="_blank">Main Game Servers</a></li>
-        <li><span class="material-icons">location_on</span><a href="http://eu.m45sci.xyz/" target="_blank">Europe Relay Server</a></li>
+        <li><span class="material-icons">cloud_queue</span><a href="https://factorio.go-game.net/?tag=m45"
+            target="_blank">Main Game Servers</a></li>
+        <li><span class="material-icons">location_on</span><a href="http://eu.m45sci.xyz/" target="_blank">Europe Relay
+            Server</a></li>
       </ul>
     </section>
     <section id="maps">
       <h2><span class="material-icons">map</span>Maps & Autosaves</h2>
       <ul>
-        <li><span class="material-icons">save_alt</span><a href="https://m45sci.xyz/u/fact2/autosaves/" target="_blank">Current Maps & Autosaves</a></li>
-        <li><span class="material-icons">history</span><a href="https://m45sci.xyz/u/fact2/archive/" target="_blank">Past Game Maps</a></li>
+        <li><span class="material-icons">save_alt</span><a href="https://m45sci.xyz/u/fact2/autosaves/"
+            target="_blank">Current Maps & Autosaves</a></li>
+        <li><span class="material-icons">history</span><a href="https://m45sci.xyz/u/fact2/archive/"
+            target="_blank">Past Game Maps</a></li>
       </ul>
     </section>
     <section id="activity">
       <h2><span class="material-icons">receipt_long</span>Activity Logs</h2>
       <ul>
-        <li><span class="material-icons">description</span><a href="https://m45sci.xyz/u/fact2/new-logs/" target="_blank">Map Activity Logs</a></li>
-        <li><span class="material-icons">visibility</span><a href="https://m45sci.xyz/u/fact2/new-logs/livelog.html" target="_blank">Live Log Viewer</a></li>
+        <li><span class="material-icons">description</span><a href="https://m45sci.xyz/u/fact2/new-logs/"
+            target="_blank">Map Activity Logs</a></li>
+        <li><span class="material-icons">visibility</span><a href="https://m45sci.xyz/u/fact2/new-logs/livelog.html"
+            target="_blank">Live Log Viewer</a></li>
       </ul>
     </section>
     <section id="bans">
       <h2><span class="material-icons">block</span>Ban List</h2>
       <ul>
-        <li><span class="material-icons">gavel</span><a href="https://m45sci.xyz:8443/" target="_blank">Public Ban List</a></li>
-        <li><span class="material-icons">share</span><a href="https://github.com/M45-Science/Factorio-Community-List" target="_blank">Ban Info Sharing</a></li>
+        <li><span class="material-icons">gavel</span><a href="https://m45sci.xyz:8443/" target="_blank">Public Ban
+            List</a></li>
+        <li><span class="material-icons">share</span><a href="https://github.com/M45-Science/Factorio-Community-List"
+            target="_blank">Ban Info Sharing</a></li>
       </ul>
     </section>
     <section id="community">
       <h2><span class="material-icons">people</span>Community & Dev</h2>
       <ul>
-        <li><span class="material-icons">code</span><a href="https://github.com/orgs/M45-Science/repositories" target="_blank">GitHub Org</a></li>
+        <li><span class="material-icons">code</span><a href="https://github.com/orgs/M45-Science/repositories"
+            target="_blank">GitHub Org</a></li>
       </ul>
     </section>
     <section id="support">
       <h2><span class="material-icons">favorite</span>Support Us</h2>
       <ul>
-        <li><span class="material-icons">loyalty</span><a href="https://www.patreon.com/m45sci" target="_blank">Patreon</a></li>
+        <li><span class="material-icons">loyalty</span><a href="https://www.patreon.com/m45sci"
+            target="_blank">Patreon</a></li>
       </ul>
     </section>
   </main>
 </body>
+
 </html>
