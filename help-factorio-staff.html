@@ -19,7 +19,9 @@
       --shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.8);
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
@@ -40,8 +42,7 @@
 
     header {
       position: sticky;
-      top: 0;
-      text-align: left;
+      top: 0.3rem;
       padding: 1rem;
       margin-top: var(--gap);
       color: var(--subtext);
@@ -126,18 +127,33 @@
     }
 
     @media (max-width: 3000px) {
-      html { font-size: 15px; }
-      .cards { grid-template-columns: repeat(3, 1fr); }
+      html {
+        font-size: 15px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     @media (max-width: 2000px) {
-      html { font-size: 12px; }
-      .cards { grid-template-columns: repeat(2, 1fr); }
+      html {
+        font-size: 12px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 1000px) {
-      html { font-size: 10px; }
-      .cards { grid-template-columns: repeat(1, 1fr); }
+      html {
+        font-size: 10px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
   </style>
 </head>
@@ -145,7 +161,7 @@
 <body>
   <header>
     <div><em>Relevant: <a href="help-discord-staff.html">M45-Science Discord Staff Help</a> &amp; <a href="https://wiki.factorio.com/console#Multiplayer_commands">Factorio.com Commands Wiki Page</a>.</em></div>
-    <div><span class="material-icons">home</span><a href="https://m45sci.xyz/">Home</a></div>
+    <div><a href="https://m45sci.xyz/">Home<span class="material-icons">home</span></a></div>
   </header>
   <div class="cards">
 

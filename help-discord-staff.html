@@ -19,7 +19,9 @@
       --shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.8);
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
@@ -40,7 +42,7 @@
 
     header {
       position: sticky;
-      top: 0;
+      top: 0.3rem;
       text-align: left;
       padding: 1rem;
       margin-top: var(--gap);
@@ -126,18 +128,33 @@
     }
 
     @media (max-width: 3000px) {
-      html { font-size: 15px; }
-      .cards { grid-template-columns: repeat(3, 1fr); }
+      html {
+        font-size: 15px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     @media (max-width: 2000px) {
-      html { font-size: 12px; }
-      .cards { grid-template-columns: repeat(2, 1fr); }
+      html {
+        font-size: 12px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 1000px) {
-      html { font-size: 10px; }
-      .cards { grid-template-columns: repeat(1, 1fr); }
+      html {
+        font-size: 10px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
   </style>
 </head>
@@ -146,7 +163,7 @@
   <div id="page-wrapper">
     <header>
       <div><em>Relevant: <a href="help-factorio-staff.html">M45 Factorio Command List</a></em></div>
-      <div><span class="material-icons">home</span><a href="https://m45sci.xyz/">Home</a></div>
+      <div><a href="https://m45sci.xyz/">Home<span class="material-icons">home</span></a></div>
     </header>
 
 
