@@ -202,194 +202,196 @@
 </head>
 
 <body>
-  <header>
-    <p>M45-Science Staff Discord-Help</p>
-    <em>Also read the <a href="help-factorio-staff.html">M45 Factorio Command List</a></em>
-  </header>
   <div id="page-wrapper">
-  <script>
-    (function() {
-      const wrapper = document.getElementById('page-wrapper');
-      const designWidth = 900; // ← match your main max-width
-    
-      function rescale() {
-        // compute clamp(1, vw/designWidth, 2)
-        let scale = window.innerWidth / designWidth;
-        scale = Math.max(scale, 0.7);
-        scale = Math.min(scale, 1.0);
-        // apply both transform (for Firefox) and zoom (for WebKit/Blink)
-        wrapper.style.transformOrigin = 'top center';
-        wrapper.style.transform = 'scale(' + scale + ')';
-        wrapper.style.zoom = scale;
-        // adjust body height so wrapper doesn’t get cut off
-        document.body.style.height = (designWidth * scale) + 'px';
-      }
-    
-      window.addEventListener('resize', rescale);
-      window.addEventListener('load',   rescale);
-    })();
+    <script>
+      (function () {
+        const wrapper = document.getElementById('page-wrapper');
+        const designWidth = 900; // ← match your main max-width
+
+        function rescale() {
+          // compute clamp(1, vw/designWidth, 2)
+          let scale = window.innerWidth / designWidth;
+          scale = Math.max(scale, 0.7);
+          scale = Math.min(scale, 1.0);
+          // apply both transform (for Firefox) and zoom (for WebKit/Blink)
+          wrapper.style.transformOrigin = 'top center';
+          wrapper.style.transform = 'scale(' + scale + ')';
+          wrapper.style.zoom = scale;
+          // adjust body height so wrapper doesn’t get cut off
+          document.body.style.height = (designWidth * scale) + 'px';
+        }
+
+        window.addEventListener('resize', rescale);
+        window.addEventListener('load', rescale);
+      })();
     </script>
+    <header>
+      <p>M45-Science Staff Discord-Help</p>
+      <em>Also read the <a href="help-factorio-staff.html">M45 Factorio Command List</a></em>
+    </header>
 
 
-  <div class="cards">
-    <!-- Bans -->
-    <div class="card" id="ban">
-      <h3><span class="material-icons">gavel</span>Ban Player Via Discord</h3>
-      <ul class="group">
-        <li><span>Ban syntax:</span><code>/player-level &lt;factorioName&gt; &lt;level&gt; &lt;ban reason&gt;</code>
-        </li>
-        <li><span>Example
-            quick-ban</span><code>/player-level grieferName banned logged in and started deleting everything: https://m45sci.xyz/u/fact2/new-logs/a/game-01-April-2069.log</code>
-        </li>
-        <li><span>Player Levels</span><code>banned, new, member, regular, veteran, moderator</code></li>
-        <em>Note: We do not casually ban &amp; unban. Please use banish / jail for time-outs if you are not
-          certain.</em>
-      </ul>
-    </div>
-    <!-- Map Uploading -->
-    <div class="card" id="upload">
-      <h3><span class="material-icons">upload</span>Upload maps</h3>
-      <p>You can attach one of each type at the same time.</p>
-      <ul class="group">
-        <li><span>Upload a save-game</span><code>/upload save-game &lt;file attachment&gt;</code></li>
-        <li><span>Replace mod-list file</span><code>/upload mod-list &lt;file attachment&gt;</code></li>
-        <li><span>Replace mod-settings file</span><code>/upload mod-settings &lt;file attachment&gt;</code></li>
-        <em>Mod settings files do not contain map-specific settings, only global settings.</em>
-      </ul>
-    </div>
-    <!-- Mod Editing -->
-    <div class="card" id="mod edit">
-      <h3><span class="material-icons">extension</span>Change installed mods</h3>
-      <ul class="group">
-        <li><span>Show installed mods</span><code>/editmods list-mods</code></li>
-        <li><span>Enable mods by name</span><code>/editmods enable-mod &lt;mod1,mod2&gt;</code></li>
-        <li><span>Disable mods by name</span><code>/editmods disable-mod &lt;mod1,mod2&gt;</code></li>
-        <li><span>Add mods</span><code>/editmods add-mod &lt;mod-url-1,mod-name-2&gt;</code></li>
-        <em>Add-mod supports mod names OR mod-portal URLs</em>
-        <li><span>Erase all mod files</span><code>/editmods clear-all-mods</code></li>
-        <li><span>Show mod add/remove/update history</span><code>/editmods mod-history</code></li>
-      </ul>
-    </div>
-    <!-- Map Scheduling -->
-    <div class="card" id="map-schedule">
-      <h3><span class="material-icons">autorenew</span>Map Reset Scheduling</h3>
-      <ul class="group">
-        <li><span>Reset interval</span><code>/map-schedule interval-months &lt;number&gt;
+
+    <div class="cards">
+      <!-- Bans -->
+      <div class="card" id="ban">
+        <h3><span class="material-icons">gavel</span>Ban Player Via Discord</h3>
+        <ul class="group">
+          <li><span>Ban syntax:</span><code>/player-level &lt;factorioName&gt; &lt;level&gt; &lt;ban reason&gt;</code>
+          </li>
+          <li><span>Example
+              quick-ban</span><code>/player-level grieferName banned logged in and started deleting everything: https://m45sci.xyz/u/fact2/new-logs/a/game-01-April-2069.log</code>
+          </li>
+          <li><span>Player Levels</span><code>banned, new, member, regular, veteran, moderator</code></li>
+          <em>Note: We do not casually ban &amp; unban. Please use banish / jail for time-outs if you are not
+            certain.</em>
+        </ul>
+      </div>
+      <!-- Map Uploading -->
+      <div class="card" id="upload">
+        <h3><span class="material-icons">upload</span>Upload maps</h3>
+        <p>You can attach one of each type at the same time.</p>
+        <ul class="group">
+          <li><span>Upload a save-game</span><code>/upload save-game &lt;file attachment&gt;</code></li>
+          <li><span>Replace mod-list file</span><code>/upload mod-list &lt;file attachment&gt;</code></li>
+          <li><span>Replace mod-settings file</span><code>/upload mod-settings &lt;file attachment&gt;</code></li>
+          <em>Mod settings files do not contain map-specific settings, only global settings.</em>
+        </ul>
+      </div>
+      <!-- Mod Editing -->
+      <div class="card" id="mod edit">
+        <h3><span class="material-icons">extension</span>Change installed mods</h3>
+        <ul class="group">
+          <li><span>Show installed mods</span><code>/editmods list-mods</code></li>
+          <li><span>Enable mods by name</span><code>/editmods enable-mod &lt;mod1,mod2&gt;</code></li>
+          <li><span>Disable mods by name</span><code>/editmods disable-mod &lt;mod1,mod2&gt;</code></li>
+          <li><span>Add mods</span><code>/editmods add-mod &lt;mod-url-1,mod-name-2&gt;</code></li>
+          <em>Add-mod supports mod names OR mod-portal URLs</em>
+          <li><span>Erase all mod files</span><code>/editmods clear-all-mods</code></li>
+          <li><span>Show mod add/remove/update history</span><code>/editmods mod-history</code></li>
+        </ul>
+      </div>
+      <!-- Map Scheduling -->
+      <div class="card" id="map-schedule">
+        <h3><span class="material-icons">autorenew</span>Map Reset Scheduling</h3>
+        <ul class="group">
+          <li><span>Reset interval</span><code>/map-schedule interval-months &lt;number&gt;
           interval-weeks &lt;number&gt;
           interval-days &lt;number&gt;
           interval-hours &lt;number&gt;</code></li>
-      </ul>
-      <em>Use one: 'interval-weeks 2' or combine intervals: 4 months, 3 weeks, 2 days and 1 hour</em>
-      <ul class="group">
-        <li><span>Manually set next reset date &amp;
-            time</span><code>/map-schedule reset-date &lt;YYYY-MM-DD HH:MM:SS&gt;</code></li>
-        <li><span>Don't automatically schedule next map reset</span><code>/map-schedule disable</code></li>
-      </ul>
-    </div>
-    <!-- Change Map -->
-    <div class="card" id="maps">
-      <h3><span class="material-icons">map</span>Change Map</h3>
-      <ul class="group">
-        <li><span>Rewind map menu</span><code>/change-map &lt;press enter&gt;</code></li>
-        <li><span>See older maps</span><code>/change-map list</code></li>
-        <li><span>Load older map</span><code>/change-map load &lt;save name&gt;</code></li>
-        <em>Unless the save you are after is more than 25 autosaves ago, just press enter to get a vote-map like
-          menu.</em>
-        <li><span>Archive, then generate new</span><code>/map-reset</code></li>
-        <li><span>Generate a new map</span><code>/factorio new-map</code></li>
-        <li><span>Send to <a href="https://m45sci.xyz/u/fact2/archive/">map
-              archive</a></span><code>/factorio archive-map</code></li>
-        <li><span>Install mods found in save-game</span><code>/factorio sync-mods</code></li>
-        <li><span>Update all mods</span><code>/factorio update-mods</code></li>
-      </ul>
-    </div>
-    <!-- Map Settings -->
-    <div class="card" id="map-config">
-      <h3><span class="material-icons">tune</span>Map Settings</h3>
-      <ul class="group">
-        <li><span>Change map name</span><code>/config-server name &lt;name&gt;</code></li>
-        <li><span>Member or higher only</span><code>/config-server members-only &lt;true|false&gt;</code></li>
-        <li><span>Regular or higher only</span><code>/config-server regulars-only &lt;true|false&gt;</code></li>
-        <li>
-          <span>Map-preset</span><code>/config-server map-preset default, rich-resources, marathon, death-world, death-world-marathon, rail-world, ribbon-world, island, lakes</code>
-        </li>
-        <li><span>Friendly fire</span><code>/config-server friendly-fire &lt;true|false&gt;</code></li>
-        <li><span>Pause game when empty</span><code>/config-server auto-pause &lt;true|false&gt;</code></li>
-        <li><span>Game speed for current map</span><code>/config-server speed &lt;value&gt;</code></li>
-        <li><span>Minutes between autosaves</span><code>/config-server autosave-mins &lt;min&gt;</code></li>
-        <li><span>AFK idle kick minutes</span><code>/config-server afk-kick-mins &lt;min&gt;</code></li>
-        <li><span>Seed for next new map</span><code>/config-server map-seed &lt;seed&gt;</code></li>
-    </div>
-    <!-- Softmod -->
-    <div class="card" id="softmod">
-      <ul class="group">
-        <h3><span class="material-icons">science</span>M45-Softmod Settings</h3>
-        <li><span>M45-Softmod. Disable can't fully remove softmod from current
-            map</span><code>/config-server soft-mod-inject &lt;true|false&gt;</code></li>
-        <li><span>Reduce new player
-            permissions</span><code>/config-server restrict-new-players &lt;true|false&gt;</code></li>
-        <li><span>Disable blueprint permissions</span><code>/config-server disable-blueprints &lt;true|false&gt;</code>
-        </li>
-        <li><span>One-Life (permadeath)</span><code>/config-server one-life &lt;true|false&gt;</code></li>
+        </ul>
+        <em>Use one: 'interval-weeks 2' or combine intervals: 4 months, 3 weeks, 2 days and 1 hour</em>
+        <ul class="group">
+          <li><span>Manually set next reset date &amp;
+              time</span><code>/map-schedule reset-date &lt;YYYY-MM-DD HH:MM:SS&gt;</code></li>
+          <li><span>Don't automatically schedule next map reset</span><code>/map-schedule disable</code></li>
+        </ul>
+      </div>
+      <!-- Change Map -->
+      <div class="card" id="maps">
+        <h3><span class="material-icons">map</span>Change Map</h3>
+        <ul class="group">
+          <li><span>Rewind map menu</span><code>/change-map &lt;press enter&gt;</code></li>
+          <li><span>See older maps</span><code>/change-map list</code></li>
+          <li><span>Load older map</span><code>/change-map load &lt;save name&gt;</code></li>
+          <em>Unless the save you are after is more than 25 autosaves ago, just press enter to get a vote-map like
+            menu.</em>
+          <li><span>Archive, then generate new</span><code>/map-reset</code></li>
+          <li><span>Generate a new map</span><code>/factorio new-map</code></li>
+          <li><span>Send to <a href="https://m45sci.xyz/u/fact2/archive/">map
+                archive</a></span><code>/factorio archive-map</code></li>
+          <li><span>Install mods found in save-game</span><code>/factorio sync-mods</code></li>
+          <li><span>Update all mods</span><code>/factorio update-mods</code></li>
+        </ul>
+      </div>
+      <!-- Map Settings -->
+      <div class="card" id="map-config">
+        <h3><span class="material-icons">tune</span>Map Settings</h3>
+        <ul class="group">
+          <li><span>Change map name</span><code>/config-server name &lt;name&gt;</code></li>
+          <li><span>Member or higher only</span><code>/config-server members-only &lt;true|false&gt;</code></li>
+          <li><span>Regular or higher only</span><code>/config-server regulars-only &lt;true|false&gt;</code></li>
+          <li>
+            <span>Map-preset</span><code>/config-server map-preset default, rich-resources, marathon, death-world, death-world-marathon, rail-world, ribbon-world, island, lakes</code>
+          </li>
+          <li><span>Friendly fire</span><code>/config-server friendly-fire &lt;true|false&gt;</code></li>
+          <li><span>Pause game when empty</span><code>/config-server auto-pause &lt;true|false&gt;</code></li>
+          <li><span>Game speed for current map</span><code>/config-server speed &lt;value&gt;</code></li>
+          <li><span>Minutes between autosaves</span><code>/config-server autosave-mins &lt;min&gt;</code></li>
+          <li><span>AFK idle kick minutes</span><code>/config-server afk-kick-mins &lt;min&gt;</code></li>
+          <li><span>Seed for next new map</span><code>/config-server map-seed &lt;seed&gt;</code></li>
+      </div>
+      <!-- Softmod -->
+      <div class="card" id="softmod">
+        <ul class="group">
+          <h3><span class="material-icons">science</span>M45-Softmod Settings</h3>
+          <li><span>M45-Softmod. Disable can't fully remove softmod from current
+              map</span><code>/config-server soft-mod-inject &lt;true|false&gt;</code></li>
+          <li><span>Reduce new player
+              permissions</span><code>/config-server restrict-new-players &lt;true|false&gt;</code></li>
+          <li><span>Disable blueprint
+              permissions</span><code>/config-server disable-blueprints &lt;true|false&gt;</code>
+          </li>
+          <li><span>One-Life (permadeath)</span><code>/config-server one-life &lt;true|false&gt;</code></li>
 
-        <li><span>Disable M45-Softmod and use a scenario</span><code>/config-server scenario &lt;name&gt;</code></li>
-        <li>
-          <span>Scenarios
-            available</span><code>freeplay, pvp, rocket-rush, sandbox, supply, team-production, wave-defense</code>
-      </ul>
+          <li><span>Disable M45-Softmod and use a scenario</span><code>/config-server scenario &lt;name&gt;</code></li>
+          <li>
+            <span>Scenarios
+              available</span><code>freeplay, pvp, rocket-rush, sandbox, supply, team-production, wave-defense</code>
+        </ul>
+        </ul>
+      </div>
+
+      <!-- Factorio Config -->
+      <div class="card" id="factorio">
+        <ul class="group">
+          <h3><span class="material-icons">precision_manufacturing</span>Factorio</h3>
+          <li><span>Start or restart</span><code>/factorio start</code></li>
+          <li><span>Stop</span><code>/factorio stop</code></li>
+          <li><span>Update to latest</span><code>/factorio update-factorio</code></li>
+          <li><span>Force reinstall</span><code>/factorio install-factorio</code></li>
+          <em><a href="https://wiki.factorio.com/console#Multiplayer_commands">Full Factorio command list</a></em>
+
+          <li><span>Send Factorio command to all maps</span><code>/rconall &lt;command&gt;</code></li>
+          <li><span>Send Factorio command to current map-channel</span><code>/rcon &lt;command&gt;</code></li>
+        </ul>
+      </div>
+      <!-- Chatwire Config -->
+      <div class="card" id="chatwire">
+        <h3><span class="material-icons">developer_board</span>ChatWire</h3>
+        <ul class="group">
+          <li><span>Quick reboot</span><code>/chatwire reboot</code></li>
+          <li><span>Reboot when empty</span><code>/chatwire queue-reboot</code></li>
+          <li><span>Reboot Factorio-only if empty</span><code>/chatwire queue-fact-reboot</code></li>
+          <li><span>If ssh edited config files</span><code>/chatwire reload-config</code></li>
+          <li><span>Last resort, can corrupt data</span><code>/chatwire force-reboot</code></li>
+          <li><span>Hide autosaves from Discord</span><code>/config-server hide-autosaves &lt;true|false&gt;</code></li>
+          <li><span>Hide research from Discord</span><code>/config-server hide-research &lt;true|false&gt;</code></li>
+          <li><span>Auto map resets</span><code>/config-server map-reset &lt;on|off&gt;</code></li>
+          <li><span>Set schedule 'skip-reset'</span><code>/config-server map-reset-skip &lt;true|false&gt;</code></li>
+        </ul>
+      </div>
+
+
+      <!-- Advanced -->
+      <div class="card" id="softmod">
+        <ul class="group">
+          <h3><span class="material-icons">category</span>Advanced</h3>
+          <li><span>Auto-update mods</span><code>/config-server auto-mod-update &lt;true|false&gt;</code></li>
+
+          <li><span>Use Experimental Factorio
+              Builds</span><code>/config-server auto-update-experimental &lt;true|false&gt;</code></li>
+          <li><span>Auto-Start Factorio on boot</span><code>/config-server auto-start-factorio &lt;true|false&gt;</code>
+          </li>
+          <li><span>Disable chat spam protection</span><code>/config-global disable-spam-protect</code></li>
+          <li><span>Mute suspicious activity messages</span><code>/config-global sus-shutup</code></li>
+          <li><span>Do not ban players in the shared FCL ban list, warning message
+              only.</span><code>/config-global fcl-warn-only</code></li>
+          <li><span>Show a warning if a regular has a FCL ban</span><code>/config-global fcl-warn-regulars</code></li>
+      </div>
       </ul>
     </div>
-
-    <!-- Factorio Config -->
-    <div class="card" id="factorio">
-      <ul class="group">
-        <h3><span class="material-icons">precision_manufacturing</span>Factorio</h3>
-        <li><span>Start or restart</span><code>/factorio start</code></li>
-        <li><span>Stop</span><code>/factorio stop</code></li>
-        <li><span>Update to latest</span><code>/factorio update-factorio</code></li>
-        <li><span>Force reinstall</span><code>/factorio install-factorio</code></li>
-        <em><a href="https://wiki.factorio.com/console#Multiplayer_commands">Full Factorio command list</a></em>
-
-        <li><span>Send Factorio command to all maps</span><code>/rconall &lt;command&gt;</code></li>
-        <li><span>Send Factorio command to current map-channel</span><code>/rcon &lt;command&gt;</code></li>
-      </ul>
-    </div>
-    <!-- Chatwire Config -->
-    <div class="card" id="chatwire">
-      <h3><span class="material-icons">developer_board</span>ChatWire</h3>
-      <ul class="group">
-        <li><span>Quick reboot</span><code>/chatwire reboot</code></li>
-        <li><span>Reboot when empty</span><code>/chatwire queue-reboot</code></li>
-        <li><span>Reboot Factorio-only if empty</span><code>/chatwire queue-fact-reboot</code></li>
-        <li><span>If ssh edited config files</span><code>/chatwire reload-config</code></li>
-        <li><span>Last resort, can corrupt data</span><code>/chatwire force-reboot</code></li>
-        <li><span>Hide autosaves from Discord</span><code>/config-server hide-autosaves &lt;true|false&gt;</code></li>
-        <li><span>Hide research from Discord</span><code>/config-server hide-research &lt;true|false&gt;</code></li>
-        <li><span>Auto map resets</span><code>/config-server map-reset &lt;on|off&gt;</code></li>
-        <li><span>Set schedule 'skip-reset'</span><code>/config-server map-reset-skip &lt;true|false&gt;</code></li>
-      </ul>
-    </div>
-
-
-    <!-- Advanced -->
-    <div class="card" id="softmod">
-      <ul class="group">
-        <h3><span class="material-icons">category</span>Advanced</h3>
-        <li><span>Auto-update mods</span><code>/config-server auto-mod-update &lt;true|false&gt;</code></li>
-
-        <li><span>Use Experimental Factorio
-            Builds</span><code>/config-server auto-update-experimental &lt;true|false&gt;</code></li>
-        <li><span>Auto-Start Factorio on boot</span><code>/config-server auto-start-factorio &lt;true|false&gt;</code>
-        </li>
-        <li><span>Disable chat spam protection</span><code>/config-global disable-spam-protect</code></li>
-        <li><span>Mute suspicious activity messages</span><code>/config-global sus-shutup</code></li>
-        <li><span>Do not ban players in the shared FCL ban list, warning message
-            only.</span><code>/config-global fcl-warn-only</code></li>
-        <li><span>Show a warning if a regular has a FCL ban</span><code>/config-global fcl-warn-regulars</code></li>
-    </div>
-    </ul>
   </div>
-</div>
 </body>
 
 </html>
