@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moderator Hub</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #181818;
+      --surface: #242424;
+      --accent: #4caf50;
+      --accent-hover: #66bb6a;
+      --text: #e0e0e0;
+      --subtext: #b0b0b0;
+      --radius: 6px;
+      --gap: 1rem;
+      --shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      --divider: #333;
+      --warning-bg: #332a24;
+      --warning-border: #ff8a65;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: var(--gap);
+      line-height: 1.4;
+      background-image: radial-gradient(circle at top left, rgba(76, 175, 80, 0.1), transparent 70%);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      /* optional, if you don’t want underlines */
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: var(--gap);
+    }
+
+    header h1 {
+      display: inline-flex;
+      align-items: center;
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    header .material-icons {
+      margin-right: 0.5rem;
+      font-size: 2.4rem;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: var(--subtext);
+      margin: 0 0.5rem;
+      text-decoration: none;
+      position: relative;
+    }
+
+    nav a:hover::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-hover);
+      border-radius: 1px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: var(--gap);
+    }
+
+    @media (min-width: 1500px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 2500px) {
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 3500px) {
+      .cards {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      padding: var(--gap);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.5);
+    }
+
+    .card h3 {
+      display: flex;
+      align-items: center;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 .material-icons {
+      margin-right: 0.5rem;
+    }
+
+    .card em {
+      display: block;
+      color: var(--subtext);
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .card ul.group {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .card ul.group li {
+      display: grid;
+      grid-template-columns: 250px auto;
+      gap: 0.5rem;
+      padding: 0.25rem 0;
+      align-items: left;
+    }
+
+    .card ul.group li code {
+      background: var(--bg);
+      color: var(--accent);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-family: monospace;
+      word-break: break-word;
+    }
+
+    .card ul.group li span {
+      justify-self: end;
+      color: var(--text);
+    }
+
+    .warning {
+      background: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      padding: var(--gap);
+      border-radius: var(--radius);
+      margin-top: var(--gap);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .warning .material-icons {
+      color: var(--warning-border);
+      font-size: 1.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .warning-text {
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: var(--gap);
+      color: var(--subtext);
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <footer>
+    <p>Also read the <a href="help-discord-staff.html">M45-Science Discord Staff Help</a>.</p>
+  </footer>
+  <div class="cards">
+    <div class="card" id="ban">
+      <!-- Ban -->
+      <h3><span class="material-icons">gavel</span>Moderator commands</h3>
+      <ul class="group">
+        <li><span>Adjust your run speed, 0 (normal) through 10 (very fast)</span><code>/run 0</code></li>
+        <li><span>Toggle immortatility</span><code>/immortal</code></li>
+        <em>Optional: &lt;playerName&gt;, otherwise defaults to self.</em>
+        <li><span>Reset player level & score</span><code>/reset &lt;playerName&gt;</code></li>
+        <li><span>Promote player to member</span><code>/member &lt;playerName&gt;</code></li>
+        <li><span>Promote player to regular</span><code>/regular &lt;playerName&gt;</code></li>
+        <li><span>Promote player to veteran</span><code>/veteran &lt;playerName&gt;</code></li>
+        <li><span>Move spawn to self</span><code>/cspawn</code></li>
+        <em>Optional: &lt;x, y&gt;</em>
+        <li><span>Reveal &lt;units&gt; area from map center &lt;0,0&gt;</span><code>/reveal &lt;units&gt;</code></li>
+        <li><span>Clear map pins and fog of war</span><code>/rechart</code></li>
+        <li><span>Set game speed in UPS</span><code>/aspeed &lt;game UPS&gt;</code></li>
+        <li><span>Set game speed as multiplier</span><code>/gspeed 1.0</li>
+          <em>Location formats: &lt;x,y&gt; or &lt;surfaceName&gt; or [gps=x,y] or [gps=x,y,surface]</em>
+          <li><span>Go to to a player</span><code>/goto &lt;playerName&gt;</li>
+            <li><span>Teleport to a location</span><code>/tp &lt;location&gt;</code></li>
+            <li><span>Summon a player to you</span><code>/summon &lt;playerName&gt;</code></li>
+            <li><span>Transport a player to a location</span><code>/transport &lt;playerName&gt; &lt;location&gt;</code></li>
+            
+          </ul>
+    </div>
+</ul>
+</div>
+</body>
+
+</html>
