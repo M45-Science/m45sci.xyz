@@ -32,7 +32,7 @@
 
       /* — type — */
       --font-base: "Segoe UI", Roboto, sans-serif;
-      --line-height: 1.5;
+      --line-height: 1.75;
       --letter-spacing: 0.25px;
       /* normal */
       --heading-spacing: 1px;
@@ -118,8 +118,8 @@
 
     /* main grid */
     main {
-      font-size: 13px;
-      max-width: 1000px;
+      font-size: 10px;
+      max-width: 600px;
       margin: var(--spacing-lg) auto;
       padding: 0 var(--spacing-md);
       display: grid;
@@ -139,10 +139,12 @@
     /* vertical rhythm inside each card */
     section>*+* {
       margin-top: var(--spacing-sm);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
 
     section h2 {
-      font-size: 1.5rem;
+      font-size: 1rem;
       font-weight: 500;
       letter-spacing: var(--heading-spacing);
       border-bottom: 2px solid var(--accent);
@@ -170,7 +172,7 @@
     /* inline code */
     code {
       font-family: Menlo, Consolas, monospace;
-      font-size: 14px;
+      font-size: 11px;
       background-color: rgba(255, 255, 255, 0.1);
       padding: 0 0.25rem;
       margin-left: 0.5rem;
@@ -191,13 +193,13 @@
     <script>
       (function() {
         const wrapper = document.getElementById('page-wrapper');
-        const designWidth = 1000; // ← match your main max-width
+        const designWidth = 900; // ← match your main max-width
       
         function rescale() {
           // compute clamp(1, vw/designWidth, 2)
           let scale = window.innerWidth / designWidth;
-          scale = Math.max(scale, 0.8);
-          scale = Math.min(scale, 1.25);
+          scale = Math.max(scale, 1.0);
+          scale = Math.min(scale, 1.33);
           // apply both transform (for Firefox) and zoom (for WebKit/Blink)
           wrapper.style.transformOrigin = 'top center';
           wrapper.style.transform = 'scale(' + scale + ')';
