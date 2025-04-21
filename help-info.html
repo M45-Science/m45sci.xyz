@@ -32,10 +32,10 @@
 
       /* — type — */
       --font-base: "Segoe UI", Roboto, sans-serif;
-      --line-height: 1.6;
-      --letter-spacing: 0;
+      --line-height: 2;
+      --letter-spacing: 1.25px;
       /* normal */
-      --heading-spacing: 0.5px;
+      --heading-spacing: 1px;
       /* subtle */
     }
 
@@ -67,7 +67,7 @@
     }
 
     .material-icons {
-      font-size: 1.25rem;
+      font-size: 2rem;
       vertical-align: middle;
       margin-right: var(--spacing-xs);
       color: var(--accent);
@@ -88,7 +88,7 @@
     }
 
     header h1 {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: var(--heading-spacing);
     }
@@ -159,28 +159,18 @@
     }
 
     ul li {
-      display: flex;
+      display: display-inside;
       align-items: flex-start;
-      margin-top: var(--spacing-xxs);
-      padding-left: var(--spacing-sm);
     }
 
     /* inline code */
     code {
       font-family: Menlo, Consolas, monospace;
-      font-size: 13px;
+      font-size: 14px;
       background-color: rgba(255, 255, 255, 0.1);
       padding: 0 0.25rem;
       margin-left: 0.5rem;
       margin-right: 0.5rem;
-    }
-
-    /* footer */
-    footer {
-      text-align: center;
-      margin-top: var(--spacing-xl);
-      font-size: 0.875rem;
-      color: var(--muted-text);
     }
 
   </style>
@@ -219,18 +209,18 @@
       <h2><span class="material-icons">chat</span>Discord Commands</h2>
       <p>Commands work only in a map-specific Discord channel. (see Map Channel Status below)</p>
       <ul>
-        <li><span class="material-icons">warning</span>/register — Run this first and follow instructions.</li>
-        <li><span class="material-icons">how_to_vote</span>/vote-map — Rewind, reset, or skip scheduled map reset.</li>
-        <li><span class="material-icons">info</span>/info [verbose] — Show server details (add <em>verbose</em> for
+        <li><span class="material-icons">warning</span><code>/register</code> — Run this first and follow instructions.</li>
+        <li><span class="material-icons">how_to_vote</span>/vote-map</code> — Rewind, reset, or skip scheduled map reset.</li>
+        <li><span class="material-icons">info</span><code>/info [verbose]</code> — Show server details (add <em>verbose</em> for
           extra stats).</li>
-        <li><span class="material-icons">download</span>/modpack — Get a link to download installed mods.</li>
-        <li><span class="material-icons">group</span>/players — List current players online.</li>
-        <li><span class="material-icons">pause_circle</span>/pause-game — Pause the map (2 min timeout) while you
+        <li><span class="material-icons">download</span><code>/modpack</code> — Get a link to download installed mods.</li>
+        <li><span class="material-icons">group</span><code>/players</code> — List current players online.</li>
+        <li><span class="material-icons">pause_circle</span><code>/pause-game</code> — Pause the map (2 min timeout) while you
           connect.</li>
-        <li><span class="material-icons">search</span>/whois search:&lt;player&gt; — Lookup player info.</li>
-        <li><span class="material-icons">scoreboard</span>/scoreboard — Show top 40 players.</li>
-        <li><span class="material-icons">extension</span>/list-mods — Show mods on current map.</li>
-        <li><span class="material-icons">label</span>/get-roles — Opt in/out Notification Roles.</li>
+        <li><span class="material-icons">search</span><code>/whois search:&lt;player&gt;</code> — Lookup player info.</li>
+        <li><span class="material-icons">scoreboard</span><code>/scoreboard</code> — Show top 40 players.</li>
+        <li><span class="material-icons">extension</span><code>/list-mods</code> — Show mods on current map.</li>
+        <li><span class="material-icons">label</span><code>/get-roles</code> — Opt in/out Notification Roles.</li>
       </ul>
       <p>See the <a href="https://support-apps.discord.com/hc/en-us/articles/26593412574359-How-to-Use-Apps"
           target="_blank">Official Discord guide</a> for app usage.</p>
@@ -250,32 +240,6 @@
       <p>If prefixed by a number, that indicates current player count. All Discord commands listed above work here.</p>
     </section>
 
-    <!-- Notification Roles -->
-    <section id="notifications">
-      <h2><span class="material-icons">notifications</span>Notification Roles</h2>
-      <ul>
-        <li><code>/get-roles</code></li>
-        <li>No <code>@everyone</code> pings—opt into specific notif roles instead.</li>
-        <li>Use /get-roles anytime to manage subscriptions.</li>
-        <li>Roles include Emergency Alert, Help-Vote, Factory-Help, Announcements.</li>
-        <li>These roles can be pinged without disturbing everyone.</li>
-      </ul>
-    </section>
-
-    <!-- Server Hardware -->
-    <section id="hardware">
-      <h2><span class="material-icons">memory</span>Server Hardware</h2>
-      <ul>
-        <li><span class="material-icons">cloud</span>Host: Dedicated datacenter server</li>
-        <li><span class="material-icons">network_check</span>Connection: Gigabit</li>
-        <li><span class="material-icons">dns</span>Machine: Dell M630</li>
-        <li><span class="material-icons">developer_board</span>CPU: Dual Intel Xeon E5-2680 v4 (28 cores)</li>
-        <li><span class="material-icons">storage</span>Storage: 1 TB SSD</li>
-        <li><span class="material-icons">memory</span>Memory: 64 GB DDR4</li>
-        <li><span class="material-icons">place</span>Location: Southfield, Michigan, USA</li>
-        <li><span class="material-icons">schedule</span>System Time (UTC)</li>
-      </ul>
-    </section>
 
     <!-- Inactive Accounts -->
     <section id="inactive">
@@ -309,6 +273,32 @@
       <p>This data is invaluable for identifying griefers with no speculation.</p>
     </section>
 
+    <!-- Notification Roles -->
+    <section id="notifications">
+      <h2><span class="material-icons">notifications</span>Notification Roles</h2>
+      <ul>
+        <li><code>/get-roles</code></li>
+        <li>No <code>@everyone</code> pings — opt into specific notif roles instead.</li>
+        <li>Use <code>/get-roles</code> anytime to manage subscriptions.</li>
+        <li>Roles include Emergency Alert, Help-Vote, Factory-Help, Announcements.</li>
+        <li>These roles can be pinged without disturbing everyone.</li>
+      </ul>
+    </section>
+
+    <!-- Server Hardware -->
+    <section id="hardware">
+      <h2><span class="material-icons">memory</span>Server Hardware</h2>
+      <ul>
+        <li><span class="material-icons">cloud</span>Host: Dedicated datacenter server</li>
+        <li><span class="material-icons">network_check</span>Connection: Gigabit</li>
+        <li><span class="material-icons">dns</span>Machine: Dell M630</li>
+        <li><span class="material-icons">developer_board</span>CPU: Dual Intel Xeon E5-2680 v4 (28 cores)</li>
+        <li><span class="material-icons">storage</span>Storage: 1 TB SSD</li>
+        <li><span class="material-icons">memory</span>Memory: 64 GB DDR4</li>
+        <li><span class="material-icons">place</span>Location: Southfield, Michigan, USA</li>
+        <li><span class="material-icons">schedule</span>System Time (UTC)</li>
+      </ul>
+    </section>
   </main>
 </body>
 
