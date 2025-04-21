@@ -41,7 +41,7 @@
     header {
       position: sticky;
       top: 0;
-      text-align: center;
+      text-align: left;
       padding: 1rem;
       margin-top: var(--gap);
       color: var(--subtext);
@@ -49,6 +49,9 @@
       font-size: 1.5rem;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .cards {
@@ -141,8 +144,8 @@
 
 <body>
   <header>
-    <em>Also read the <a href="https://wiki.factorio.com/console#Multiplayer_commands">Factorio.com Commands Wiki
-        Page</a> and the <a href="help-discord-staff.html">M45-Science Discord Staff Help</a>.</em>
+    <div><em>Relevant: <a href="help-discord-staff.html">M45-Science Discord Staff Help</a> &amp; <a href="https://wiki.factorio.com/console#Multiplayer_commands">Factorio.com Commands Wiki Page</a>.</em></div>
+    <div><span class="material-icons">home</span><a href="https://m45sci.xyz/">Home</a></div>
   </header>
   <div class="cards">
 

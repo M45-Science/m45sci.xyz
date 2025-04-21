@@ -41,7 +41,7 @@
     header {
       position: sticky;
       top: 0;
-      text-align: center;
+      text-align: left;
       padding: 1rem;
       margin-top: var(--gap);
       color: var(--subtext);
@@ -49,6 +49,9 @@
       font-size: 1.5rem;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .cards {
@@ -142,7 +145,8 @@
 <body>
   <div id="page-wrapper">
     <header>
-      <em>Also read the <a href="help-factorio-staff.html">M45 Factorio Command List</a></em>
+      <div><em>Relevant: <a href="help-factorio-staff.html">M45 Factorio Command List</a></em></div>
+      <div><span class="material-icons">home</span><a href="https://m45sci.xyz/">Home</a></div>
     </header>
 
 
