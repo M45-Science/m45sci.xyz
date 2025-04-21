@@ -17,14 +17,9 @@
       --radius: 1rem;
       --gap: 2rem;
       --shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.8);
-      --divider: #333;
-      --warning-bg: #332a24;
-      --warning-border: #ff8a65;
     }
 
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
@@ -41,20 +36,43 @@
     a {
       color: var(--accent);
       text-decoration: none;
-      /* optional, if you don’t want underlines */
     }
 
     header {
+      position: sticky;
+      top: 0;
       text-align: center;
       padding: 1rem;
-      font-size: 2rem;
-
+      margin-top: var(--gap);
+      color: var(--subtext);
+      background-color: #333;
+      font-size: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(1, 1fr);
       gap: var(--gap);
+    }
+
+    @media (min-width: 1500px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 2500px) {
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 3500px) {
+      .cards {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     .card {
@@ -73,22 +91,10 @@
       margin-bottom: 0.5rem;
     }
 
-    .card h3 .material-icons {
-      margin-right: 0.5rem;
-    }
-
-    .card em {
-      display: block;
-      color: var(--subtext);
-      margin-bottom: 0.75rem;
-      font-size: 0.9rem;
-    }
-
     .card ul.group {
       list-style: none;
-      margin: 0;
+      margin: 0 0 1rem;
       padding: 0;
-      margin-bottom: 1rem;
     }
 
     .card ul.group li {
@@ -96,7 +102,6 @@
       grid-template-columns: 13rem auto;
       gap: 0.5rem;
       padding: 0.25rem 0;
-      align-items: left;
     }
 
     .card ul.group li code {
@@ -110,41 +115,7 @@
 
     .card ul.group li span {
       justify-self: end;
-      color: var(--text);
-    }
-
-    .warning {
-      background: var(--warning-bg);
-      border-left: 4px solid var(--warning-border);
-      padding: var(--gap);
-      border-radius: var(--radius);
-      margin-top: var(--gap);
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .warning .material-icons {
-      color: var(--warning-border);
-      font-size: 1.5rem;
-      margin-top: 0.2rem;
-    }
-
-    .warning-text {
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      text-align: center;
-      margin-top: var(--gap);
-      color: var(--subtext);
-      background-color: #333;
-      font-size: 1.5rem;
-
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      text-align: right;
     }
 
     html {
@@ -152,31 +123,18 @@
     }
 
     @media (max-width: 3000px) {
-      html {
-        font-size: 15px;
-      }
-
-        .cards {
-          grid-template-columns: repeat(3, 1fr);
-        }
+      html { font-size: 15px; }
+      .cards { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 2000px) {
-      html {
-        font-size: 12px;
-      }
-        .cards {
-          grid-template-columns: repeat(2, 1fr);
-        }
+      html { font-size: 12px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 1000px) {
-      html {
-        font-size: 10px;
-      }
-        .cards {
-          grid-template-columns: repeat(1, 1fr);
-        }
+      html { font-size: 10px; }
+      .cards { grid-template-columns: repeat(1, 1fr); }
     }
   </style>
 </head>
