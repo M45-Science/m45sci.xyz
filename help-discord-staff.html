@@ -11,8 +11,9 @@
       --bg: #131313;
       --surface: #2b2b2b;
       --accent: #7efe83;
+      --link: #b5ffc7;
+      --subtext: #75ab83;
       --text: #ffffff;
-      --subtext: #ffffff;
       --radius: 1rem;
       --gap: 2rem;
       --shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.8);
@@ -35,7 +36,7 @@
     }
 
     a {
-      color: var(--accent);
+      color: var(--link);
       text-decoration: none;
     }
 
@@ -93,6 +94,10 @@
       font-size: 1.3rem;
       color: var(--accent);
       margin-bottom: 0.5rem;
+    }
+
+    em {
+      color: var(--subtext);
     }
 
     .card ul.group {
@@ -170,10 +175,10 @@
       <div class="card" id="ban">
         <h3><span class="material-icons">gavel</span>Ban Player Via Discord</h3>
         <ul class="group">
+          <em>Note: We do not casually ban &amp; unban. Please use banish / jail for time-outs if you are not certain.</em>
           <li><span>Ban syntax:</span><code>/player-level &lt;factorioName&gt; &lt;level&gt; &lt;ban reason&gt;</code></li>
           <li><span>Example quick-ban</span><code>/player-level grieferName banned logged in and started deleting everything: https://m45sci.xyz/u/fact2/new-logs/a/game-01-April-2069.log</code></li>
           <li><span>Player Levels</span><code>banned, new, member, regular, veteran, moderator</code></li>
-          <em>Note: We do not casually ban &amp; unban. Please use banish / jail for time-outs if you are not certain.</em>
         </ul>
       </div>
 
@@ -184,8 +189,8 @@
         <ul class="group">
           <li><span>Upload a save-game</span><code>/upload save-game &lt;file attachment&gt;</code></li>
           <li><span>Replace mod-list file</span><code>/upload mod-list &lt;file attachment&gt;</code></li>
-          <li><span>Replace mod-settings file</span><code>/upload mod-settings &lt;file attachment&gt;</code></li>
           <em>Mod settings files do not contain map-specific settings, only global settings.</em>
+          <li><span>Replace mod-settings file</span><code>/upload mod-settings &lt;file attachment&gt;</code></li>
         </ul>
       </div>
 
@@ -196,8 +201,8 @@
           <li><span>Show installed mods</span><code>/editmods list-mods</code></li>
           <li><span>Enable mods by name</span><code>/editmods enable-mod &lt;mod1,mod2&gt;</code></li>
           <li><span>Disable mods by name</span><code>/editmods disable-mod &lt;mod1,mod2&gt;</code></li>
+          <em>Add-mod supports mod names OR <a href="https://mods.factorio.com/">mod-portal</a> URLs</em>
           <li><span>Add mods</span><code>/editmods add-mod &lt;mod-url-1,mod-name-2&gt;</code></li>
-          <em>Add-mod supports mod names OR mod-portal URLs</em>
           <li><span>Erase all mod files</span><code>/editmods clear-all-mods</code></li>
           <li><span>Show mod add/remove/update history</span><code>/editmods mod-history</code></li>
         </ul>
@@ -207,13 +212,13 @@
       <div class="card" id="map-schedule">
         <h3><span class="material-icons">autorenew</span>Map Reset Scheduling</h3>
         <ul class="group">
+          <em>Use one: 'interval-weeks 2' or combine intervals: 4 months, 3 weeks, 2 days and 1 hour</em>
           <li><span>Reset interval</span><code>/map-schedule interval-months &lt;number&gt; interval-weeks &lt;number&gt; interval-days &lt;number&gt; interval-hours &lt;number&gt;</code></li>
         </ul>
-        <em>Use one: 'interval-weeks 2' or combine intervals: 4 months, 3 weeks, 2 days and 1 hour</em>
         <ul class="group">
           <li><span>Manually set next reset date &amp; time</span><code>/map-schedule reset-date &lt;YYYY-MM-DD HH:MM:SS&gt;</code></li>
-          <li><span>Set open hours (UTC)</span><code>/config-hours &lt;start hour&gt; &lt;end hour&gt; &lt;enabled&gt;</code></li>
           <em>Config-Hours shuts down the server when not within open hours.</em>
+          <li><span>Set open hours (UTC)</span><code>/config-hours &lt;start hour&gt; &lt;end hour&gt; &lt;enabled&gt;</code></li>
           <li><span>Don't automatically schedule next map reset</span><code>/map-schedule disable</code></li>
         </ul>
       </div>
@@ -222,10 +227,10 @@
       <div class="card" id="maps">
         <h3><span class="material-icons">map</span>Change Map</h3>
         <ul class="group">
+          <em>Unless the save you are after is more than 25 autosaves ago, just press enter to get a vote-map like menu.</em>
           <li><span>Rewind map menu</span><code>/change-map &lt;press enter&gt;</code></li>
           <li><span>See older maps</span><code>/change-map list</code></li>
           <li><span>Load older map</span><code>/change-map load &lt;save name&gt;</code></li>
-          <em>Unless the save you are after is more than 25 autosaves ago, just press enter to get a vote-map like menu.</em>
           <li><span>Archive, then generate new</span><code>/map-reset</code></li>
           <li><span>Generate a new map</span><code>/factorio new-map</code></li>
           <li><span>Send to <a href="https://m45sci.xyz/u/fact2/archive/">map archive</a></span><code>/factorio archive-map</code></li>
