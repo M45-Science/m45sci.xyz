@@ -211,23 +211,31 @@
       </ul>
     </div>
 
-    <!-- Misc -->
-    <div class="card" id="misc">
-      <h3><span class="material-icons">star</span>Misc (updated)</h3>
-      <ul class="group">
-        <em>Optional: &lt;x, y&gt;</em>
-        <li><span>Move spawn to self</span><code>/cspawn</code></li>
+    <!-- Map -->
+<div class="card" id="map">
+  <h3><span class="material-icons">star</span>Map (updated)</h3>
+  <ul class="group">
+    <em>Optional: &lt;x, y&gt;</em>
+    <li><span>Move spawn to self</span><code>/cspawn</code></li>
 
-        <em>Optional: &lt;playerName&gt;, otherwise defaults to self.</em>
-        <li><span>Toggle immortatility</span><code>/immortal</code></li>
+    <em>Optional: &lt;playerName&gt;, otherwise defaults to self.</em>
+    <li><span>Toggle immortatility</span><code>/immortal</code></li>
 
-        <em>Optional: &lt;size&gt;, &lt;x, y&gt; or [gps=x,y] or surface name</em>
-        <li><span>Reveal area of map</span><code>/reveal</code></li>
+    <em>Optional: &lt;size&gt;, &lt;x, y&gt; or [gps=x,y] or surface name</em>
+    <li><span>Reveal area of map</span><code>/reveal</code></li>
 
-        <em>Optional: &lt;surface&gt; and &lt;force&gt;</em>
-        <li><span>Clear map pins and fog of war</span><code>/rechart</code></li>
-      </ul>
-    </div>
+    <em>Optional: &lt;surface&gt; and &lt;force&gt;</em>
+    <li><span>Clear map pins and fog of war</span><code>/rechart</code></li>
+
+    <em>
+      Optional: &lt;surface&gt; or <code>all</code><br />
+      Warning: The server will automatically save before cleaning.<br />
+      Any areas not revealed by radar or player vision will be deleted and map pins will be lost.
+    </em>
+    <li><span>Remove any chunks not covered by radar vision</span><code>/clean-surface</code></li>
+  </ul>
+</div>
+
   </div>
 </body>
 
