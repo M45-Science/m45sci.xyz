@@ -71,24 +71,11 @@
 
     <div>
         <button onclick="copyName()">📋 Copy to Clipboard</button>
-        <button onclick="shareName()">🔗 Share to Discord</button>
     </div>
 
     <div class="footer">Belts may jam. Names will not. Legendary ships may cause excessive admiration.</div>
 
     <script>
-        const webhookURL = "https://discord.com/api/webhooks/1377901092440117319/WIj1tKVaqYpoaX81PDPVtQtQqDqogufE2V4vNPMTVhMYoPrkz7cUlUzRS4n-2h2Nv23b";
-
-        const rarityIcons = {
-            'legendary': '🌟 Legendary',
-            'meme': '😂 Meme',
-            'humorous': '🤣 Humorous',
-            'sciFi': '🛸 Sci-Fi',
-            'industrial': '⚙️ Industrial',
-            'serious': '📡 Serious',
-            'silly': '🤪 Silly'
-        };
-
         const industrialPrefixes = ['Iron', 'Steel', 'Copper', 'Uranium', 'Oil', 'Assembler', 'Foundry', 'Compressor', 'Boiler', 'Mega', 'Blast', 'Casting', 'Combustion', 'Pipeline', 'Overdrive', 'Turbine', 'Extractor', 'Excavation', 'Pumpjack', 'Overflow', 'Surge', 'Redundant', 'Engineered', 'Titanium', 'Logistics', 'Accumulator', 'Pumpstation', 'Distribution', 'Automated', 'Robotic', 'Reinforced', 'Structural', 'Stabilized', 'Pressurized', 'Heavy', 'Catalytic', 'Hyperforge', 'Fusion', 'Magnetized', 'Phase'];
         const industrialSuffixes = ['Titan', 'Forge', 'Pioneer', 'Excavator', 'Hauler', 'Conveyor', 'Platform', 'Miner', 'Rig', 'Smeltery', 'Processor', 'Machina', 'Optimizer', 'Amplifier', 'Harvester', 'Synthesizer', 'Balancer', 'Buffer', 'Reclaimer', 'Compressor', 'Expander', 'Catalyst', 'Accumulator', 'Condenser', 'Pumpstation', 'Recycler', 'Converter', 'Logistic', 'Transfer', 'MegaForge', 'TurboSmelter', 'Refiner', 'SynthCore', 'PressureDome', 'Extractor', 'SubFactory', 'NanoAssembler', 'PipeLord', 'DrillMaster', 'AutoAssembler'];
 
@@ -110,20 +97,6 @@
         const legendaryPrefixes = ['Oblivion', 'Eclipse', 'Aether', 'Nemesis', 'Singularity', 'Prometheus', 'Celestial', 'Omicron', 'Leviathan', 'Mythos', 'Ark', 'Xenith', 'Darkstar', 'Hyperion', 'Nexus', 'Chronos', 'Infinity', 'Behemoth', 'Sovereign', 'Paradox', 'Genesis', 'Aphelion', 'Ascendant', 'Supremacy', 'Excalibur', 'Apex', 'Zephyr', 'Solstice', 'Helix', 'Overlord', 'Cyclone', 'Draconis', 'Starforge', 'Warden', 'Aurora', 'Oblivion', 'Spectre', 'Titanus', 'Eventide', 'Omega'];
         const legendarySuffixes = ['Supremacy', 'Ascension', 'Anomaly', 'Dominion', 'Paradox', 'Zenith', 'Apex', 'Legion', 'Genesis', 'Pantheon', 'Infinity', 'Eventide', 'Vortex', 'Overlord', 'Nemesis', 'Judgement', 'Colossus', 'Primarch', 'Conqueror', 'Sanctum', 'Prophecy', 'Eclipse', 'Awakening', 'Arbiter', 'Mythos', 'Ark', 'Providence', 'Champion', 'Deliverance', 'Sanctuary', 'Beacon', 'Crusade', 'Ascendancy', 'Vigilance', 'Starborn', 'Overseer', 'Imperium', 'Titan', 'Manifest', 'Endbringer', 'Singularity'];
 
-        const rarityColors = {
-            'legendary': 0xffd700,
-            'meme': 0xff69b4,
-            'humorous': 0xffa500,
-            'sciFi': 0x00ffff,
-            'industrial': 0xff8c00,
-            'serious': 0x4682b4,
-            'silly': 0xadff2f
-        };
-
-        // (All existing expanded prefixes & suffixes here... kept as is to save space)
-        // Your giant lists from previous update remain intact.
-        // (no changes to those)
-
         let lastGeneratedName = '';
         let lastGeneratedRarity = '';
 
@@ -141,10 +114,8 @@
             const suffix = suffixList[Math.floor(Math.random() * suffixList.length)];
 
             lastGeneratedName = `${prefix} ${suffix}`;
-            lastGeneratedRarity = type;
 
             document.getElementById('name').innerText = lastGeneratedName;
-            document.getElementById('rarity').innerText = rarityIcons[type];
         }
 
         function generateWithRarity() {
@@ -160,27 +131,8 @@
 
         function copyName() {
             if (!lastGeneratedName) return alert("Generate a name first!");
-            navigator.clipboard.writeText(`${lastGeneratedName} (${rarityIcons[lastGeneratedRarity]})`);
+            navigator.clipboard.writeText(`${lastGeneratedName}`);
             alert("Name copied to clipboard!");
-        }
-
-        function shareName() {
-            if (!lastGeneratedName) return alert("Generate a name first!");
-
-            fetch(webhookURL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    username: "Shipyard Overseer 3000",
-                    avatar_url: "https://m45sci.xyz/img/shipyard.png",  // Use your hosted logo
-                    embeds: [{
-                        title: `🚀 New ship name: ${lastGeneratedName}`,
-                        description: `[🔗 Generate your own spaceship name ➡️](https://m45sci.xyz/ship-namer.html)`,
-                        color: rarityColors[lastGeneratedRarity],
-                    }]
-                })
-            }).then(() => alert("Name shared to Discord!"))
-                .catch(err => alert("Failed to share: " + err));
         }
     </script>
 </body>
