@@ -30,12 +30,6 @@
             color: #FF8C00;
         }
 
-        #rarity {
-            font-size: 1.2em;
-            margin-top: 10px;
-            color: #FFD700;
-        }
-
         .footer {
             margin-top: 60px;
             font-size: 0.8em;
@@ -55,7 +49,7 @@
     <p>Lovingly crafted by ChatGPT for all brave engineers of space and belts ❤️</p>
 
     <div>
-        <button onclick="generateWithRarity()">🎲 Generate Random Name 🎲</button>
+        <button onclick="generateWithRand()">🎲 Generate Random Name 🎲</button>
         <button onclick="generate('industrial')">Industrial</button>
         <button onclick="generate('sciFi')">Sci-Fi</button>
         <button onclick="generate('silly')">Silly</button>
@@ -66,7 +60,6 @@
     </div>
 
     <div id="name"></div>
-    <div id="rarity"></div>
 
     <div>
         <button onclick="copyName()">📋 Copy to Clipboard</button>
@@ -116,7 +109,7 @@
             document.getElementById('name').innerText = lastGeneratedName;
         }
 
-        function generateWithRarity() {
+        function generateWithRand() {
             const roll = Math.random();
             if (roll < 0.05) return generate('legendary');
             if (roll < 0.15) return generate('meme');
