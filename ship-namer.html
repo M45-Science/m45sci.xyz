@@ -97,7 +97,6 @@
         const legendarySuffixes = ['Supremacy', 'Ascension', 'Anomaly', 'Dominion', 'Paradox', 'Zenith', 'Apex', 'Legion', 'Genesis', 'Pantheon', 'Infinity', 'Eventide', 'Vortex', 'Overlord', 'Nemesis', 'Judgement', 'Colossus', 'Primarch', 'Conqueror', 'Sanctum', 'Prophecy', 'Eclipse', 'Awakening', 'Arbiter', 'Mythos', 'Ark', 'Providence', 'Champion', 'Deliverance', 'Sanctuary', 'Beacon', 'Crusade', 'Ascendancy', 'Vigilance', 'Starborn', 'Overseer', 'Imperium', 'Titan', 'Manifest', 'Endbringer', 'Singularity'];
 
         let lastGeneratedName = '';
-        let lastGeneratedRarity = '';
 
         function generate(type) {
             let prefixList = [], suffixList = [];
@@ -129,9 +128,35 @@
         }
 
         function copyName() {
-            if (!lastGeneratedName) return alert("Generate a name first!");
+            if (!lastGeneratedName) {
+                showNotice("Generate a name first!");
+                return;
+            }
             navigator.clipboard.writeText(`${lastGeneratedName}`);
-            alert("Name copied to clipboard!");
+            showNotice("Name copied to clipboard!");
+        }
+
+        function showNotice(message) {
+            let notice = document.createElement('div');
+            notice.innerText = message;
+            notice.style.position = 'fixed';
+            notice.style.bottom = '20px';
+            notice.style.left = '50%';
+            notice.style.transform = 'translateX(-50%)';
+            notice.style.background = '#333';
+            notice.style.color = '#FFD700';
+            notice.style.padding = '10px 20px';
+            notice.style.border = '2px solid #FFD700';
+            notice.style.borderRadius = '8px';
+            notice.style.zIndex = '9999';
+            notice.style.opacity = '0.95';
+            document.body.appendChild(notice);
+
+            setTimeout(() => {
+                notice.style.transition = 'opacity 0.5s';
+                notice.style.opacity = '0';
+                setTimeout(() => document.body.removeChild(notice), 500);
+            }, 1500);
         }
     </script>
 </body>
