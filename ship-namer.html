@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
->
 <head>
     <meta charset="UTF-8">
     <title>Factorio Spaceship Name Generator</title>
@@ -104,6 +103,20 @@
         const legendaryPrefixes = ['Oblivion','Eclipse','Aether','Nemesis','Singularity','Prometheus','Celestial','Omicron','Leviathan','Mythos','Ark','Xenith','Darkstar','Hyperion','Nexus','Chronos','Infinity','Behemoth','Sovereign','Paradox','Genesis','Aphelion','Ascendant','Supremacy','Excalibur','Apex','Zephyr','Solstice','Helix','Overlord','Cyclone','Draconis','Starforge','Warden','Aurora','Oblivion','Spectre','Titanus','Eventide','Omega'];
         const legendarySuffixes = ['Supremacy','Ascension','Anomaly','Dominion','Paradox','Zenith','Apex','Legion','Genesis','Pantheon','Infinity','Eventide','Vortex','Overlord','Nemesis','Judgement','Colossus','Primarch','Conqueror','Sanctum','Prophecy','Eclipse','Awakening','Arbiter','Mythos','Ark','Providence','Champion','Deliverance','Sanctuary','Beacon','Crusade','Ascendancy','Vigilance','Starborn','Overseer','Imperium','Titan','Manifest','Endbringer','Singularity'];
 
+        const rarityColors = {
+            'legendary': 0xffd700,
+            'meme': 0xff69b4,
+            'humorous': 0xffa500,
+            'sciFi': 0x00ffff,
+            'industrial': 0xff8c00,
+            'serious': 0x4682b4,
+            'silly': 0xadff2f
+        };
+
+        // (All existing expanded prefixes & suffixes here... kept as is to save space)
+        // Your giant lists from previous update remain intact.
+        // (no changes to those)
+
         let lastGeneratedName = '';
         let lastGeneratedRarity = '';
 
@@ -152,7 +165,12 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     username: "Shipyard Overseer 3000",
-                    content: `🚀 New spaceship name generated: **${lastGeneratedName}**\nRarity: ${rarityIcons[lastGeneratedRarity]}\nWant to generate your own? ➡️ https://m45sci.xyz/ship-namer.html`
+                    avatar_url: "https://my45sci.xyz/img/shipyard.png",
+                    embeds: [{
+                        title: lastGeneratedName,
+                        description: `${rarityIcons[lastGeneratedRarity]} rarity\n[Generate your own ➡️](https://my45sci.xyz/ship-namer.html)`,
+                        color: rarityColors[lastGeneratedRarity]
+                    }]
                 })
             }).then(() => alert("Name shared to Discord!"))
               .catch(err => alert("Failed to share: " + err));
