@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Factorio Spaceship Name Generator</title>
@@ -11,6 +12,7 @@
             text-align: center;
             padding: 50px;
         }
+
         button {
             font-size: 1.2em;
             margin: 10px;
@@ -21,27 +23,32 @@
             border-radius: 8px;
             cursor: pointer;
         }
+
         #name {
             font-size: 2.5em;
             margin-top: 40px;
             color: #FF8C00;
         }
+
         #rarity {
             font-size: 1.2em;
             margin-top: 10px;
             color: #FFD700;
         }
+
         .footer {
             margin-top: 60px;
             font-size: 0.8em;
             color: #aaa;
         }
+
         img.logo {
             width: 150px;
             margin-bottom: 20px;
         }
     </style>
 </head>
+
 <body>
     <img src="img/shipyard.png" alt="Shipyard Overseer 3000" class="logo" />
     <h1>🚀 Factorio Spaceship Name Generator 🚀</h1>
@@ -82,26 +89,26 @@
             'silly': '🤪 Silly'
         };
 
-        const industrialPrefixes = ['Iron','Steel','Copper','Uranium','Oil','Assembler','Foundry','Compressor','Boiler','Mega','Blast','Casting','Combustion','Pipeline','Overdrive','Turbine','Extractor','Excavation','Pumpjack','Overflow','Surge','Redundant','Engineered','Titanium','Logistics','Accumulator','Pumpstation','Distribution','Automated','Robotic','Reinforced','Structural','Stabilized','Pressurized','Heavy','Catalytic','Hyperforge','Fusion','Magnetized','Phase'];
-        const industrialSuffixes = ['Titan','Forge','Pioneer','Excavator','Hauler','Conveyor','Platform','Miner','Rig','Smeltery','Processor','Machina','Optimizer','Amplifier','Harvester','Synthesizer','Balancer','Buffer','Reclaimer','Compressor','Expander','Catalyst','Accumulator','Condenser','Pumpstation','Recycler','Converter','Logistic','Transfer','MegaForge','TurboSmelter','Refiner','SynthCore','PressureDome','Extractor','SubFactory','NanoAssembler','PipeLord','DrillMaster','AutoAssembler'];
+        const industrialPrefixes = ['Iron', 'Steel', 'Copper', 'Uranium', 'Oil', 'Assembler', 'Foundry', 'Compressor', 'Boiler', 'Mega', 'Blast', 'Casting', 'Combustion', 'Pipeline', 'Overdrive', 'Turbine', 'Extractor', 'Excavation', 'Pumpjack', 'Overflow', 'Surge', 'Redundant', 'Engineered', 'Titanium', 'Logistics', 'Accumulator', 'Pumpstation', 'Distribution', 'Automated', 'Robotic', 'Reinforced', 'Structural', 'Stabilized', 'Pressurized', 'Heavy', 'Catalytic', 'Hyperforge', 'Fusion', 'Magnetized', 'Phase'];
+        const industrialSuffixes = ['Titan', 'Forge', 'Pioneer', 'Excavator', 'Hauler', 'Conveyor', 'Platform', 'Miner', 'Rig', 'Smeltery', 'Processor', 'Machina', 'Optimizer', 'Amplifier', 'Harvester', 'Synthesizer', 'Balancer', 'Buffer', 'Reclaimer', 'Compressor', 'Expander', 'Catalyst', 'Accumulator', 'Condenser', 'Pumpstation', 'Recycler', 'Converter', 'Logistic', 'Transfer', 'MegaForge', 'TurboSmelter', 'Refiner', 'SynthCore', 'PressureDome', 'Extractor', 'SubFactory', 'NanoAssembler', 'PipeLord', 'DrillMaster', 'AutoAssembler'];
 
-        const sciFiPrefixes = ['Stellar','Void','Galactic','Nova','Nebula','Quantum','Hyper','Plasma','Cosmic','Dark','Celestial','Singularity','Astro','Solaris','Andromeda','Chrono','Nebulon','Subspace','Interstellar','Lunar','Zero','Photon','Antimatter','Graviton','Orion','Exo','Helios','Stratos','Omega','Vortex','Neutrino','Supernova','Pulsewave','Starborn','Wormhole','Magnetar','Solarwind','Timewarp','Chronosphere','Voidrunner','Darklight'];
-        const sciFiSuffixes = ['Crusader','Vanguard','Harbinger','Specter','Pulse','Sovereign','Explorer','Reclaimer','Interceptor','Odyssey','Anomaly','Expedition','Genesis','Outrider','Pioneer','Nemesis','Eclipse','Beacon','Colossus','Invictus','Equinox','Oblivion','Emissary','Manifest','Inception','Ascension','Dominion','Zenith','Infinity','Continuum','Sentinel','Paradox','Ascendant','Mythos','Enigma','Frontier','Prometheus','Eventide','Starhammer','Apex'];
+        const sciFiPrefixes = ['Stellar', 'Void', 'Galactic', 'Nova', 'Nebula', 'Quantum', 'Hyper', 'Plasma', 'Cosmic', 'Dark', 'Celestial', 'Singularity', 'Astro', 'Solaris', 'Andromeda', 'Chrono', 'Nebulon', 'Subspace', 'Interstellar', 'Lunar', 'Zero', 'Photon', 'Antimatter', 'Graviton', 'Orion', 'Exo', 'Helios', 'Stratos', 'Omega', 'Vortex', 'Neutrino', 'Supernova', 'Pulsewave', 'Starborn', 'Wormhole', 'Magnetar', 'Solarwind', 'Timewarp', 'Chronosphere', 'Voidrunner', 'Darklight'];
+        const sciFiSuffixes = ['Crusader', 'Vanguard', 'Harbinger', 'Specter', 'Pulse', 'Sovereign', 'Explorer', 'Reclaimer', 'Interceptor', 'Odyssey', 'Anomaly', 'Expedition', 'Genesis', 'Outrider', 'Pioneer', 'Nemesis', 'Eclipse', 'Beacon', 'Colossus', 'Invictus', 'Equinox', 'Oblivion', 'Emissary', 'Manifest', 'Inception', 'Ascension', 'Dominion', 'Zenith', 'Infinity', 'Continuum', 'Sentinel', 'Paradox', 'Ascendant', 'Mythos', 'Enigma', 'Frontier', 'Prometheus', 'Eventide', 'Starhammer', 'Apex'];
 
-        const sillyPrefixes = ['Belted','Clogged','Oopsie','Kaboom','Gremlin','Lazy','Overclocked','Coffee','Biter','Jammy','Fluffy','Wonky','Slippery','Pickled','Rusty','Lumpy','Spaghetti','Wiggly','Noodly','Panic','Twirly','Crunchy','Zappy','Soggy','Derpy','Clumsy','Fizzy','Tippy','Squeezy','Whacky','Boingy','Plonky','Farty','Chunky','Bonky','Yummy','Drippy','Chubby','Fumbly','Wobble'];
-        const sillySuffixes = ['Banana','Waffle','Disaster','Oops','Bonk','Noodle','Thingy','Spaghetti','Panic','Mess','Muffin','Flop','Wibble','Gloop','Bubble','Blunder','Kablam','Mishap','Oopsinator','Toaster','Bouncer','Taco','Slapper','Twirler','Flinger','Doodad','Whirligig','Snacker','Crumble','Wiggler','Yelper','Gobbler','Splatter','Hiccup','Bouncepad','Muffler','Tumbler','Sprocket','Chomper','Boinker'];
+        const sillyPrefixes = ['Belted', 'Clogged', 'Oopsie', 'Kaboom', 'Gremlin', 'Lazy', 'Overclocked', 'Coffee', 'Biter', 'Jammy', 'Fluffy', 'Wonky', 'Slippery', 'Pickled', 'Rusty', 'Lumpy', 'Spaghetti', 'Wiggly', 'Noodly', 'Panic', 'Twirly', 'Crunchy', 'Zappy', 'Soggy', 'Derpy', 'Clumsy', 'Fizzy', 'Tippy', 'Squeezy', 'Whacky', 'Boingy', 'Plonky', 'Farty', 'Chunky', 'Bonky', 'Yummy', 'Drippy', 'Chubby', 'Fumbly', 'Wobble'];
+        const sillySuffixes = ['Banana', 'Waffle', 'Disaster', 'Oops', 'Bonk', 'Noodle', 'Thingy', 'Spaghetti', 'Panic', 'Mess', 'Muffin', 'Flop', 'Wibble', 'Gloop', 'Bubble', 'Blunder', 'Kablam', 'Mishap', 'Oopsinator', 'Toaster', 'Bouncer', 'Taco', 'Slapper', 'Twirler', 'Flinger', 'Doodad', 'Whirligig', 'Snacker', 'Crumble', 'Wiggler', 'Yelper', 'Gobbler', 'Splatter', 'Hiccup', 'Bouncepad', 'Muffler', 'Tumbler', 'Sprocket', 'Chomper', 'Boinker'];
 
-        const seriousPrefixes = ['Endeavor','Liberty','Infinity','Ascendant','Vigilant','Eternal','Majestic','Dominion','Providence','Resolute','Guardian','Honor','Unbreakable','Valiant','Patriot','Courageous','Beacon','Crusade','Sovereign','Ambassador','Noble','Victory','Regent','Atlas','Goliath','Sentinel','Titan','Monarch','Vanguard','Odyssey','Pioneer','Defiant','Resolute','Covenant','Providence','Glorious','Invincible','Protector','Paladin','Champion'];
-        const seriousSuffixes = ['Hope','Journey','Glory','Path','Sword','Star','Crown','Beacon','Ark','Frontier','Faith','Triumph','Banner','Fleet','Guardian','Protector','Torch','Defender','Deliverance','Shield','Concord','Sanctuary','Dominion','Reign','Charter','Citadel','Ascendancy','Union','Constitution','Fortress','Empire','Stronghold','Beacon','Bastion','Summit','Cradle','Vow','Vigil','Watch','Aegis','Pillar'];
+        const seriousPrefixes = ['Endeavor', 'Liberty', 'Infinity', 'Ascendant', 'Vigilant', 'Eternal', 'Majestic', 'Dominion', 'Providence', 'Resolute', 'Guardian', 'Honor', 'Unbreakable', 'Valiant', 'Patriot', 'Courageous', 'Beacon', 'Crusade', 'Sovereign', 'Ambassador', 'Noble', 'Victory', 'Regent', 'Atlas', 'Goliath', 'Sentinel', 'Titan', 'Monarch', 'Vanguard', 'Odyssey', 'Pioneer', 'Defiant', 'Resolute', 'Covenant', 'Providence', 'Glorious', 'Invincible', 'Protector', 'Paladin', 'Champion'];
+        const seriousSuffixes = ['Hope', 'Journey', 'Glory', 'Path', 'Sword', 'Star', 'Crown', 'Beacon', 'Ark', 'Frontier', 'Faith', 'Triumph', 'Banner', 'Fleet', 'Guardian', 'Protector', 'Torch', 'Defender', 'Deliverance', 'Shield', 'Concord', 'Sanctuary', 'Dominion', 'Reign', 'Charter', 'Citadel', 'Ascendancy', 'Union', 'Constitution', 'Fortress', 'Empire', 'Stronghold', 'Beacon', 'Bastion', 'Summit', 'Cradle', 'Vow', 'Vigil', 'Watch', 'Aegis', 'Pillar'];
 
-        const memePrefixes = ['Inserter','Belt','Biter','Assembler','Train','Rocket','AFK','Overflow','Split','Science','Gremlin','Cursed','Laggy','Desync','Polluted','Bot','Nuclear','Megabase','Ratio','Blueprint','Spaghetti','Smoggy','Outpost','Mining','Expander','Railworld','Factory','Refinery','Chest','Looped','Exponential','Overproduced','Exploding','Waterlogged','Derailed','Oil-starved','Overclocked','Choked','Lost','UPS','Backlogged'];
-        const memeSuffixes = ['Loop','Clog','Meltdown','Lagfest','Junction','Disaster','BiterNest','BufferOverflow','InserterHell','Trainwreck','Kovarex','RatioFail','StackerJam','PollutionCloud','SmelterJam','OverflowError','Deadlock','Spaghetti','OilCrisis','ScienceWall','BlueprintLag','UPSDeath','TrainCrash','BeltMess','PowerDrain','CopperCrisis','IronStarve','SmelterMaze','ChestBomb','Bitersplosion','StackOverrun','InserterDance','LaserDeath','ReactorBoom','OilLeak','AssemblerChoke','MegaLag','CircuitSnarl','OutpostCollapse','SurplusOverflow'];
+        const memePrefixes = ['Inserter', 'Belt', 'Biter', 'Assembler', 'Train', 'Rocket', 'AFK', 'Overflow', 'Split', 'Science', 'Gremlin', 'Cursed', 'Laggy', 'Desync', 'Polluted', 'Bot', 'Nuclear', 'Megabase', 'Ratio', 'Blueprint', 'Spaghetti', 'Smoggy', 'Outpost', 'Mining', 'Expander', 'Railworld', 'Factory', 'Refinery', 'Chest', 'Looped', 'Exponential', 'Overproduced', 'Exploding', 'Waterlogged', 'Derailed', 'Oil-starved', 'Overclocked', 'Choked', 'Lost', 'UPS', 'Backlogged'];
+        const memeSuffixes = ['Loop', 'Clog', 'Meltdown', 'Lagfest', 'Junction', 'Disaster', 'BiterNest', 'BufferOverflow', 'InserterHell', 'Trainwreck', 'Kovarex', 'RatioFail', 'StackerJam', 'PollutionCloud', 'SmelterJam', 'OverflowError', 'Deadlock', 'Spaghetti', 'OilCrisis', 'ScienceWall', 'BlueprintLag', 'UPSDeath', 'TrainCrash', 'BeltMess', 'PowerDrain', 'CopperCrisis', 'IronStarve', 'SmelterMaze', 'ChestBomb', 'Bitersplosion', 'StackOverrun', 'InserterDance', 'LaserDeath', 'ReactorBoom', 'OilLeak', 'AssemblerChoke', 'MegaLag', 'CircuitSnarl', 'OutpostCollapse', 'SurplusOverflow'];
 
-        const humorousPrefixes = ['Captain','Sir','Wobbly','Duke','Emperor','General','Baron','Commodore','Admiral','Quantum','Chonky','Derpy','MegaUltra','SuperDuper','UltraMega','Wiggly','Lord','Master','Chief','Supreme','Arch','Clown','Turbo','Banana','Crazy','Silly','Spinning','Bouncy','Wobbletron','ZapZap','Muffin','Quirky','Twitchy','Blubbery','Snuggly','Tiny','Massive','Loopy','NomNom','Squishy'];
-        const humorousSuffixes = ['Waffle','Banana','Pancake','Slapper','Wiggler','Blaster','Toaster','Noodler','Slapper','Chomper','Twirler','Squeegee','Wobbletron','Spanker','Flopper','Doombringer','Pancaker','Bouncer','Noodlemaster','Fluffydoom','Slapmaster','MegaMuffin','NomNom','Doodle','Bouncerino','Wobblinator','Flinger','Giggler','Quacker','Snuggler','Dribbler','Nomster','Squishmaster','Bouncifier','Tumbler','Dizzler','Squisher','Flipflop','Muffinator','Wigglefist'];
+        const humorousPrefixes = ['Captain', 'Sir', 'Wobbly', 'Duke', 'Emperor', 'General', 'Baron', 'Commodore', 'Admiral', 'Quantum', 'Chonky', 'Derpy', 'MegaUltra', 'SuperDuper', 'UltraMega', 'Wiggly', 'Lord', 'Master', 'Chief', 'Supreme', 'Arch', 'Clown', 'Turbo', 'Banana', 'Crazy', 'Silly', 'Spinning', 'Bouncy', 'Wobbletron', 'ZapZap', 'Muffin', 'Quirky', 'Twitchy', 'Blubbery', 'Snuggly', 'Tiny', 'Massive', 'Loopy', 'NomNom', 'Squishy'];
+        const humorousSuffixes = ['Waffle', 'Banana', 'Pancake', 'Slapper', 'Wiggler', 'Blaster', 'Toaster', 'Noodler', 'Slapper', 'Chomper', 'Twirler', 'Squeegee', 'Wobbletron', 'Spanker', 'Flopper', 'Doombringer', 'Pancaker', 'Bouncer', 'Noodlemaster', 'Fluffydoom', 'Slapmaster', 'MegaMuffin', 'NomNom', 'Doodle', 'Bouncerino', 'Wobblinator', 'Flinger', 'Giggler', 'Quacker', 'Snuggler', 'Dribbler', 'Nomster', 'Squishmaster', 'Bouncifier', 'Tumbler', 'Dizzler', 'Squisher', 'Flipflop', 'Muffinator', 'Wigglefist'];
 
-        const legendaryPrefixes = ['Oblivion','Eclipse','Aether','Nemesis','Singularity','Prometheus','Celestial','Omicron','Leviathan','Mythos','Ark','Xenith','Darkstar','Hyperion','Nexus','Chronos','Infinity','Behemoth','Sovereign','Paradox','Genesis','Aphelion','Ascendant','Supremacy','Excalibur','Apex','Zephyr','Solstice','Helix','Overlord','Cyclone','Draconis','Starforge','Warden','Aurora','Oblivion','Spectre','Titanus','Eventide','Omega'];
-        const legendarySuffixes = ['Supremacy','Ascension','Anomaly','Dominion','Paradox','Zenith','Apex','Legion','Genesis','Pantheon','Infinity','Eventide','Vortex','Overlord','Nemesis','Judgement','Colossus','Primarch','Conqueror','Sanctum','Prophecy','Eclipse','Awakening','Arbiter','Mythos','Ark','Providence','Champion','Deliverance','Sanctuary','Beacon','Crusade','Ascendancy','Vigilance','Starborn','Overseer','Imperium','Titan','Manifest','Endbringer','Singularity'];
+        const legendaryPrefixes = ['Oblivion', 'Eclipse', 'Aether', 'Nemesis', 'Singularity', 'Prometheus', 'Celestial', 'Omicron', 'Leviathan', 'Mythos', 'Ark', 'Xenith', 'Darkstar', 'Hyperion', 'Nexus', 'Chronos', 'Infinity', 'Behemoth', 'Sovereign', 'Paradox', 'Genesis', 'Aphelion', 'Ascendant', 'Supremacy', 'Excalibur', 'Apex', 'Zephyr', 'Solstice', 'Helix', 'Overlord', 'Cyclone', 'Draconis', 'Starforge', 'Warden', 'Aurora', 'Oblivion', 'Spectre', 'Titanus', 'Eventide', 'Omega'];
+        const legendarySuffixes = ['Supremacy', 'Ascension', 'Anomaly', 'Dominion', 'Paradox', 'Zenith', 'Apex', 'Legion', 'Genesis', 'Pantheon', 'Infinity', 'Eventide', 'Vortex', 'Overlord', 'Nemesis', 'Judgement', 'Colossus', 'Primarch', 'Conqueror', 'Sanctum', 'Prophecy', 'Eclipse', 'Awakening', 'Arbiter', 'Mythos', 'Ark', 'Providence', 'Champion', 'Deliverance', 'Sanctuary', 'Beacon', 'Crusade', 'Ascendancy', 'Vigilance', 'Starborn', 'Overseer', 'Imperium', 'Titan', 'Manifest', 'Endbringer', 'Singularity'];
 
         const rarityColors = {
             'legendary': 0xffd700,
@@ -132,7 +139,7 @@
 
             const prefix = prefixList[Math.floor(Math.random() * prefixList.length)];
             const suffix = suffixList[Math.floor(Math.random() * suffixList.length)];
-            
+
             lastGeneratedName = `${prefix} ${suffix}`;
             lastGeneratedRarity = type;
 
@@ -165,15 +172,26 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     username: "Shipyard Overseer 3000",
+                    avatar_url: "https://my45sci.xyz/img/shipyard.png",  // Use your hosted logo
                     embeds: [{
-                        title: lastGeneratedName,
-                        description: `${rarityIcons[lastGeneratedRarity]} rarity\n[Generate your own ➡️](https://m45sci.xyz/ship-namer.html)`,
-                        color: rarityColors[lastGeneratedRarity]
+                        title: `🚀 ${lastGeneratedName}`,
+                        description: `**${rarityIcons[lastGeneratedRarity]}** rarity\n\n[🔗 Generate your own spaceship ➡️](https://my45sci.xyz/ship-namer.html)`,
+                        color: rarityColors[lastGeneratedRarity],
+                        author: {
+                            name: "🚀 New Spaceship Launched!",
+                        },
+                        footer: {
+                            text: "Brought to you by Shipyard Overseer 3000 ⚙️",
+                        },
+                        thumbnail: {
+                            url: "https://my45sci.xyz/img/shipyard.png"  // Thumbnail next to name
+                        }
                     }]
                 })
             }).then(() => alert("Name shared to Discord!"))
-              .catch(err => alert("Failed to share: " + err));
+                .catch(err => alert("Failed to share: " + err));
         }
     </script>
 </body>
+
 </html>
