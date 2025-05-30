@@ -172,20 +172,11 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     username: "Shipyard Overseer 3000",
-                    avatar_url: "https://my45sci.xyz/img/shipyard.png",  // Use your hosted logo
+                    avatar_url: "https://m45sci.xyz/img/shipyard.png",  // Use your hosted logo
                     embeds: [{
-                        title: `🚀 ${lastGeneratedName}`,
-                        description: `**${rarityIcons[lastGeneratedRarity]}** rarity\n\n[🔗 Generate your own spaceship ➡️](https://my45sci.xyz/ship-namer.html)`,
+                        title: `🚀 New ship name: ${lastGeneratedName}`,
+                        description: `**${rarityIcons[lastGeneratedRarity]}** rarity\n\n[🔗 Generate your own spaceship name ➡️](https://m45sci.xyz/ship-namer.html)`,
                         color: rarityColors[lastGeneratedRarity],
-                        author: {
-                            name: "🚀 New Spaceship Launched!",
-                        },
-                        footer: {
-                            text: "Brought to you by Shipyard Overseer 3000 ⚙️",
-                        },
-                        thumbnail: {
-                            url: "https://my45sci.xyz/img/shipyard.png"  // Thumbnail next to name
-                        }
                     }]
                 })
             }).then(() => alert("Name shared to Discord!"))
