@@ -68,6 +68,7 @@
     <div class="footer">Belts may jam. Names will not. Legendary ships may cause excessive admiration.</div>
 
     <script>
+
         const industrialPrefixes = ['Iron', 'Steel', 'Copper', 'Uranium', 'Oil', 'Assembler', 'Foundry', 'Compressor', 'Boiler', 'Mega', 'Blast', 'Casting', 'Combustion', 'Pipeline', 'Overdrive', 'Turbine', 'Extractor', 'Excavation', 'Pumpjack', 'Overflow', 'Surge', 'Redundant', 'Engineered', 'Titanium', 'Logistics', 'Accumulator', 'Pumpstation', 'Distribution', 'Automated', 'Robotic', 'Reinforced', 'Structural', 'Stabilized', 'Pressurized', 'Heavy', 'Catalytic', 'Hyperforge', 'Fusion', 'Magnetized', 'Phase'];
         const industrialSuffixes = ['Titan', 'Forge', 'Pioneer', 'Excavator', 'Hauler', 'Conveyor', 'Platform', 'Miner', 'Rig', 'Smeltery', 'Processor', 'Machina', 'Optimizer', 'Amplifier', 'Harvester', 'Synthesizer', 'Balancer', 'Buffer', 'Reclaimer', 'Compressor', 'Expander', 'Catalyst', 'Accumulator', 'Condenser', 'Pumpstation', 'Recycler', 'Converter', 'Logistic', 'Transfer', 'MegaForge', 'TurboSmelter', 'Refiner', 'SynthCore', 'PressureDome', 'Extractor', 'SubFactory', 'NanoAssembler', 'PipeLord', 'DrillMaster', 'AutoAssembler'];
 
@@ -90,6 +91,10 @@
         const legendarySuffixes = ['Supremacy', 'Ascension', 'Anomaly', 'Dominion', 'Paradox', 'Zenith', 'Apex', 'Legion', 'Genesis', 'Pantheon', 'Infinity', 'Eventide', 'Vortex', 'Overlord', 'Nemesis', 'Judgement', 'Colossus', 'Primarch', 'Conqueror', 'Sanctum', 'Prophecy', 'Eclipse', 'Awakening', 'Arbiter', 'Mythos', 'Ark', 'Providence', 'Champion', 'Deliverance', 'Sanctuary', 'Beacon', 'Crusade', 'Ascendancy', 'Vigilance', 'Starborn', 'Overseer', 'Imperium', 'Titan', 'Manifest', 'Endbringer', 'Singularity'];
 
         let lastGeneratedName = '';
+
+        window.onload = function () {
+            generate('meme');
+        }
 
         function generate(type) {
             let prefixList = [], suffixList = [];
