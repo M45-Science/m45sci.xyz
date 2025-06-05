@@ -165,6 +165,9 @@
       list-style: none;
       padding-left: 0.5rem;
     }
+    li {
+      margin-left: 1.2rem;
+    }
 
     code {
       font-family: Menlo, Consolas, monospace;
@@ -187,40 +190,38 @@
   </header>
   <div id="page-wrapper">
     <main>
+        <p>Lost in the stars? This quick guide keeps it short—and a tad funny.</p>
 
       <!-- Membership & Roles -->
       <section id="membership">
         <h2><span class="material-icons">badge</span>Membership & Roles</h2>
-        <ul>
-          <li>Auto-Register: Roles assigned by in-game score (non-idle); no manual signup.</li>
-          <li></li>
-          <li><code>Member:</code> Earn by playing public maps; needed for private-server access.</li>
-          <li><code>Regular:</code> Access private servers & channels; extra vote power for banish.</li>
-          <li><code>Veteran:</code> Two point votes; solo reset/rewind; can banish Regulars.</li>
-          <li></li>
-          <li></li>
+          <ul>
+            <li>Auto-Register: Score points while you play—no paperwork required.</li>
+            <li><code>Member:</code> Play public maps to unlock private servers.</li>
+            <li><code>Regular:</code> More channels, more servers, and extra say in banish votes.</li>
+            <li><code>Veteran:</code> Double vote power and the ability to banish misbehaving Regulars.</li>
+          </ul>
           <p style="line-height:2rem;">
             <img src="img/help-info.png" width="50rem" height="50rem" alt="help-info" style="display:inline-block; vertical-align:text-top;">
-            In-game help: click the top-left icon 'help-info'
+            Need help in game? Click the top-left icon.
           </p>
-        </ul>
       </section>
 
       <!-- Discord Commands -->
       <section id="commands">
         <h2><span class="material-icons">chat</span>Discord Commands</h2>
-        <p>Commands work only in a map-specific Discord channel. (see Map Channel Status below)</p>
+          <p>These commands work in map-specific Discord channels. (Check Map Channel Status below.)</p>
         <ul>
-          <li><span class="material-icons">warning</span><code>/register</code> — Run this first and follow instructions.</li>
-          <li><span class="material-icons">how_to_vote</span><code>/vote-map</code> — Rewind, reset, or skip scheduled map reset.</li>
-          <li><span class="material-icons">info</span><code>/info [verbose]</code> — Show server details (add<em>verbose</em> for extra stats).</li>
-          <li><span class="material-icons">download</span><code>/modpack</code> — Get a link to download installed mods.</li>
-          <li><span class="material-icons">group</span><code>/players</code> — List current players online.</li>
-          <li><span class="material-icons">pause_circle</span><code>/pause-game</code> — Pause the map (2 min timeout) while you connect.</li>
-          <li><span class="material-icons">search</span><code>/whois search:&lt;player&gt;</code> — Lookup player info.</li>
+          <li><span class="material-icons">warning</span><code>/register</code> — Run this first so the bots know who you are.</li>
+          <li><span class="material-icons">how_to_vote</span><code>/vote-map</code> — Rewind, reset, or skip the scheduled reset.</li>
+          <li><span class="material-icons">info</span><code>/info [verbose]</code> — Show server details (add <em>verbose</em> if you love numbers).</li>
+          <li><span class="material-icons">download</span><code>/modpack</code> — Link to the installed mods.</li>
+          <li><span class="material-icons">group</span><code>/players</code> — List current players.</li>
+          <li><span class="material-icons">pause_circle</span><code>/pause-game</code> — Pause for 2 minutes while you connect.</li>
+          <li><span class="material-icons">search</span><code>/whois search:&lt;player&gt;</code> — Look up a player.</li>
           <li><span class="material-icons">scoreboard</span><code>/scoreboard</code> — Show top 40 players.</li>
-          <li><span class="material-icons">extension</span><code>/list-mods</code> — Show mods on current map.</li>
-          <li><span class="material-icons">label</span><code>/get-roles</code> — Opt in/out Notification Roles.</li>
+          <li><span class="material-icons">extension</span><code>/list-mods</code> — Show mods on this map.</li>
+          <li><span class="material-icons">label</span><code>/get-roles</code> — Manage Notification Roles.</li>
         </ul>
         <p>See the <a href="https://support-apps.discord.com/hc/en-us/articles/26593412574359-How-to-Use-Apps" target="_blank">Official Discord guide</a> for app usage.</p>
       </section>
@@ -228,7 +229,7 @@
       <!-- Map Channel Status -->
       <section id="map-channels">
         <h2><span class="material-icons">chat_bubble</span>Map Channel Status</h2>
-        <p>Channels like <code>⚫a-planetoid-monthly</code> bridge Discord↔Factorio. Status icons:</p>
+          <p>Channels like <code>⚫a-planetoid-monthly</code> bridge Discord and Factorio. Icons show their mood:</p>
         <ul>
           <li><span class="emoji-icon">⚪</span>Public map — anyone can join</li>
           <li><span class="emoji-icon">🟢</span>Members-only — @Member required</li>
@@ -236,7 +237,7 @@
           <li><span class="emoji-icon">🔴</span>Veterans/invite-only — @Veteran+ required</li>
           <li><span class="emoji-icon">⚫</span>No players online</li>
         </ul>
-        <p>If prefixed by a number, that indicates current player count. All Discord commands listed above work here.</p>
+          <p>If a number comes first, that's the current player count. All Discord commands above work here.</p>
       </section>
 
 
@@ -244,10 +245,10 @@
       <section id="inactive">
         <h2><span class="material-icons">restore</span>Inactive Accounts</h2>
         <ul>
-          <li>Haven't played recently? Join any public server to “thaw” your account.</li>
-          <li>After a few minutes, members-only servers update your status.</li>
-          <li>Whitelist limited to the 1,500 most recently active members/regulars (of 5,000+).</li>
-          <li>Veterans & Moderators always remain whitelisted.</li>
+          <li>Been away? Join any public server to thaw your account.</li>
+          <li>Members-only servers update your status after a few minutes.</li>
+          <li>The whitelist keeps the 1,500 most active of 5,000+ names.</li>
+          <li>Veterans and Moderators never drop off.</li>
         </ul>
       </section>
 
@@ -255,15 +256,15 @@
       <section id="logs">
         <h2><span class="material-icons">receipt_long</span>Logs & Activity Viewer</h2>
         <ul>
-          <li>ChatWire messages start with <code>days-hours-minutes-seconds</code>. Discord will also show your local-time.</li>
-          <li>On Discord: [<span class="emoji-icon">💾</span>Autosave123] use these, along with the Factorio and Discord time-stamps for rewinding maps.</li>
-          <li>To load an old save (more than 25 autosaves back), ask in the <code>❓moderation-help</code> channel.</li>
-          <li>You can correlate Factorio time with production graphs to rewind before damage.</li>
-          <li>You can also check the <a href="https://m45sci.xyz/u/fact2/new-logs/" target="_blank">Activity Logs</a> or <a href="https://m45sci.xyz/u/fact2/new-logs/livelog.html" target="_blank">Live Log Viewer</a>.</li>
-          <li>ChatWire game logs are named: <code>game-YYYY-MM-DD.log</code>.</li>
-          <li>ChatWire logs use UTC date-stamps: <a href="https://savvytime.com/converter/utc" target="_blank">Timezone Converter</a>.</li>
+          <li>ChatWire messages use <code>days-hours-minutes-seconds</code>; Discord shows your local time.</li>
+          <li>Look for [<span class="emoji-icon">💾</span>Autosave123] on Discord and pair it with Factorio timestamps to rewind.</li>
+          <li>Need a save older than 25 autos? Ask in the <code>❓moderation-help</code> channel.</li>
+          <li>Match Factorio time with production graphs to roll back before trouble hits.</li>
+          <li>Check the <a href="https://m45sci.xyz/u/fact2/new-logs/" target="_blank">Activity Logs</a> or <a href="https://m45sci.xyz/u/fact2/new-logs/livelog.html" target="_blank">Live Log Viewer</a>.</li>
+          <li>ChatWire game logs are named <code>game-YYYY-MM-DD.log</code>.</li>
+          <li>Logs use UTC—<a href="https://savvytime.com/converter/utc" target="_blank">Timezone Converter</a>.</li>
         </ul>
-        <p>This data is invaluable for identifying griefers with no speculation.</p>
+          <p>These logs help catch griefers—no guesswork needed.</p>
       </section>
 
       <!-- Notification Roles -->
@@ -271,10 +272,10 @@
         <h2><span class="material-icons">notifications</span>Notification Roles</h2>
         <ul>
           <li><code>/get-roles</code></li>
-          <li>No <code>@everyone</code> pings — opt into specific notif roles instead.</li>
-          <li>Use <code>/get-roles</code> anytime to manage subscriptions.</li>
-          <li>Roles include Emergency Alert, Help-Vote, Factory-Help, Announcements.</li>
-          <li>These roles can be pinged without disturbing everyone.</li>
+          <li>No <code>@everyone</code> pings—opt into what you care about.</li>
+          <li>Run <code>/get-roles</code> anytime to manage subscriptions.</li>
+          <li>Roles: Emergency Alert, Help-Vote, Factory-Help, Announcements.</li>
+          <li>Ping them without spamming everyone.</li>
         </ul>
       </section>
 
@@ -282,14 +283,14 @@
       <section id="hardware">
         <h2><span class="material-icons">memory</span>Server Hardware</h2>
         <ul>
-          <li><span class="material-icons">cloud</span>Host: INCX.net dedicated datacenter server</li>
-          <li><span class="material-icons">network_check</span>Connection: SFP Gigabit Fiber</li>
-          <li><span class="material-icons">dns</span>Machine Model: Dell M630</li>
-          <li><span class="material-icons">developer_board</span>CPU: Dual Intel Xeon E5-2680 v4 (28 cores)</li>
-          <li><span class="material-icons">storage</span>Storage: 1 TB SSD</li>
-          <li><span class="material-icons">memory</span>Memory: 64 GB DDR4</li>
-          <li><span class="material-icons">place</span>Location: Southfield, Michigan, USA</li>
-          <li><span class="material-icons">schedule</span>System Clock (UTC)</li>
+            <li><span class="material-icons">cloud</span>Host: INCX.net dedicated server</li>
+            <li><span class="material-icons">network_check</span>Connection: SFP Gigabit Fiber</li>
+            <li><span class="material-icons">dns</span>Machine Model: Dell M630</li>
+            <li><span class="material-icons">developer_board</span>CPU: Dual Intel Xeon E5-2680 v4 (28 cores)</li>
+            <li><span class="material-icons">storage</span>Storage: 1 TB SSD</li>
+            <li><span class="material-icons">memory</span>Memory: 64 GB DDR4</li>
+            <li><span class="material-icons">place</span>Location: Southfield, Michigan, USA</li>
+            <li><span class="material-icons">schedule</span>System Clock: UTC (no time travel yet)</li>
         </ul>
       </section>
     </main>
