@@ -195,16 +195,20 @@
       </div>
 
       <!-- Mod Editing -->
-      <div class="card" id="mod edit">
+      <div class="card" id="mod-edit">
         <h3><span class="material-icons">extension</span>Change installed mods</h3>
         <ul class="group">
-          <li><span>Show installed mods</span><code>/editmods list-mods</code></li>
+          <li><span>Show installed mods &amp; version prefs</span><code>/editmods show-mods</code></li>
           <li><span>Enable mods by name</span><code>/editmods enable-mod &lt;mod1,mod2&gt;</code></li>
           <li><span>Disable mods by name</span><code>/editmods disable-mod &lt;mod1,mod2&gt;</code></li>
           <em>Add-mod supports mod names OR <a href="https://mods.factorio.com/">mod-portal</a> URLs</em>
           <li><span>Add mods</span><code>/editmods add-mod &lt;mod-url-1,mod-name-2&gt;</code></li>
+          <li><span>Set version prefs</span><code>/editmods set-version-pref &lt;mod=version&gt;</code></li>
+          <em>Use mod=auto for latest or mod= to remove preference</em>
           <li><span>Erase all mod files</span><code>/editmods clear-all-mods</code></li>
-          <li><span>Show mod add/remove/update history</span><code>/editmods mod-history</code></li>
+          <li><span>Show mod history</span><code>/editmods mod-history</code></li>
+          <li><span>Show full mod history</span><code>/editmods full-history</code></li>
+          <li><span>Clear mod history</span><code>/editmods clear-history</code></li>
         </ul>
       </div>
 
@@ -212,10 +216,11 @@
       <div class="card" id="map-schedule">
         <h3><span class="material-icons">autorenew</span>Map Reset Scheduling</h3>
         <ul class="group">
-          <em>Use one: 'interval-weeks 2' or combine intervals: 4 months, 3 weeks, 2 days and 1 hour</em>
+          <em>Use one option or combine intervals: 4 months, 3 weeks, 2 days and 1 hour</em>
           <li><span>Reset interval</span><code>/map-schedule interval-months &lt;number&gt; interval-weeks &lt;number&gt; interval-days &lt;number&gt; interval-hours &lt;number&gt;</code></li>
         </ul>
         <ul class="group">
+          <li><span>Force reset hour (UTC)</span><code>/map-schedule reset-hour &lt;0-23&gt;</code></li>
           <li><span>Manually set next reset date &amp; time</span><code>/map-schedule reset-date &lt;YYYY-MM-DD HH:MM:SS&gt;</code></li>
           <em>Config-Hours shuts down the server when not within open hours.</em>
           <li><span>Set open hours (UTC)</span><code>/config-hours &lt;start hour&gt; &lt;end hour&gt; &lt;enabled&gt;</code></li>
@@ -247,12 +252,14 @@
           <li><span>Member or higher only</span><code>/config-server members-only &lt;true|false&gt;</code></li>
           <li><span>Regular or higher only</span><code>/config-server regulars-only &lt;true|false&gt;</code></li>
           <li><span>Map-preset</span><code>/config-server map-preset default, rich-resources, marathon, death-world, death-world-marathon, rail-world, ribbon-world, island, lakes</code></li>
+          <li><span>Map generator</span><code>/config-server map-generator &lt;name|none&gt;</code></li>
           <li><span>Friendly fire</span><code>/config-server friendly-fire &lt;true|false&gt;</code></li>
           <li><span>Pause game when empty</span><code>/config-server auto-pause &lt;true|false&gt;</code></li>
           <li><span>Game speed for current map</span><code>/config-server speed &lt;value&gt;</code></li>
           <li><span>Minutes between autosaves</span><code>/config-server autosave-mins &lt;min&gt;</code></li>
           <li><span>AFK idle kick minutes</span><code>/config-server afk-kick-mins &lt;min&gt;</code></li>
           <li><span>Seed for next new map</span><code>/config-server map-seed &lt;seed&gt;</code></li>
+        </ul>
       </div>
 
       <!-- Softmod -->
@@ -299,7 +306,7 @@
       </div>
 
       <!-- Advanced -->
-      <div class="card" id="softmod">
+      <div class="card" id="advanced">
         <ul class="group">
           <h3><span class="material-icons">category</span>Advanced</h3>
           <li><span>Auto-update mods</span><code>/config-server auto-mod-update &lt;true|false&gt;</code></li>
@@ -309,8 +316,8 @@
           <li><span>Mute suspicious activity messages</span><code>/config-global sus-shutup</code></li>
           <li><span>Do not ban players in the shared FCL ban list, warning message only.</span><code>/config-global fcl-warn-only</code></li>
           <li><span>Show a warning if a regular has a FCL ban</span><code>/config-global fcl-warn-regulars</code></li>
+        </ul>
       </div>
-      </ul>
     </div>
   </div>
 </body>
