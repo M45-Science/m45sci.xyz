@@ -216,10 +216,11 @@
       <div class="card" id="map-schedule">
         <h3><span class="material-icons">autorenew</span>Map Reset Scheduling</h3>
         <ul class="group">
-          <em>Use one: 'interval-weeks 2' or combine intervals: 4 months, 3 weeks, 2 days and 1 hour</em>
+          <em>Use one option or combine intervals: 4 months, 3 weeks, 2 days and 1 hour</em>
           <li><span>Reset interval</span><code>/map-schedule interval-months &lt;number&gt; interval-weeks &lt;number&gt; interval-days &lt;number&gt; interval-hours &lt;number&gt;</code></li>
         </ul>
         <ul class="group">
+          <li><span>Force reset hour (UTC)</span><code>/map-schedule reset-hour &lt;0-23&gt;</code></li>
           <li><span>Manually set next reset date &amp; time</span><code>/map-schedule reset-date &lt;YYYY-MM-DD HH:MM:SS&gt;</code></li>
           <em>Config-Hours shuts down the server when not within open hours.</em>
           <li><span>Set open hours (UTC)</span><code>/config-hours &lt;start hour&gt; &lt;end hour&gt; &lt;enabled&gt;</code></li>
@@ -251,6 +252,7 @@
           <li><span>Member or higher only</span><code>/config-server members-only &lt;true|false&gt;</code></li>
           <li><span>Regular or higher only</span><code>/config-server regulars-only &lt;true|false&gt;</code></li>
           <li><span>Map-preset</span><code>/config-server map-preset default, rich-resources, marathon, death-world, death-world-marathon, rail-world, ribbon-world, island, lakes</code></li>
+          <li><span>Map generator</span><code>/config-server map-generator &lt;name|none&gt;</code></li>
           <li><span>Friendly fire</span><code>/config-server friendly-fire &lt;true|false&gt;</code></li>
           <li><span>Pause game when empty</span><code>/config-server auto-pause &lt;true|false&gt;</code></li>
           <li><span>Game speed for current map</span><code>/config-server speed &lt;value&gt;</code></li>
