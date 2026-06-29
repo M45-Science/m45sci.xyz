@@ -151,7 +151,7 @@
   const dataBase = "/_fact2-data/";
   const current = decodeURIComponent(location.pathname.startsWith(base) ? location.pathname.slice(base.length) : "");
   const dir = current.endsWith("/") || current === "" ? current : current.replace(/[^/]+$/, "");
-  const state = { rows: [], sort: "name", desc: false, filter: "" };
+  const state = { rows: [], sort: "date", desc: true, filter: "" };
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
   function esc(s) {
