@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M45 Log Viewer</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #121212;
+      --panel: #1e1e1e;
+      --panel-2: #2a2a2a;
+      --text: #eceff3;
+      --muted: #a9b0bb;
+      --line: #383d45;
+      --accent: #ffa500;
+      --accent-2: #7fb3ff;
+      --bad: #ff6b6b;
+      --good: #6bd48d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 24px;
+      border-bottom: 0.1rem solid var(--accent);
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .logo { height: 3.2rem; width: auto; flex: 0 0 auto; }
+    h1 { margin: 0; font-size: 1.25rem; white-space: nowrap; }
+    .crumbs { display: flex; gap: 8px; color: var(--muted); overflow: hidden; min-width: 0; }
+    .crumbs a { color: var(--accent-2); text-decoration: none; white-space: nowrap; }
+    main { max-width: 1400px; margin: 0 auto; padding: 16px; }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    button, .button, input[type="search"] {
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      color: var(--text);
+      font: inherit;
+      padding: 9px 12px;
+    }
+    button, .button { cursor: pointer; text-decoration: none; }
+    button:hover, .button:hover { border-color: var(--accent); }
+    input[type="search"] { min-width: min(420px, 100%); }
+    label { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+    .status { color: var(--muted); margin-left: auto; }
+    .status.live { color: var(--good); }
+    .status.error { color: var(--bad); }
+    pre {
+      margin: 0;
+      padding: 14px;
+      height: calc(100vh - 160px);
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: #0d0e10;
+      color: #e8edf4;
+      font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      tab-size: 4;
+      white-space: pre;
+    }
+    pre.wrap { white-space: pre-wrap; overflow-wrap: anywhere; }
+    mark { background: #5a410d; color: #fff0c4; padding: 0 2px; }
+    @media (max-width: 720px) {
+      header { align-items: flex-start; flex-direction: column; padding: 14px 16px; }
+      .status { width: 100%; margin-left: 0; }
+      pre { height: calc(100vh - 230px); font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="/img/m45.png" alt="M45">
+    <h1>M45 Log Viewer</h1>
+    <nav class="crumbs" id="crumbs"></nav>
+  </header>
+  <main>
+    <div class="toolbar">
+      <a class="button" id="back" href="/u/fact2/">Back</a>
+      <a class="button" id="download" href="#">Download</a>
+      <button id="follow" type="button">Follow: on</button>
+      <label><input id="wrap" type="checkbox"> Wrap</label>
+      <input id="search" type="search" placeholder="Find in loaded text" autocomplete="off">
+      <span class="status" id="status">Loading...</span>
+    </div>
+    <pre id="log"></pre>
+  </main>
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const file = params.get("file") || "";
+  const logEl = document.getElementById("log");
+  const statusEl = document.getElementById("status");
+  const searchEl = document.getElementById("search");
+  const wrapEl = document.getElementById("wrap");
+  const followEl = document.getElementById("follow");
+  const downloadEl = document.getElementById("download");
+  const backEl = document.getElementById("back");
+  const decoder = new TextDecoder("utf-8");
+  const tailBytes = 262144;
+  const pollMs = 5000;
+  let loadedBytes = 0;
+  let text = "";
+  let follow = true;
+  let timer = null;
+
+  function esc(s) {
+    return s.replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+  }
+  function setStatus(msg, cls = "") {
+    statusEl.className = `status ${cls}`.trim();
+    statusEl.textContent = msg;
+  }
+  function atBottom() {
+    return logEl.scrollHeight - logEl.scrollTop - logEl.clientHeight < 32;
+  }
+  function parentDir() {
+    const u = new URL(file, location.origin);
+    const p = u.pathname.endsWith("/") ? u.pathname : u.pathname.replace(/[^/]+$/, "");
+    return p || "/u/fact2/";
+  }
+  function renderCrumbs() {
+    const nav = document.getElementById("crumbs");
+    if (!file.startsWith("/u/fact2/")) {
+      nav.textContent = "Invalid file";
+      return;
+    }
+    const rel = decodeURIComponent(file.slice("/u/fact2/".length));
+    const parts = rel.split("/").filter(Boolean);
+    let path = "/u/fact2/";
+    const out = [`<a href="/u/fact2/">fact2</a>`];
+    parts.forEach((part, i) => {
+      if (i < parts.length - 1) {
+        path += encodeURIComponent(part) + "/";
+        out.push(`<span>/</span><a href="${path}">${esc(part)}</a>`);
+      } else {
+        out.push(`<span>/</span><span>${esc(part)}</span>`);
+      }
+    });
+    nav.innerHTML = out.join("");
+    backEl.href = parentDir();
+    downloadEl.href = file;
+  }
+  function render() {
+    const wasBottom = follow && atBottom();
+    const q = searchEl.value.trim();
+    if (!q) {
+      logEl.textContent = text;
+    } else {
+      const needle = q.toLowerCase();
+      const pieces = [];
+      let pos = 0;
+      let lower = text.toLowerCase();
+      let idx;
+      while ((idx = lower.indexOf(needle, pos)) !== -1) {
+        pieces.push(esc(text.slice(pos, idx)));
+        pieces.push(`<mark>${esc(text.slice(idx, idx + q.length))}</mark>`);
+        pos = idx + q.length;
+      }
+      pieces.push(esc(text.slice(pos)));
+      logEl.innerHTML = pieces.join("");
+    }
+    if (wasBottom || follow) logEl.scrollTop = logEl.scrollHeight;
+  }
+  async function fetchRange(range) {
+    const res = await fetch(file, { cache: "no-store", headers: { "Range": range } });
+    if (!res.ok && res.status !== 206) throw new Error(`HTTP ${res.status}`);
+    const buf = await res.arrayBuffer();
+    return { res, chunk: decoder.decode(buf, { stream: false }) };
+  }
+  function parseTotal(res) {
+    const cr = res.headers.get("Content-Range");
+    if (cr) {
+      const match = cr.match(/bytes\s+(\d+)-(\d+)\/(\d+|\*)/i);
+      if (match && match[3] !== "*") return Number(match[3]);
+      if (match) return Number(match[2]) + 1;
+    }
+    const len = res.headers.get("Content-Length");
+    return len ? Number(len) : loadedBytes;
+  }
+  async function initialLoad() {
+    if (!file.startsWith("/u/fact2/") || !/\.(log|txt)$/i.test(file)) throw new Error("Unsupported log path");
+    const { res, chunk } = await fetchRange(`bytes=-${tailBytes}`);
+    text = chunk;
+    loadedBytes = parseTotal(res);
+    if (res.status === 206 && loadedBytes > chunk.length) text = `[showing last ${Math.round(chunk.length / 1024)} KB]\n` + text;
+    render();
+    setStatus(`Live, ${loadedBytes.toLocaleString()} bytes`, "live");
+  }
+  async function poll() {
+    try {
+      const head = await fetch(file, { method: "HEAD", cache: "no-store" });
+      if (!head.ok) throw new Error(`HTTP ${head.status}`);
+      const size = Number(head.headers.get("Content-Length") || loadedBytes);
+      if (size < loadedBytes) {
+        text = "";
+        loadedBytes = 0;
+        await initialLoad();
+      } else if (size > loadedBytes) {
+        const { chunk } = await fetchRange(`bytes=${loadedBytes}-${size - 1}`);
+        text += chunk;
+        loadedBytes = size;
+        render();
+        setStatus(`Live, ${loadedBytes.toLocaleString()} bytes`, "live");
+      } else {
+        setStatus(`Live, ${loadedBytes.toLocaleString()} bytes`, "live");
+      }
+    } catch (err) {
+      setStatus(err.message, "error");
+    } finally {
+      timer = setTimeout(poll, pollMs);
+    }
+  }
+  wrapEl.addEventListener("change", () => logEl.classList.toggle("wrap", wrapEl.checked));
+  searchEl.addEventListener("input", render);
+  followEl.addEventListener("click", () => {
+    follow = !follow;
+    followEl.textContent = `Follow: ${follow ? "on" : "off"}`;
+    if (follow) logEl.scrollTop = logEl.scrollHeight;
+  });
+  logEl.addEventListener("scroll", () => {
+    if (!atBottom() && follow) {
+      follow = false;
+      followEl.textContent = "Follow: off";
+    }
+  });
+  renderCrumbs();
+  initialLoad().then(() => { timer = setTimeout(poll, pollMs); }).catch(err => setStatus(err.message, "error"));
+  window.addEventListener("beforeunload", () => { if (timer) clearTimeout(timer); });
+})();
+</script>
+</body>
+</html>

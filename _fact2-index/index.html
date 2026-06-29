@@ -111,7 +111,7 @@
       text-decoration: none;
     }
     a.file:hover .name { color: var(--accent); }
-    .icon { width: 1.35em; text-align: center; flex: 0 0 auto; }
+    .icon { min-width: 3.6em; text-align: left; flex: 0 0 auto; }
     .name {
       overflow-wrap: anywhere;
       word-break: break-word;
@@ -178,7 +178,9 @@
     return "[file]";
   }
   function hrefFor(name) {
-    return base + dir.split("/").map(encodeURIComponent).join("/") + encodeURIComponent(name);
+    const target = base + dir.split("/").map(encodeURIComponent).join("/") + encodeURIComponent(name);
+    if (/\.(log|txt)$/i.test(name)) return "/_fact2-index/viewer.html?file=" + encodeURIComponent(target);
+    return target;
   }
   function renderCrumbs() {
     const el = document.getElementById("crumbs");
