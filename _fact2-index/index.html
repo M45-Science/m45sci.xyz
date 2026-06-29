@@ -214,7 +214,7 @@
     const totalDirs = state.rows.filter(r => r.type === "directory").length;
     document.getElementById("summary").textContent = `${totalDirs} folders, ${totalFiles} files`;
     const body = rows.map(row => {
-      const displayName = row.type === "directory" ? row.name + "/" : row.name;
+      const displayName = row.type === "directory" ? row.name.replace(/\/+$/, "") : row.name;
       return `<tr><td><a class="file" href="${hrefFor(row.name)}"><span class="icon">${icon(row)}</span> <span class="name">${esc(displayName)}</span></a></td><td class="muted">${dateText(row.mtime)}</td><td class="num muted">${row.type === "directory" ? "-" : humanSize(row.size)}</td></tr>`;
     }).join("") || `<tr><td colspan="3" class="muted">No files found.</td></tr>`;
     document.getElementById("content").innerHTML = `<table><thead><tr><th data-sort="name">Name</th><th data-sort="date">Modified</th><th data-sort="size" class="num">Size</th></tr></thead><tbody>${body}</tbody></table>`;
