@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M45 Science Files</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111214;
+      --panel: #1e1e1e;
+      --panel-2: #2a2a2a;
+      --text: #eceff3;
+      --muted: #a9b0bb;
+      --line: #383d45;
+      --accent: #ffa500;
+      --accent-2: #7fb3ff;
+      --bad: #ff6b6b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #121212;
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 24px;
+      border-bottom: 0.1rem solid var(--accent);
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .logo { height: 3.2rem; width: auto; flex: 0 0 auto; }
+    h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .crumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      color: var(--muted);
+      overflow: hidden;
+    }
+    .crumbs a {
+      color: var(--accent-2);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 16px 48px;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .summary { color: var(--muted); }
+    .search {
+      width: min(360px, 100%);
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 1rem;
+      padding: 10px 12px;
+      font: inherit;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      border: 1px solid var(--line);
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      color: var(--muted);
+      font-weight: 650;
+      background: var(--panel-2);
+      cursor: pointer;
+      user-select: none;
+    }
+    tr:last-child td { border-bottom: 0; }
+    tr:hover td { background: #202329; }
+    a.file {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      max-width: 100%;
+      color: var(--text);
+      text-decoration: none;
+    }
+    a.file:hover .name { color: var(--accent); }
+    .icon { width: 1.35em; text-align: center; flex: 0 0 auto; }
+    .name {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .muted { color: var(--muted); }
+    .error {
+      padding: 16px;
+      border: 1px solid #5f3030;
+      background: #2a1717;
+      color: var(--bad);
+      border-radius: 1rem;
+    }
+    @media (max-width: 720px) {
+      header { align-items: flex-start; flex-direction: column; padding: 14px 16px; }
+      .toolbar { align-items: stretch; flex-direction: column; }
+      th:nth-child(2), td:nth-child(2) { display: none; }
+      th, td { padding: 9px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="/img/m45.png" alt="M45"><h1>M45 Science Files</h1>
+    <nav class="crumbs" id="crumbs"></nav>
+  </header>
+  <main>
+    <div class="toolbar">
+      <div class="summary" id="summary">Loading...</div>
+      <input class="search" id="search" type="search" placeholder="Filter files" autocomplete="off">
+    </div>
+    <div id="content"></div>
+  </main>
+<script>
+(() => {
+  const base = "/u/fact2/";
+  const dataBase = "/_fact2-data/";
+  const current = decodeURIComponent(location.pathname.startsWith(base) ? location.pathname.slice(base.length) : "");
+  const dir = current.endsWith("/") || current === "" ? current : current.replace(/[^/]+$/, "");
+  const state = { rows: [], sort: "name", desc: false, filter: "" };
+  const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+
+  function esc(s) {
+    return s.replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+  }
+  function humanSize(size) {
+    if (size === null || size === undefined || Number.isNaN(size)) return "-";
+    const units = ["B", "KB", "MB", "GB", "TB"];
+    let n = Number(size), i = 0;
+    while (n >= 1024 && i < units.length - 1) { n /= 1024; i++; }
+    return `${n.toFixed(i === 0 ? 0 : n >= 10 ? 1 : 2)} ${units[i]}`;
+  }
+  function dateText(value) {
+    if (!value) return "-";
+    const d = new Date(value);
+    return Number.isNaN(d.getTime()) ? "-" : d.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+  }
+  function icon(row) {
+    if (row.type === "directory") return "[dir]";
+    const n = row.name.toLowerCase();
+    if (n.endsWith(".zip") || n.endsWith(".gz") || n.endsWith(".bz2") || n.endsWith(".tar")) return "[zip]";
+    if (n.endsWith(".log") || n.endsWith(".txt") || n.endsWith(".json")) return "[txt]";
+    if (n.endsWith(".html") || n.endsWith(".htm")) return "[web]";
+    return "[file]";
+  }
+  function hrefFor(name) {
+    return base + dir.split("/").map(encodeURIComponent).join("/") + encodeURIComponent(name);
+  }
+  function renderCrumbs() {
+    const el = document.getElementById("crumbs");
+    const parts = dir.split("/").filter(Boolean);
+    let path = "";
+    const links = [`<a href="${base}">fact2</a>`];
+    for (const part of parts) {
+      path += encodeURIComponent(part) + "/";
+      links.push(`<span>/</span><a href="${base}${path}">${esc(part)}</a>`);
+    }
+    el.innerHTML = links.join("");
+  }
+  function sortedRows() {
+    const q = state.filter.trim().toLowerCase();
+    const rows = q ? state.rows.filter(r => r.name.toLowerCase().includes(q)) : state.rows.slice();
+    rows.sort((a, b) => {
+      if (a.name === "../") return -1;
+      if (b.name === "../") return 1;
+      if (a.type !== b.type) return a.type === "directory" ? -1 : 1;
+      let v = 0;
+      if (state.sort === "size") v = (a.size || 0) - (b.size || 0);
+      else if (state.sort === "date") v = new Date(a.mtime || 0) - new Date(b.mtime || 0);
+      else v = collator.compare(a.name, b.name);
+      return state.desc ? -v : v;
+    });
+    return rows;
+  }
+  function render() {
+    const rows = sortedRows();
+    const totalFiles = state.rows.filter(r => r.type !== "directory").length;
+    const totalDirs = state.rows.filter(r => r.type === "directory").length;
+    document.getElementById("summary").textContent = `${totalDirs} folders, ${totalFiles} files`;
+    const body = rows.map(row => {
+      const displayName = row.type === "directory" ? row.name + "/" : row.name;
+      return `<tr><td><a class="file" href="${hrefFor(row.name)}"><span class="icon">${icon(row)}</span><span class="name">${esc(displayName)}</span></a></td><td class="muted">${dateText(row.mtime)}</td><td class="num muted">${row.type === "directory" ? "-" : humanSize(row.size)}</td></tr>`;
+    }).join("") || `<tr><td colspan="3" class="muted">No files found.</td></tr>`;
+    document.getElementById("content").innerHTML = `<table><thead><tr><th data-sort="name">Name</th><th data-sort="date">Modified</th><th data-sort="size" class="num">Size</th></tr></thead><tbody>${body}</tbody></table>`;
+    document.querySelectorAll("th[data-sort]").forEach(th => th.addEventListener("click", () => {
+      const next = th.dataset.sort;
+      if (state.sort === next) state.desc = !state.desc;
+      else { state.sort = next; state.desc = false; }
+      render();
+    }));
+  }
+  async function load() {
+    renderCrumbs();
+    try {
+      const res = await fetch(dataBase + dir.split("/").map(encodeURIComponent).join("/"), { headers: { "Accept": "application/json" } });
+      if (!res.ok) throw new Error(`Directory request failed: ${res.status}`);
+      const data = await res.json();
+      state.rows = data.map(row => ({ name: row.name, type: row.type, size: row.size, mtime: row.mtime }));
+      render();
+    } catch (err) {
+      document.getElementById("summary").textContent = "Could not load directory";
+      document.getElementById("content").innerHTML = `<div class="error">${esc(err.message)}</div>`;
+    }
+  }
+  document.getElementById("search").addEventListener("input", e => { state.filter = e.target.value; render(); });
+  load();
+})();
+</script>
+</body>
+</html>
